@@ -4,6 +4,8 @@ from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 
+import os
+
 db=SQLAlchemy()
 
 #create a function that creates a web application
@@ -14,7 +16,11 @@ def create_app():
     app.debug=True
     app.secret_key='utroutoru'
     #set the app configuration data 
-    app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///marketplace.sqlite'
+    #app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///marketplace.sqlite'
+    app.config.from_mapping(
+        #Flask SQLAlchemy settings
+        SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL'],
+    )
     #initialize db with flask app
     db.init_app(app)
 
