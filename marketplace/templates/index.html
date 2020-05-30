@@ -18,20 +18,14 @@
             {% include "category.html" %}
         {% endwith %}
 
-        <div class="card-img-fluid col-12 col-sm-4 catcard inner">
-            <img class="card-img-top catcard inner rounded-0" src="../static/img/accessory.jpg" alt="Accessory Image">
-            <div class="card-body card-img-overlay text-center">
-                <h5 class="card-title">Explore our accessories!</h5>
-                <a href="{{ url_for('main.item_list') }}" class="btn btn-primary">View Accessories</a>
-            </div>
-        </div>
-        <div class="card-img-fluid col-12 col-sm-4 catcard inner">
-            <img class="card-img-top catcard inner rounded-0"  src="../static/img/vintage-player.jpg" alt="Vintage Record Player">
-            <div class="card-body card-img-overlay text-center">
-                <h5 class="card-title">Buy yourself a Turntable!</h5>
-                <a href="{{ url_for('main.item_list') }}" class="btn btn-primary">View Turntables</a>
-            </div>
-        </div>
+        {% with title="Explore our Accessories!", buttonText="View Accessories" %}
+            {% include "category.html" %}
+        {% endwith %}
+
+        {% with title="Buy a Turntable!", buttonText="View Turntables" %}
+            {% include "category.html" %}
+        {% endwith %}
+        
     </div>
     <section>  <!-- Featured Items Section -->
         <div class="bd-content">
