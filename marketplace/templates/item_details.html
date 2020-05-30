@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang = "en-US">
+<head>
+    <meta charset = "UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Jukebox Jams</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel = "stylesheet" type = "text/css" href = "../static/css/mystyle.css" />
+    
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark nav-bg"> 
+            
+            <a class="navbar-brand" href="../templates/index.html">
+    
+                <img src="../static/img/vinyl.png"width="30" height="30" alt="Jukebox Jams Logo">
+                Jukebox Jams
+            
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" 
+            data-target="#navbarNav" aria-controls="navbarNav" x 
+            aria-expanded="true" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">Vinyls</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="../templates/item_list.html">7-Inch</a>
+                            <a class="dropdown-item" href="../templates/item_list.html">10-Inch</a>
+                            <a class="dropdown-item" href="../templates/item_list.html">12-Inch</a>
+                            <a class="dropdown-item" href="../templates/item_list.html">Artist</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">Accessories</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="../templates/item_list.html">Needles</a>
+                            <a class="dropdown-item" href="../templates/item_list.html">Motors</a>
+                            <a class="dropdown-item" href="../templates/item_list.html">Tonearms</a>
+                            <a class="dropdown-item" href="../templates/item_list.html">Shelves</a>
+                            <a class="dropdown-item" href="../templates/item_list.html">Cleaning</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">Turntables</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="../templates/item_list.html">Automatic Tables</a>
+                            <a class="dropdown-item" href="../templates/item_list.html">Manual Tables</a>    
+                        </div>
+                    </li>
+                </ul>
+                <form class="form-inline col"style="">
+                    <input class="form-control mr-md-2 col-lg-4 col-12 searchForm ml-auto" type="search" placeholder="Search"aria-label="Search">
+                    <a class="btn btn-light my-md-0 col-lg-2 col-sm-12 searchForm text-center" type="submit"href="../templates/item_list.html">Submit</a>
+                </form>  
+                <div class="nav-item dropdown">
+                    <a data-toggle="dropdown" class=" nav-item nav-link dropdown-toggle btn-primary" href="#" aria-expanded="false">Account</a>
+                    <ul class="dropdown-menu">
+                        <a class="dropdown-item dropdown-title font-weight-bold disabled">Seller</a>
+                        <a class="dropdown-item" href="../templates/item_create.html">Create Item</a>
+                        <a class="dropdown-item" href="#">My Items</a>
+                        <a class="dropdown-item dropdown-title font-weight-bold disabled">Account</a>
+                        <a class="dropdown-item" href="#"data-toggle="modal" data-target="#signOutModal">Sign Out</a>
+                    </ul>
+                </div>
+            </div>
+        
+
+            <!-- Navbar Modals  -->
+            <div class="modal fade" id="signOutModal" tabindex="-1" role="dialog" aria-labelledby="signOutModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="signOutModalLabel">Signing Out</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div>
+                                Are you sure you want to sign out?
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" data-dismiss="modal" class="btn btn-secondary">No</button>
+                            <button type="button" data-dismiss="modal" class="btn btn-primary"data-toggle="modal" data-target="#signedOutModal">Yes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="signedOutModal" tabindex="-1" role="dialog" aria-labelledby="signedOutModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="signedOutModalLabel">Signed Out</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div>
+                                Successfully sign out. Thank you for visiting Jukebox Jams!
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" data-dismiss="modal" class="btn btn-primary">Dismiss</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+
+    <!-- <main class="container-fluid"> -->
+    <div class="hd-back"> <!--Back button-->
+        <a class="hd-back-text" href="javascript:history.back()">
+            <span aria-hidden="true">&laquo;</span>
+            Return to previous page
+        </a>
+    </div>
+
+    <section>  <!-- Product Details -->
+        
+        <div class="bd-content products">
+            
+            <div class="product-details">
+                <div class="row">
+                    <div class="products-img col-12 col-md-3">
+
+                        <img class="mx-auto d-block rounded  img-thumbnail " src="../static/img/vinyl-record.jpg" alt="Card image ">
+
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <div class="bd-header-1" style="color: black;">Album Title</div>
+                        <div class="row">
+                            <div class="products col-12 col-md-6">
+                                <div class="row">
+                                    <div class="bd-header-3 col-12">Artist Name</div>
+                                    <div class="bd-header-3 col-12">Vinyl Record</div>
+                                    <div class="row col" style="padding-left: 0px;">
+                                        <div class="bd-header-3 col-sm-7 col-12">Vinyl Size:</div>
+                                        <div class="bd-header-3 col-sm-5 col-12">7-Inch</div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="bd-header-3" style="padding-left: 15px;">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                </div>
+                            </div>
+
+                            <div class="products col-12 col-md-6 text-center">
+                                <div class="row">
+                                    <div class="bd-header-3 col-8 text-left">Item Price:</div>
+                                    <div class="bd-header-3 col-4" style="text-align: right;">$49.99</div>
+                                </div>
+                                <div class="row">
+                                    <div class="bd-header-3 col-8 text-left">Stock Available:</div>
+                                    <div class="bd-header-3 col-4" style="text-align: right;">24</div>
+                                </div>
+                                <a href="../templates/item_order.html"class="">
+                                    <button class="bd-header-3 btn-primary col-8 col-md-6" style="margin: 20px;">Order Item</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="bd-header-2">Product Description:</div>
+                <div> <!--Product information -->
+                    Ph'nglui mglw'nafh Cthulhu R'lyeh wgah'nagl fhtagn. Mnahn'agl h'throd ep h'orr'e, hupadgh ph''fhalma h'n'ghft ilyaa hlirgh R'lyeh ilyaa Dagonoth Cthulhu hai, bug syha'h goka hupadghagl naflfm'latgh gof'nn Chaugnar Faugn hafh'drnog. Ph''ai nog ngathg lw'nafh Nyarlathotep uaaah, nilgh'ri uln orr'e y'hah Yoggoth, lw'nafh cshagg vulgtlagln gotha. Ngs'uhn tharanak ee ya sll'ha 'ai n'ghft f'vulgtm zhro hlirgh Nyarlathotep fm'latghog hai ahoth, syha'h Chaugnar Faugn c'bthnk naflhlirgh 'fhalma ooboshu nnnnog fm'latgh sll'ha goka shogg. Gotha nilgh'ri lw'nafh ph'vulgtm f'geb naphlegeth uaaah stell'bsna phlegeth y'hah sll'ha vulgtlagln, Tsathoggua gotha ph'shtunggli fm'latgh ch' ngep epnyth r'luh ooboshu 'bthnk. 
+
+    Syha'h nnnhupadgh cShub-Niggurath nalloig llll uh'eyar nagnaiih, stell'bsnaog phlegeth 'bthnk uln ee, bug gnaiih Shub-Niggurath lloig ebunma. Ron sgn'wahl 'fhalma Azathoth Tsathoggua throd grah'n nogoth shtungglinyth gnaiih fm'latgh ronoth bug wgah'n r'luh, nglui Chaugnar Faugn cR'lyeh mg uln nog tharanak shagg sgn'wahl nashogg gotha syha'h. Chtenff hafh'drnog Dagon mg tharanak ah, ya gof'nn n'gha R'lyeh y-goka, vulgtlagln shtunggli 'bthnk phlegeth. R'luh Tsathoggua ph'Yoggoth cshogg phlegeth uaaah Azathoth, uh'eoth hrii gotha stell'bsna li'hee wgah'n, cphlegeth gnaiih y'hah 'bthnk lloig. Uh'e naflShub-Niggurath zhro kn'a Yoggoth Shub-Niggurath fhtagn Shub-Niggurath R'lyeh ehye, shogg syha'h ph'geb goka n'gha nw throd ooboshu ph'mnahn', R'lyeh 'bthnk ngshtunggli Chaugnar Faugn ph'Cthulhu ya ph'y'hah grah'n. 
+
+    Gof'nn nilgh'ri c
+                </div>
+            </div>
+        </div>
+
+
+    </section> <!-- End Featured Items Section -->
+    <hr>
+
+    <div class="product-details"> <!-- REVIEWS  -->
+        <div class="bd-header-2">Reviews:</div>
+
+        <div class="card card-comment" style="width:auto;margin-bottom: 25px;">
+            <div class="row">
+                <div class="profile-img col-4 col-md-1">
+                    <img class="card-img" src="../static/img/profile-pic.jpg" alt="Card image">
+                </div>
+                <div class="comment-body col-8 col-md-11 row">
+                    <h4 class="bd-header-3 col-12 col-md-4 text-md-left text-right">User Name</h4>
+                    <div class="bd-header-3 col-12 col-md-4 text-md-center text-right d-flex">
+                        <span class="fa fa-star ml-auto"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star mr-md-auto"></span>
+                    </div>  
+                    <h4 class="bd-header-3 col-12 col-md-4 text-right">Posted: 20/02/2020</h4>                    
+                </div>
+                
+            </div>
+            <hr style="margin: 0px;">
+            <div class="form-group" style="margin: 0;">
+                <textarea type="text" class="form-control" id="review_text" placeholder="Enter your review here..." maxlength="250" required style="max-height: 6rem;min-height: 3rem;"></textarea>
+            </div>
+            <button class="btn-primary" data-toggle="modal" data-target="#reviewModal">Submit Review</button>
+        </div>
+        <div class="card card-comment" style="width:auto;">
+            <div class="row">
+                <div class="profile-img col-4 col-md-1">
+                    <img class="card-img" src="../static/img/profile-pic.jpg" alt="Card image">
+                </div>
+                <div class="comment-body col-8 col-md-11 row">
+                    <h4 class="bd-header-3 col-12 col-md-4 text-md-left text-right">User Name</h4>
+                    <div class="bd-header-3 col-12 col-md-4 d-flex">
+                        <span class="fa fa-star checked ml-auto"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star mr-md-auto"></span>
+                    </div>  
+                    <h4 class="bd-header-3 col-12 col-md-4 text-right">Posted: 19/02/2020</h4>   
+                </div>
+                
+            </div>
+            <hr style="margin: 0px;">
+            <div class="comment-text">
+                Ph'nglui mglw'nafh Cthulhu R'lyeh wgah'nagl fhtagn. Mnahn'agl h'throd ep h'orr'e, hupadgh ph''fhalma h'n'ghft ilyaa hlirgh R'lyeh ilyaa Dagonoth Cthulhu hai, bu
+            </div> 
+        </div>
+
+
+        <div class="card card-comment" style="width:auto;">
+            <div class="row">
+                <div class="profile-img col-4 col-md-1">
+                    <img class="card-img" src="../static/img/profile-pic.jpg" alt="Card image">
+                </div>
+                <div class="comment-body col-8 col-md-11 row">
+                    <h4 class="bd-header-3 col-12 col-md-4 text-md-left text-right">User Name</h4>
+                    <div class="bd-header-3 col-12 col-md-4 d-flex">
+                        <span class="fa fa-star checked ml-auto"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star mr-md-auto"></span>
+                    </div>  
+                    <h4 class="bd-header-3 col-12 col-md-4 text-right">Posted: 08/02/2020</h4>                       
+                </div>
+                
+            </div>
+            <hr style="margin: 0px;">
+            <div class="comment-text">
+                Ph'nglui mglw'nafh Cthulhu R'lyeh wgah'nagl fhtagn. Mnahn'agl h'throd ep h'orr'e, hupadgh ph''fhalma h'n'ghft ilyaa hlirgh R'lyeh ilyaa Dagonoth Cthulhu hai, bu
+            </div> 
+        </div>
+
+        <div class="card card-comment" style="width:auto;">
+            <div class="row">
+                <div class="profile-img col-4 col-md-1">
+                    <img class="card-img" src="../static/img/profile-pic.jpg" alt="Card image">
+                </div>
+                <div class="comment-body col-8 col-md-11 row">
+                    <h4 class="bd-header-3 col-12 col-md-4 text-md-left text-right">User Name</h4>
+                    <div class="bd-header-3 col-12 col-md-4 d-flex">
+                        <span class="fa fa-star checked ml-auto"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star mr-md-auto"></span>
+                    </div>  
+                    <h4 class="bd-header-3 col-12 col-md-4 text-right">Posted: 03/02/2020</h4>   
+                </div>
+                
+            </div>
+            <hr style="margin: 0px;">
+            <div class="comment-text">
+                Ph'nglui mglw'nafh Cthulhu R'lyeh wgah'nagl fhtagn. Mnahn'agl h'throd ep h'orr'e, hupadgh ph''fhalma h'n'ghft ilyaa hlirgh R'lyeh ilyaa Dagonoth Cthulhu hai, bu
+            </div> 
+        </div>
+
+        <div class="card card-comment" style="width:auto;">
+            <div class="row">
+                <div class="profile-img col-4 col-md-1">
+                    <img class="card-img" src="../static/img/profile-pic.jpg" alt="Card image">
+                </div>
+                <div class="comment-body col-8 col-md-11 row">
+                     <h4 class="bd-header-3 col-12 col-md-4 text-md-left text-right">User Name</h4>
+                    <div class="bd-header-3 col-12 col-md-4 d-flex">
+                        <span class="fa fa-star checked ml-auto"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star mr-md-auto"></span>
+                    </div>  
+                    <h4 class="bd-header-3 col-12 col-md-4 text-right">Posted: 27/01/2020</h4>   
+                </div>
+                
+            </div>
+            <hr style="margin: 0px;">
+            <div class="comment-text">
+                Ph'nglui mglw'nafh Cthulhu R'lyeh wgah'nagl fhtagn. Mnahn'agl h'throd ep h'orr'e, hupadgh ph''fhalma h'n'ghft ilyaa hlirgh R'lyeh ilyaa Dagonoth Cthulhu hai, bu
+            </div> 
+        </div>
+        
+        <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="createModalLabel">Post Review</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Review Posted!
+                    </div>
+                    <div class="modal-footer">
+                        <a href="../templates/item_details.html">
+                            <button type="button" class="btn btn-primary">Dismiss</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid bd-footer"><!-- FOOTER  -->
+        <div class="center-block">
+            <hr>
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 mr-auto foot" >
+                    @ 2020 Jukebox Jams Copyright. All rights Reserved.
+                </div>
+                <div class="col-xs-12 col-sm-4 foot"style="text-align: right;">
+                    Terms and Conditions | Privacy Policy
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

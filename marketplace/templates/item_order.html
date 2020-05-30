@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang = "en-US">
+<head>
+    <meta charset = "UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Jukebox Jams</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel = "stylesheet" type = "text/css" href = "../static/css/mystyle.css" />
+    
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark nav-bg"> 
+            
+            <a class="navbar-brand" href="../templates/index.html">
+    
+                <img src="../static/img/vinyl.png"width="30" height="30" alt="Jukebox Jams Logo">
+                Jukebox Jams
+            
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" 
+            data-target="#navbarNav" aria-controls="navbarNav" x 
+            aria-expanded="true" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">Vinyls</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="../templates/item_list.html">7-Inch</a>
+                            <a class="dropdown-item" href="../templates/item_list.html">10-Inch</a>
+                            <a class="dropdown-item" href="../templates/item_list.html">12-Inch</a>
+                            <a class="dropdown-item" href="../templates/item_list.html">Artist</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">Accessories</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="../templates/item_list.html">Needles</a>
+                            <a class="dropdown-item" href="../templates/item_list.html">Motors</a>
+                            <a class="dropdown-item" href="../templates/item_list.html">Tonearms</a>
+                            <a class="dropdown-item" href="../templates/item_list.html">Shelves</a>
+                            <a class="dropdown-item" href="../templates/item_list.html">Cleaning</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">Turntables</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="../templates/item_list.html">Automatic Tables</a>
+                            <a class="dropdown-item" href="../templates/item_list.html">Manual Tables</a>    
+                        </div>
+                    </li>
+                </ul>
+                <form class="form-inline col"style="">
+                    <input class="form-control mr-md-2 col-lg-4 col-12 searchForm ml-auto" type="search" placeholder="Search"aria-label="Search">
+                    <a class="btn btn-light my-md-0 col-lg-2 col-sm-12 searchForm text-center" type="submit"href="../templates/item_list.html">Submit</a>
+                </form>  
+                <div class="nav-item dropdown">
+                    <a data-toggle="dropdown" class=" nav-item nav-link dropdown-toggle btn-primary" href="#" aria-expanded="false">Account</a>
+                    <ul class="dropdown-menu">
+                        <a class="dropdown-item dropdown-title font-weight-bold disabled">Seller</a>
+                        <a class="dropdown-item" href="../templates/item_create.html">Create Item</a>
+                        <a class="dropdown-item" href="#">My Items</a>
+                        <a class="dropdown-item dropdown-title font-weight-bold disabled">Account</a>
+                        <a class="dropdown-item" href="#"data-toggle="modal" data-target="#signOutModal">Sign Out</a>
+                    </ul>
+                </div>
+            </div>
+        
+
+            <!-- Navbar Modals  -->
+            <div class="modal fade" id="signOutModal" tabindex="-1" role="dialog" aria-labelledby="signOutModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="signOutModalLabel">Signing Out</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div>
+                                Are you sure you want to sign out?
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" data-dismiss="modal" class="btn btn-secondary">No</button>
+                            <button type="button" data-dismiss="modal" class="btn btn-primary"data-toggle="modal" data-target="#signedOutModal">Yes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="signedOutModal" tabindex="-1" role="dialog" aria-labelledby="signedOutModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="signedOutModalLabel">Signed Out</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div>
+                                Successfully sign out. Thank you for visiting Jukebox Jams!
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" data-dismiss="modal" class="btn btn-primary">Dismiss</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+
+    <div class="hd-back"> <!--Back button-->
+        <a class="hd-back-text" href="javascript:history.back()">
+            <span aria-hidden="true">&laquo;</span>
+            Return to previous page
+        </a>
+    </div>
+
+    <section>  <!-- Product Details -->
+        
+        <div class="bd-content products">
+            <div class="product-details">
+                <div class="row">
+                    <div class="products-img col-12 col-md-3">
+
+                        <img class="mx-auto d-block rounded  img-thumbnail " src="../static/img/vinyl-record.jpg" alt="Card image ">
+
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <div class="bd-header-1" style="color: black;">Product Name</div>
+                            <div class="row">
+                                <div class="bd-header-3 col-8">Item Price:</div>
+                                <div class="bd-header-3 col-4" style="text-align: right;">$49.99</div>
+                            </div>
+                            <div class="row">
+                                <div class="bd-header-3 col-8">Stock Available:</div>
+                                <div class="bd-header-3 col-4" style="text-align: right;">24</div>
+                            </div>
+                            <div class="row">
+                                <div class="bd-header-3 col-12 col-md-8">Select quantity to purchase:</div>
+                                <div class="bd-header-3 col-12 col-md-4">
+                                    <input type="number" id="replyNumber" class="float-right text-right col inputText" min="1" max="100" step="1"placeholder="0"data-bind="value:replyNumber">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="bd-header-3 col-12 col-md-8">Delivery Address:</div>
+                                <div class="bd-header-3 col-12 col-md-4">
+                                    <input type="text" class="float-right text-right col inputText"placeholder="10 Streetname St, Brisbane, Queensland">
+                                </div>
+                            </div>
+                            <div class="col text-center col-12 col-md-4 ml-auto" style="padding-top: 20px;">
+                                <button class="bd-header-3 btn-primary col-8" data-toggle="modal" data-target="#orderModal">Order Item</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="orderModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="orderModalLabel">Order Placed</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            Your order was successfully placed! Your order ID is:
+                        </div>
+                        <div>
+                            ###-####-###-##
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal"class="btn btn-secondary">Dismiss</button>
+                        <a href="../templates/index.html">
+                            <button type="button" class="btn btn-primary">Return Home</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> <!-- End Page Body Section -->
+
+   
+    <div class="bd-content">
+        <a href="../templates/item_list.html">
+            <div class="bd-header-2">
+                Similar Products:
+            </div>
+        </a>
+        <div class="row products-list">
+            <div class="products col-xl-2 col-md-4 col-sm-6 col-12">
+                <div class="card my-3 products-card card-body text-right">
+                    <div class="media">
+                        <img class="card-img align-self-start mr-3" src="../static/img/vinyl-record.jpg" alt="Card image" style="width:40%; height: 40%;">
+                        <div class="media-body text-right">
+                            <h5 class="mt-0">Cool Album Name</h5>
+                            <p class="card-text">$49.99</p>
+                        </div>
+                    </div>
+                    <a class="text-success">In Stock!</a>
+                    <div class="text-center">
+                        <a href="../templates/item_details.html" class="btn btn-primary mt-2 align-self-center">See Product</a>
+                    </div>
+                </div>
+            </div>
+            <div class="products col-xl-2 col-md-4 col-sm-6 col-12">
+                <div class="card my-3 products-card card-body text-right">
+                    <div class="media">
+                        <img class="card-img align-self-start mr-3" src="../static/img/vinyl-record.jpg" alt="Card image" style="width:40%; height: 40%;">
+                        <div class="media-body text-right">
+                            <h5 class="mt-0">Cool Album Name</h5>
+                            <p class="card-text">$49.99</p>
+                        </div>
+                    </div>
+                    <a class="text-danger">Out of Stock!</a>
+                    <div class="text-center">
+                        <a href="../templates/item_details.html" class="btn btn-primary mt-2 align-self-center">See Product</a>
+                    </div>
+                </div>
+            </div>
+            <div class="products col-xl-2 col-md-4 col-sm-6 col-12">
+                <div class="card my-3 products-card card-body text-right">
+                    <div class="media">
+                        <img class="card-img align-self-start mr-3" src="../static/img/vinyl-record.jpg" alt="Card image" style="width:40%; height: 40%;">
+                        <div class="media-body text-right">
+                            <h5 class="mt-0">Cool Album Name</h5>
+                            <p class="card-text">$49.99</p>
+                        </div>
+                    </div>
+                    <a class="text-success">In Stock!</a>
+                    <div class="text-center">
+                        <a href="../templates/item_details.html" class="btn btn-primary mt-2 align-self-center">See Product</a>
+                    </div>
+                </div>
+            </div>
+            <div class="products col-xl-2 col-md-4 col-sm-6 col-12">
+                <div class="card my-3 products-card card-body text-right">
+                    <div class="media">
+                        <img class="card-img align-self-start mr-3" src="../static/img/vinyl-record.jpg" alt="Card image" style="width:40%; height: 40%;">
+                        <div class="media-body text-right">
+                            <h5 class="mt-0">Cool Album Name</h5>
+                            <p class="card-text">$49.99</p>
+                        </div>
+                    </div>
+                    <a class="text-success">In Stock!</a>
+                    <div class="text-center">
+                        <a href="../templates/item_details.html" class="btn btn-primary mt-2 align-self-center">See Product</a>
+                    </div>
+                </div>
+            </div>
+            <div class="products col-xl-2 col-md-4 col-sm-6 col-12">
+                <div class="card my-3 products-card card-body text-right">
+                    <div class="media">
+                        <img class="card-img align-self-start mr-3" src="../static/img/vinyl-record.jpg" alt="Card image" style="width:40%; height: 40%;">
+                        <div class="media-body text-right">
+                            <h5 class="mt-0">Cool Album Name</h5>
+                            <p class="card-text">$49.99</p>
+                        </div>
+                    </div>
+                    <a class="text-success">In Stock!</a>
+                    <div class="text-center">
+                        <a href="../templates/item_details.html" class="btn btn-primary mt-2 align-self-center">See Product</a>
+                    </div>
+                </div>
+            </div>
+            <div class="products col-xl-2 col-md-4 col-sm-6 col-12">
+                <div class="card my-3 products-card card-body text-right">
+                    <div class="media">
+                        <img class="card-img align-self-start mr-3" src="../static/img/vinyl-record.jpg" alt="Card image" style="width:40%; height: 40%;">
+                        <div class="media-body text-right">
+                            <h5 class="mt-0">Cool Album Name</h5>
+                            <p class="card-text">$49.99</p>
+                        </div>
+                    </div>
+                    <a class="text-success">In Stock!</a>
+                    <div class="text-center">
+                        <a href="../templates/item_details.html" class="btn btn-primary mt-2 align-self-center">See Product</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="container-fluid bd-footer"><!-- FOOTER  -->
+        <div class="center-block">
+            <hr>
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 mr-auto foot" >
+                    @ 2020 Jukebox Jams Copyright. All rights Reserved.
+                </div>
+                <div class="col-xs-12 col-sm-4 foot"style="text-align: right;">
+                    Terms and Conditions | Privacy Policy
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

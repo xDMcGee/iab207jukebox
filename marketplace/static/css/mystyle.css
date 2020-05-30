@@ -1,0 +1,237 @@
+/* mystyle.css */
+
+
+nav{
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+}
+
+.bd-navbar {
+    min-height: 4rem;
+    background-color: burlywood;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+/* .searchForm{
+    margin-bottom: 10px;
+    margin-top:5px;
+} */
+
+.fa-star{   /*Star colours*/
+    color: rgb(0, 0, 0) !important;
+}
+.checked{  /*Star colours*/
+    color: rgb(255, 209, 4) !important;
+}
+
+
+.dropdown-item:active{
+    background-color: rgb(234, 210, 148) !important;
+    color:white;
+}
+  
+body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    color: #000000;
+    background-color: rgb(251, 244, 226);
+}
+
+.jumbotron-fluid{
+    background: url("../img/acoustic-amplifier-artist-audio-114820.jpg") no-repeat center center; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 200px;
+    background-position: center;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    display: table;
+    margin-bottom: 15px;
+}
+
+.home-title{
+    font-size: 60px;
+    color: rgb(255, 255, 255);
+    -webkit-text-stroke:1px rgb(218, 171, 71);   
+    display: table-cell;
+    vertical-align: middle; 
+}
+
+
+h1 {
+    color: rgb(177, 177, 177);
+    text-align: center;
+    font: italic 200% fantasy;
+    }
+
+.hd-back{
+
+    margin-top: 7px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+}
+hr{
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.row{
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+p {
+    /* background-color: rgb(194, 194, 194); */
+    color: #000000;
+    text-align: right;
+    /* border: 3px groove rgb(151, 151, 151); */
+    margin-bottom: 5px !important;
+}
+
+.bd-paragraph{
+    padding: 15px;
+}
+    
+.bd-header-1{
+    color: rgb(212, 171, 80);
+    font-size: 3rem;
+    padding: 10px;
+    padding-left: 40px;
+} 
+
+.bd-header-2{
+    color: rgb(212, 171, 80);
+    font-size: 2rem;
+    padding-top: 10px;
+    padding-left: 30px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+} 
+
+.bd-header-3{
+    color: rgb(0, 0, 0);
+    font-size: 1.5rem;
+    padding-top: 5px;
+    padding-bottom: 5px;
+} 
+
+.nav-bg {
+    background-color: burlywood !important;
+}
+
+.container-fluid{
+    padding: 0;
+}
+
+.bd-categories{
+    min-height : 100%;
+    min-width : 100%;
+    margin: 0;
+    padding: 0;
+    padding-top: 20px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    object-fit: cover;
+    background-position: center center;
+}
+
+.category-filter{
+    margin:auto;
+    padding: 20px;
+}
+.products{
+    padding:0px;
+}
+.product-details{
+    padding:20px;
+}
+.products-card {
+    margin: 20px;
+}
+.grow:hover, .grow:focus, .grow:active {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+.inner{
+    overflow: hidden;
+}
+.inner img{
+    transition: all 1.5s ease;
+}
+ 
+.inner:hover img{
+    transform: scale(1.5);
+}
+.text-white{
+    color: white;
+}
+.btn-primary {
+    background-color: rgb(233, 206, 149);
+    border-color: rgb(134, 117, 31);
+}
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus, .open>.dropdown-toggle.btn-primary{
+    border-color: rgb(233, 206, 149)!important;
+    background-color: rgb(219, 192, 116) !important;
+}
+.inputText{
+    padding: 0%;
+}
+
+.card-img{
+    width:auto;
+    height: auto;
+    max-height: 60px;
+    max-width: 60px;  
+}
+.card-img-overlay{
+    margin-top: 20%; 
+    margin-bottom: 20%; 
+    color: white;
+    -webkit-text-stroke:0.7px rgb(99, 85, 56);   
+}
+
+
+.catcard {
+    width:100%;
+    margin: 0px;
+    padding-left: 0px;
+    padding-right: 0px;  
+}
+#bottom { 
+    position:absolute;                  
+    bottom:0;                          
+    left:0;                          
+} 
+.card-comment{
+    margin: 10px;
+}
+.card-text{
+    padding-right: 5px;
+}
+
+.comment-text{
+    padding:20px;
+}
+.comment-body{
+    margin-top: 10px;
+}
+
+.category-filter{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: rgb(177, 154, 104);
+    border-color:rgb(134, 117, 31)!important;
+    border: 2px solid;
+    border-radius: 2px;
+    padding: 10px;
+}
+
+.foot{
+    padding-left: 25px;
+    padding-right: 30px;
+}
