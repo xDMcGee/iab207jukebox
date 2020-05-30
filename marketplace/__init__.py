@@ -13,7 +13,8 @@ db=SQLAlchemy()
 def create_app():
   
     print(str(os.listdir("./")))
-    app=Flask(__name__)  # this is the name of the module/package that is calling this app
+    template_dir = "./marketplace/templates"
+    app=Flask(__name__, template_folder=template_dir)  # this is the name of the module/package that is calling this app
     app.debug=True
     app.secret_key='utroutoru'
     #set the app configuration data 
