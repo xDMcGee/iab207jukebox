@@ -12,7 +12,6 @@ db=SQLAlchemy()
 # a web server will run this web application
 def create_app():
   
-    print(str(os.listdir("./")))
     template_dir = "./marketplace/templates"
     app=Flask(__name__, template_folder=template_dir)  # this is the name of the module/package that is calling this app
     app.debug=True
