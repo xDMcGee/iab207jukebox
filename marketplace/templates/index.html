@@ -14,8 +14,8 @@
     </div>
     <div class="container-fluid col row" style="margin-bottom:20px;"> <!-- Category Selection -->
 
-        {{ render_template("category.html", title="View our Vinyl Collection!", buttonText="View Vinyls") }}
-        
+        {% include "category.html" with title="View our Vinyl Collection!", buttonText="View Vinyls") %}
+
         <div class="card-img-fluid col-12 col-sm-4 catcard inner">
             <img class="card-img-top catcard inner rounded-0" src="../static/img/accessory.jpg" alt="Accessory Image">
             <div class="card-body card-img-overlay text-center">
