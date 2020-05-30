@@ -16,7 +16,7 @@
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark nav-bg"> 
                 
-                <a class="navbar-brand" href="../templates/index.html">
+                <a class="navbar-brand" href="{{ url_for('main.index') }}">
     
                     <img src="../static/img/vinyl.png"width="30" height="30" alt="Jukebox Jams Logo">
                     Jukebox Jams
@@ -35,38 +35,38 @@
                             <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">Vinyls</a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="{{ url_for('main.item_list') }}">7-Inch</a>
-                                <a class="dropdown-item" href="../templates/item_list.html">10-Inch</a>
-                                <a class="dropdown-item" href="../templates/item_list.html">12-Inch</a>
-                                <a class="dropdown-item" href="../templates/item_list.html">Artist</a>
+                                <a class="dropdown-item" href="{{ url_for('main.item_list') }}">10-Inch</a>
+                                <a class="dropdown-item" href="{{ url_for('main.item_list') }}">12-Inch</a>
+                                <a class="dropdown-item" href="{{ url_for('main.item_list') }}">Artist</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">Accessories</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="../templates/item_list.html">Needles</a>
-                                <a class="dropdown-item" href="../templates/item_list.html">Motors</a>
-                                <a class="dropdown-item" href="../templates/item_list.html">Tonearms</a>
-                                <a class="dropdown-item" href="../templates/item_list.html">Shelves</a>
-                                <a class="dropdown-item" href="../templates/item_list.html">Cleaning</a>
+                                <a class="dropdown-item" href="{{ url_for('main.item_list') }}">Needles</a>
+                                <a class="dropdown-item" href="{{ url_for('main.item_list') }}">Motors</a>
+                                <a class="dropdown-item" href="{{ url_for('main.item_list') }}">Tonearms</a>
+                                <a class="dropdown-item" href="{{ url_for('main.item_list') }}">Shelves</a>
+                                <a class="dropdown-item" href="{{ url_for('main.item_list') }}">Cleaning</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">Turntables</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="../templates/item_list.html">Automatic Tables</a>
-                                <a class="dropdown-item" href="../templates/item_list.html">Manual Tables</a>    
+                                <a class="dropdown-item" href="{{ url_for('main.item_list') }}">Automatic Tables</a>
+                                <a class="dropdown-item" href="{{ url_for('main.item_list') }}">Manual Tables</a>    
                             </div>
                         </li>
                     </ul>
                     <form class="form-inline col"style="">
                         <input class="form-control mr-md-2 col-lg-4 col-12 searchForm ml-auto" type="search" placeholder="Search"aria-label="Search">
-                        <a class="btn btn-light my-md-0 col-lg-2 col-sm-12 searchForm text-center" type="submit"href="../templates/item_list.html">Submit</a>
+                        <a class="btn btn-light my-md-0 col-lg-2 col-sm-12 searchForm text-center" type="submit"href="{{ url_for('main.item_list') }}">Submit</a>
                     </form>  
                     <div class="nav-item dropdown">
                         <a data-toggle="dropdown" class=" nav-item nav-link dropdown-toggle btn-primary" href="#" aria-expanded="false">Account</a>
                         <ul class="dropdown-menu">
                             <a class="dropdown-item dropdown-title font-weight-bold disabled">Seller</a>
-                            <a class="dropdown-item" href="../templates/item_create.html">Create Item</a>
+                            <a class="dropdown-item" href="{{ url_for('main.item_create') }}">Create Item</a>
                             <a class="dropdown-item" href="#">My Items</a>
                             <a class="dropdown-item dropdown-title font-weight-bold disabled">Account</a>
                             <a class="dropdown-item" href="#"data-toggle="modal" data-target="#signOutModal">Sign Out</a>
@@ -125,6 +125,11 @@
                     </h1>
                 </div>
         </header>
+
         <div id="content">{% block content %}{% endblock %}</div>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </body>
 </html>
