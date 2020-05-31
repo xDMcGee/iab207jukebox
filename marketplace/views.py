@@ -13,7 +13,7 @@ def index():
 
     users = User.query.all()
     print(users)
-    return render_template("index.html", user=users )
+    return render_template("index.html", users=users )
 
 @bp.route('/item_create')
 def item_create():
