@@ -1,11 +1,18 @@
 from flask import Blueprint, render_template
+from . import db
+from .models import User
 
 bp = Blueprint('main', __name__)
 
 
 @bp.route('/')
 def index():
-    return render_template("index.html")
+    new_user = User(id=1, name="Poop")
+    db.session.add(new_user)
+    db.session.commit()
+
+    users = User.query.all()
+    return render_template("index.html", user=users )
 
 @bp.route('/item_create')
 def item_create():
