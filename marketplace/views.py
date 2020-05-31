@@ -7,11 +7,12 @@ bp = Blueprint('main', __name__)
 
 @bp.route('/')
 def index():
-    new_user = User(id=1, name="Poop")
+    new_user = User(name="Poop")
     db.session.add(new_user)
     db.session.commit()
 
     users = User.query.all()
+    print(users)
     return render_template("index.html", user=users )
 
 @bp.route('/item_create')
