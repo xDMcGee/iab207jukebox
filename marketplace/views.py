@@ -7,9 +7,9 @@ bp = Blueprint('main', __name__)
 
 @bp.route('/')
 def index():
-    new_user = User(name="Poop")
-    db.session.add(new_user)
-    db.session.commit()
+    #new_user = User(name="Poop")
+    #db.session.add(new_user)
+    #db.session.commit()
 
     users = User.query.all()
     print(users)
