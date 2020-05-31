@@ -12,8 +12,7 @@ def index():
     #db.session.commit()
 
     users = User.query.all()
-    print(users)
-    return render_template("index.html", users=User.query.all() )
+    return render_template("index.html", users=users )
 
 @bp.route('/item_create')
 def item_create():
