@@ -15,19 +15,20 @@
     <div class="container-fluid col row" style="margin-bottom:20px;"> <!-- Category Selection -->
 
         {% with title="View our Vinyl Collection!", image="record-shop.jpg", buttonText="View Vinyls" %}
-            {% include "category.html" %}
+            {% include "./components/category.html" %}
         {% endwith %}
 
         {% with title="Explore our Accessories!", image="accessory.jpg", buttonText="View Accessories" %}
-            {% include "category.html" %}
+            {% include "./components/category.html" %}
         {% endwith %}
 
         {% with title="Buy a Turntable!", image="vintage-player.jpg", buttonText="View Turntables" %}
-            {% include "category.html" %}
+            {% include "./components/category.html" %}
         {% endwith %}
 
     </div>
     <section>  <!-- Featured Items Section -->
+
         <div class="bd-content">
             <a href="{{ url_for('main.item_list') }}">
                 <div class="bd-header-2">
@@ -36,10 +37,13 @@
             </a>
             <div class="row products-list">
                 {% with image="vinyl-record.jpg", itemName="Super Dope Album!", price="6.99", stock=true %}
-                    {% include "item_card.html" %}
+                    {% include "./components/item_card.html" %}
                 {% endwith %}
             </div>
+        </div>
+
         <hr>
+
         <div class="bd-content products">
             <a href="{{ url_for('main.item_list') }}">
                 <div class="bd-header-2">
@@ -48,12 +52,13 @@
             </a>
             <div class="row products-list">
                 {% with image="turntable-hand.jpg", itemName="Helpful Accessory", price="4.20", stock=false %}
-                    {% include "item_card.html" %}
+                    {% include "./components/item_card.html" %}
                 {% endwith %}
             </div>
-
         </div>
+
         <hr>
+
         <div class="bd-content produts">
             <a href="{{ url_for('main.item_list') }}">
                 <div class="bd-header-2">
@@ -62,11 +67,11 @@
             </a>
             <div class="row products-list">
                 {% with image="red-turntable-3624281.jpg", itemName="Amazing Turntable", price="10.01", stock=true %}
-                    {% include "item_card.html" %}
+                    {% include "./components/item_card.html" %}
                 {% endwith %}
             </div>
-
         </div>
+
     </section> <!-- End Item list Section -->
 
     <div class="bd-content">
