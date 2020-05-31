@@ -10,7 +10,9 @@
     <div class="bd-content">
         <div class="bd-header-3 text-center" style="padding-top:20px;padding-bottom:40px;">
             Your one stop shop for all things Record and Vinyl!
-            <h1>{{users}}</h1>
+            {% for user in users %}
+                <h1>{{user.Name}}</h1>
+            {% endfor %}
         </div>
     </div>
     <div class="container-fluid col row" style="margin-bottom:20px;"> <!-- Category Selection -->
