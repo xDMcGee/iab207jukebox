@@ -11,7 +11,7 @@ def index():
     #db.session.add(new_user)
     #db.session.commit()
     #users = User.query.all()
-    
+
     return render_template("index.html")
 
 @bp.route('/item_create')
@@ -31,5 +31,5 @@ def item_order():
     return render_template("item_order.html")
 
 @bp.route('/login')
-def item_order():
+def login():
     return render_template("user.html", heading = "login")
