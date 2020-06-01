@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template
 from . import db
 from .models import User
-from .forms import LoginForm
+from .forms import LoginForm, RegisterForm
 
 bp = Blueprint('main', __name__)
 
@@ -36,3 +36,9 @@ def login():
     login_form = LoginForm()
 
     return render_template("user.html", heading = "login", form = login_form)
+
+@bp.route('/register')
+def register():
+    register_form = RegisterForm()
+
+    return render_template("user.html", form = register_form)
