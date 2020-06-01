@@ -10,9 +10,9 @@ def index():
     #new_user = User(name="Poop")
     #db.session.add(new_user)
     #db.session.commit()
-
-    users = User.query.all()
-    return render_template("index.html", users=users )
+    #users = User.query.all()
+    
+    return render_template("index.html")
 
 @bp.route('/item_create')
 def item_create():
@@ -29,3 +29,7 @@ def item_list():
 @bp.route('/item_order')
 def item_order():
     return render_template("item_order.html")
+
+@bp.route('/login')
+def item_order():
+    return render_template("user.html", heading = "login")
