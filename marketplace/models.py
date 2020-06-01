@@ -1,4 +1,5 @@
 from . import db
+from datetime import DateTime
 
 class User(db.Model):
     __tablename__='users'
@@ -16,6 +17,14 @@ class User(db.Model):
     def __repr__(self):
         return "<Name: {}, id: {}>".format(self.name, self.id)
 
+class Comment(db.model):
+    __tablename__ ='comments'
+    
+    comment_id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255), index=True, unique=True, nullable=False)
+    comment_text = db.Column(db.String(400))
+    create_at = db.Column(db.DateTime, default=datetime.now())
+
 class Product(db.Model):
     __tablename__='products'
 
@@ -25,5 +34,12 @@ class Product(db.Model):
     name = db.Column(db.String(255), index=True, nullable=False)
     stock = db.Column(db.Integer, nullable=False)
     category = db.Column(productType, index=True, nullable=False)
+
+class Order(db.model):
+    __tablename__='orders'
+
+    order_id = db.Column(db.Integer, primary_key=True, unique=True, nullable=False)
+    date_placed = db.Column(db.DateTime, default=datetime.now())
+
 
     seller_id = db.Column(db.Integer, db.ForeignKey('users.id'))
