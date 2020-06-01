@@ -33,4 +33,6 @@ def item_order():
 
 @bp.route('/login')
 def login():
-    return render_template("user.html", heading = "login", form = LoginForm)
+    login_form = LoginForm()
+
+    return render_template("user.html", heading = "login", form = login_form)
