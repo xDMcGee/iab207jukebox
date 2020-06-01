@@ -18,4 +18,14 @@ class Comment(db.model):
     name = db.Column(db.String(255), index=True, unique=True, nullable=False)
     comment_text = db.Column(db.String(400))
     create_at = db.Column(db.DateTime, default=datetime.now())
+
+class Product(db.model):
+    product_id = db.Column(db.Integer, primary_key=True, unique=True, nullable=False)
+    product_name = db.Column(db.String(255), nullable=False)
+    stock = db.Column(db.Integer, nullable=False)
+    category = db.Column(db.String(255), nullable=False)
+    quality = db.Column(db.String(255), nullable=False)
+    availability = db.Column(db.Boolean, nullable=False)
+
+
     
