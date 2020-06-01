@@ -34,7 +34,7 @@ class ProductForm(FlaskForm):
     item_price = IntegerField('Item price', validators=[InputRequired()])
     stock_available = IntegerField('Number of stock', validators=[InputRequired()])
     product_description = TextAreaField('Description of product', validators=[InputRequired()])
-    image = MultipleFileField('Image of the product', [validators.regexp('^[^/\\]\.jpg$')])
+    #image = MultipleFileField('Image of the product', [validators.regexp('^[^/\\]\.jpg$')])
     submit = SubmitField('Create')
 
 class CommentForm(FlaskForm):
