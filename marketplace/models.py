@@ -14,6 +14,8 @@ class User(db.Model):
         return "<Name: {}, id: {}>".format(self.name, self.id)
 
 class Comment(db.model):
+    __tablename__ ='comments'
+    
     comment_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), index=True, unique=True, nullable=False)
     comment_text = db.Column(db.String(400))
