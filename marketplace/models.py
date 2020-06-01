@@ -29,7 +29,7 @@ class Product(db.Model):
 
     seller_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-class Comment(db.model):
+class Comment(db.Model):
     __tablename__ ='comments'
     
     comment_id = db.Column(db.Integer, primary_key=True)
@@ -37,7 +37,7 @@ class Comment(db.model):
     comment_text = db.Column(db.String(400))
     create_at = db.Column(db.DateTime, default=datetime.now())
 
-class Order(db.model):
+class Order(db.Model):
     __tablename__='orders'
 
     order_id = db.Column(db.Integer, primary_key=True, unique=True, nullable=False)
