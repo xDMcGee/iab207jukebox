@@ -1,6 +1,6 @@
 
 from flask_wtf import FlaskForm
-from wtforms.fields import TextAreaField,SubmitField, StringField, PasswordField
+from wtforms.fields import TextAreaField,SubmitField, StringField, PasswordField, IntegerField, MultipleFileField
 from wtforms.validators import InputRequired, Length, Email, EqualTo
 
 
@@ -25,3 +25,18 @@ class RegisterForm(FlaskForm):
 
     #submit button
     submit = SubmitField("Register")
+
+class ProductForm(FlaskForm):
+    album_title = StringField('Product name', validators=[InputRequired()])
+    artist_name = StringField('Artist name', validators=[InputRequired()])
+    vinyl_record = StringField('Vinyl record', validators=[InputRequired()])
+    vinyl_size = IntegerField('Vinyl size', validators=[InputRequired()])
+    item_price = IntegerField('Item price', validators=[InputRequired()])
+    stock_available = IntegerField('Number of stock', validators=[InputRequired()])
+    product_description = TextAreaField('Description of product', validators=[InputRequired()])
+    image = MultipleFileField('Image of the product', [validators.regexp('^[^/\\]\.jpg$')])
+    submit = SubmitField('Create')
+
+class CommentForm(FlaskForm):
+    text = TextAreaField('Comment', validators=[InputRequired()])
+    submit = SubmitField('Post')

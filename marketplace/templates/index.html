@@ -37,9 +37,13 @@
                 </div>
             </a>
             <div class="row products-list">
-                {% with image="vinyl-record.jpg", itemName="Super Dope Album!", price="6.99", stock=true %}
-                    {% include "./components/item_card.html" %}
-                {% endwith %}
+                {% if products %}
+                    {% for product in products %}
+                        {% with image="vinyl-record.jpg", itemName=product.name, price="6.99", stock=product.stock %}
+                            {% include "./components/item_card.html" %}
+                        {% endwith %}
+                    {% endfor %}
+                {% endif %}
             </div>
         </div>
 

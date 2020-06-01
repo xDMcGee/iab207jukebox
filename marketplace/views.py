@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template
 from . import db
-from .models import User
+from .models import Product
 from .forms import LoginForm, RegisterForm
 
 bp = Blueprint('main', __name__)
@@ -11,9 +11,11 @@ def index():
     #new_user = User(name="Poop")
     #db.session.add(new_user)
     #db.session.commit()
-    #users = User.query.all()
 
-    return render_template("index.html", logged=0)
+    products = Product.query.all()
+    print(products)
+
+    return render_template("index.html", products=products, logged=0)
 
 @bp.route('/item_create')
 def item_create():
@@ -42,6 +44,3 @@ def register():
     register_form = RegisterForm()
 
     return render_template("user.html", form = register_form)
-
-
-
