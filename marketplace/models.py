@@ -1,5 +1,5 @@
 from . import db
-from datetime import now
+from datetime import datetime
 
 class User(db.Model):
     __tablename__='users'
@@ -35,13 +35,13 @@ class Comment(db.model):
     comment_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), index=True, unique=True, nullable=False)
     comment_text = db.Column(db.String(400))
-    create_at = db.Column(db.DateTime, default=now())
+    create_at = db.Column(db.DateTime, default=datetime.now())
 
 class Order(db.model):
     __tablename__='orders'
 
     order_id = db.Column(db.Integer, primary_key=True, unique=True, nullable=False)
-    date_placed = db.Column(db.DateTime, default=now())
+    date_placed = db.Column(db.DateTime, default=datetime.now())
 
 
     seller_id = db.Column(db.Integer, db.ForeignKey('users.id'))
