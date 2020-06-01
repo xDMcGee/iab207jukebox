@@ -12,6 +12,8 @@ class User(db.Model):
     bsb = db.Column(db.String(6), unique=True)
     account_no = db.Column(db.String(9), unique=True)
 
+    products = db.relationship('Product', backref='user')
+
     def __repr__(self):
         return "<Name: {}, id: {}>".format(self.name, self.id)
 
@@ -40,3 +42,4 @@ class Order(db.model):
     date_placed = db.Column(db.DateTime, default=datetime.now())
 
 
+    seller_id = db.Column(db.Integer, db.ForeignKey('users.id'))
