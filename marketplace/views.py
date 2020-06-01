@@ -13,6 +13,7 @@ def index():
     #db.session.commit()
 
     products = Product.query.all()
+    print(products)
 
     return render_template("index.html", products=products, logged=0)
 
