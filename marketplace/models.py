@@ -32,3 +32,11 @@ class Product(db.Model):
     name = db.Column(db.String(255), index=True, nullable=False)
     stock = db.Column(db.Integer, nullable=False)
     category = db.Column(productType, index=True, nullable=False)
+
+class Order(db.model):
+    __tablename__='orders'
+
+    order_id = db.Column(db.Integer, primary_key=True, unique=True, nullable=False)
+    date_placed = db.Column(db.DateTime, default=datetime.now())
+
+
