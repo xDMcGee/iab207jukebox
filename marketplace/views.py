@@ -2,6 +2,7 @@ from flask import Blueprint, render_template
 from . import db
 from .models import User
 from .forms import LoginForm, RegisterForm
+from app import app
 
 bp = Blueprint('main', __name__)
 
@@ -42,3 +43,13 @@ def register():
     register_form = RegisterForm()
 
     return render_template("user.html", form = register_form)
+
+
+
+@app.errorhandler(404)
+def not_found_error(error):
+    return render_template('404.html'), 404
+
+@app.errorhandler(500)
+def internal_error(error):
+    return render_template('500.html'), 500 
