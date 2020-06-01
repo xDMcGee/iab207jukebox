@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template
 from . import db
 from .models import User
+from .forms import LoginForm
 
 bp = Blueprint('main', __name__)
 
@@ -32,4 +33,4 @@ def item_order():
 
 @bp.route('/login')
 def login():
-    return render_template("user.html", heading = "login")
+    return render_template("user.html", heading = "login", form = LoginForm)
