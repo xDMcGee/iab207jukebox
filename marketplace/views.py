@@ -42,6 +42,3 @@ def register():
     register_form = RegisterForm()
 
     return render_template("user.html", form = register_form)
-
-
-
