@@ -11,6 +11,8 @@ class User(db.Model):
     bsb = db.Column(db.String(6), unique=True)
     account_no = db.Column(db.String(9), unique=True)
 
+    products = db.relationship('Product', backref='user')
+
     def __repr__(self):
         return "<Name: {}, id: {}>".format(self.name, self.id)
 
@@ -23,3 +25,5 @@ class Product(db.Model):
     name = db.Column(db.String(255), index=True, nullable=False)
     stock = db.Column(db.Integer, nullable=False)
     category = db.Column(productType, index=True, nullable=False)
+
+    seller_id = db.Column(db.Integer, db.ForeignKey('users.id'))
