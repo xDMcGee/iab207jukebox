@@ -38,7 +38,7 @@
             </a>
             <div class="row products-list">
                 {% if products %}
-                    {% for product in products}
+                    {% for product in products %}
                         {% with image="vinyl-record.jpg", itemName={{product.name}}, price="6.99", stock={{product.stock}} %}
                             {% include "./components/item_card.html" %}
                         {% endwith %}
