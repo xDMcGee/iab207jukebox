@@ -8,7 +8,7 @@ import os
 
 db=SQLAlchemy()
 
-from .models import User
+from .models import User, Product
 
 #create a function that creates a web application
 # a web server will run this web application
@@ -28,7 +28,7 @@ def create_app():
 
     ctx=app.app_context()
     ctx.push()
-    db.create_all()
+    #db.create_all()
 
     bootstrap = Bootstrap(app)
     
