@@ -12,7 +12,7 @@ class User(db.Model):
     bsb = db.Column(db.String(6), unique=True)
     account_no = db.Column(db.String(9), unique=True)
 
-    products = db.relationship('Product', backref='user')
+    #products = db.relationship('Product', backref='user')
 
     def __repr__(self):
         return "<Name: {}, id: {}>".format(self.name, self.id)
