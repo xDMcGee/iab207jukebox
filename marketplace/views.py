@@ -13,9 +13,9 @@ def index():
     #db.session.commit()
 
     products = Product.query.all()
-    print(products)
+    session['logged'] = 0
 
-    return render_template("index.html", products=products, logged=0)
+    return render_template("index.html", products=products)
 
 @bp.route('/item_create')
 def item_create():

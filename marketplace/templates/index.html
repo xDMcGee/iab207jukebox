@@ -30,52 +30,24 @@
     </div>
     <section>  <!-- Featured Items Section -->
 
-        <div class="bd-content">
-            <a href="{{ url_for('main.item_list') }}">
-                <div class="bd-header-2">
-                    Top Hit Records:
-                </div>
-            </a>
-            <div class="row products-list">
-                {% if products %}
-                    {% for product in products %}
-                        {% with image="vinyl-record.jpg", itemName=product.name, price="6.99", stock=product.stock %}
-                            {% include "./components/item_card.html" %}
-                        {% endwith %}
-                    {% endfor %}
-                {% endif %}
-            </div>
-        </div>
+        {% if products %}
+            {% with products = products, title = "Top Records:" %}
+                {% include "./components/item_card.html" %}
+            {% endwith %}
+        {% endif %}
 
-        <hr>
 
-        <div class="bd-content products">
-            <a href="{{ url_for('main.item_list') }}">
-                <div class="bd-header-2">
-                        Recommended Accessories:
-                </div>
-            </a>
-            <div class="row products-list">
-                {% with image="turntable-hand.jpg", itemName="Helpful Accessory", price="4.20", stock=false %}
-                    {% include "./components/item_card.html" %}
-                {% endwith %}
-            </div>
-        </div>
+        {% if products %}
+            {% with products = products, title = "Recommended Accessories:" %}
+                {% include "./components/item_card.html" %}
+            {% endwith %}
+        {% endif %}
 
-        <hr>
-
-        <div class="bd-content produts">
-            <a href="{{ url_for('main.item_list') }}">
-                <div class="bd-header-2">
-                    Popular Turntables:
-                </div>
-            </a>
-            <div class="row products-list">
-                {% with image="red-turntable-3624281.jpg", itemName="Amazing Turntable", price="10.01", stock=true %}
-                    {% include "./components/item_card.html" %}
-                {% endwith %}
-            </div>
-        </div>
+        {% if products %}
+            {% with products = products, title = "Popular Turntables:" %}
+                {% include "./components/item_card.html" %}
+            {% endwith %}
+        {% endif %}
 
     </section> <!-- End Item list Section -->
 
