@@ -21,13 +21,18 @@ class Product(db.Model):
     __tablename__='products'
 
     productType = db.Enum('Vinyl', 'Player', 'Accessory', name="productType")
+    vinylSizing = db.Enum('7', '10', '12', name="vinylSize")
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(255), index=True, nullable=False)
+    artist_name = db.Column(db.String(255), index=True, nullable=False)
+    album_title = db.Column(db.String(255), index=True, nullable=False)
+    price = db.Column(db.Integer, nullable=False)
     stock = db.Column(db.Integer, nullable=False)
+    vinyl_size = db.Column(vinylSizing, index=True, nullable=False)
     category = db.Column(productType, index=True, nullable=False)
+    image = db.Column(db.String(255), index=True, nullable=False)
 
-    seller_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    #seller_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
 class Comment(db.Model):
     __tablename__ ='comments'
@@ -36,6 +41,8 @@ class Comment(db.Model):
     name = db.Column(db.String(255), index=True, unique=True, nullable=False)
     comment_text = db.Column(db.String(400))
     create_at = db.Column(db.DateTime, default=datetime.now())
+
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
 class Order(db.Model):
     __tablename__='orders'
