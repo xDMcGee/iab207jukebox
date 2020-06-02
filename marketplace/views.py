@@ -13,6 +13,8 @@ def index():
     #db.session.commit()
 
     new_product = Product(artist_name = "Epic Band", album_title = "Epic Music", price = 100.01, stock = 2, vinyl_size = "7", category = "Vinyl", image = "vinyl-record.jpg")
+    db.session.add(new_product)
+    db.session.commit()
 
     products = Product.query.all()
     session['logged'] = 0
