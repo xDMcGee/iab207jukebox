@@ -173,6 +173,10 @@ p {
     border-color: rgb(233, 206, 149)!important;
     background-color: rgb(219, 192, 116) !important;
 }
+
+.dropdown-menu{
+    left:-50px;
+}
 .inputText{
     padding: 0%;
 }

@@ -28,9 +28,19 @@ def item_create():
 def item_details():
     return render_template("item_details.html")
 
-@bp.route('/item_list')
-def item_list():
-    prodlist = Product.query.all()
+@bp.route('/item_list/vinyls')
+def item_list_vinyl():
+    prodlist = Product.query.filter_by(category = ProductType.vinyl).all()
+    return render_template("item_list.html", prodlist=prodlist)
+
+@bp.route('/item_list/accessories')
+def item_list_acc():
+    prodlist = Product.query.filter_by(category = ProductType.accessory).all()
+    return render_template("item_list.html", prodlist=prodlist)
+
+@bp.route('/item_list/tables')
+def item_list_tables():
+    prodlist = Product.query.filter_by(category = ProductType.player).all()
     return render_template("item_list.html", prodlist=prodlist)
 
 @bp.route('/item_order')
