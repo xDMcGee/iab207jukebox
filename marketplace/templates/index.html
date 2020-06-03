@@ -32,9 +32,7 @@
 
         {% if products %}
             {% with products = products, title = "Top Records:" %}
-                <div class="row">
                     {% include "./components/item_card.html" %}
-                </div>
             {% endwith %}
         {% endif %}
 
