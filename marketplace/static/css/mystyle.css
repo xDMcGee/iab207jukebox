@@ -21,12 +21,6 @@ nav{
 .checked{  /*Star colours*/
     color: rgb(255, 209, 4) !important;
 }
-
-.col{
-    padding: 5px !important; 
-    margin: 0px !important;
-}
-
 .dropdown-item:active{
     background-color: rgb(234, 210, 148) !important;
     color:white;
