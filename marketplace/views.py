@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, session
 from . import db
-from .models import Product
+from .models import Product, ProductType
 from .forms import LoginForm, RegisterForm
 
 bp = Blueprint('main', __name__)
@@ -12,7 +12,7 @@ def index():
     #db.session.add(new_user)
     #db.session.commit()
 
-    new_product = Product(artist_name = "Epic Band", album_title = "Epic Music", price = 100.01, stock = 2, vinyl_size = "7", category = vinyl, image = "vinyl-record.jpg")
+    new_product = Product(artist_name = "Epic Band", album_title = "Epic Music", price = 100.01, stock = 2, vinyl_size = "7", category = ProductType.vinyl, image = "vinyl-record.jpg")
     db.session.add(new_product)
     db.session.commit()
 
