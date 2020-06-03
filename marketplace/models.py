@@ -37,9 +37,6 @@ class Product(db.Model):
     category = db.Column(db.Enum(ProductType), index=True, nullable=False)
     image = db.Column(db.String(255), index=True, nullable=False)
 
-    def __repr__(self):
-        return "<Name: {}, category: {}>".format(self.artist_name, self.category)
-
     #seller_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
 class Comment(db.Model):
