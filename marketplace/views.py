@@ -16,7 +16,7 @@ def index():
     db.session.add(new_product)
     db.session.commit()
 
-    vinyls = Product.query.all()
+    vinyls = db.Product.filter(Product.category == ProductType.vinyl)
     print(vinyls)
     accessories = Product.query.filter(Product.category == "Accessory")
     players = Product.query.filter(Product.category == "Player")
