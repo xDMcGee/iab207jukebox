@@ -30,6 +30,7 @@ def item_details():
 
 @bp.route('/item_list')
 def item_list():
+    prodlist = Product.query.all()
     return render_template("item_list.html")
 
 @bp.route('/item_order')
