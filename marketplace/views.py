@@ -17,8 +17,8 @@ def index():
     db.session.commit()
 
     vinyls = Product.query.filter_by(category = ProductType.vinyl).all()
-    accessories = Product.query.filter(Product.category == "Accessory")
-    players = Product.query.filter(Product.category == "Player")
+    accessories = Product.query.filter_by(category = ProductType.accessory).all()
+    players = Product.query.filter_by(category = ProductType.player).all()
     session['logged'] = 0
 
     return render_template("index.html", vinyls=vinyls, accessories=accessories, players=players)
