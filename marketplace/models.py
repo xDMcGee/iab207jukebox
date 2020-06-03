@@ -1,5 +1,6 @@
 from . import db
 from datetime import datetime
+import enum
 
 class User(db.Model):
     __tablename__='users'
@@ -17,10 +18,14 @@ class User(db.Model):
     def __repr__(self):
         return "<Name: {}, id: {}>".format(self.name, self.id)
 
+class ProductType(enum.Enum):
+    vinyl = "Vinyl"
+    player = "Player"
+    accessory = "Accessory"
+
 class Product(db.Model):
     __tablename__='products'
 
-    productType = db.Enum('Vinyl', 'Player', 'Accessory', name="productType")
     vinylSizing = db.Enum('7', '10', '12', name="vinylSize")
 
     id = db.Column(db.Integer, primary_key=True)
@@ -29,7 +34,7 @@ class Product(db.Model):
     price = db.Column(db.Integer, nullable=False)
     stock = db.Column(db.Integer, nullable=False)
     vinyl_size = db.Column(vinylSizing, index=True, nullable=False)
-    category = db.Column(productType, index=True, nullable=False)
+    category = db.Column(db.Enum(ProductType), index=True, nullable=False)
     image = db.Column(db.String(255), index=True, nullable=False)
 
     #seller_id = db.Column(db.Integer, db.ForeignKey('users.id'))
