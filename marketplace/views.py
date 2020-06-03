@@ -17,6 +17,7 @@ def index():
     #db.session.commit()
 
     vinyls = Product.query.filter(Product.category == "Vinyl")
+    print(vinyls)
     accessories = Product.query.filter(Product.category == "Accessory")
     players = Product.query.filter(Product.category == "Player")
     session['logged'] = 0
