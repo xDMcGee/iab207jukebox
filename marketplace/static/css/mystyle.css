@@ -26,6 +26,10 @@ nav{
     color: rgb(255, 209, 4) !important;
 }
 
+.col{
+    padding: 5px;
+    margin: 0px;
+}
 
 .dropdown-item:active{
     background-color: rgb(234, 210, 148) !important;

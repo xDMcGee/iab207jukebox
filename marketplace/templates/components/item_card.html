@@ -2,9 +2,9 @@
     <a href="{{ url_for('main.item_list') }}">
         <div class="bd-header-2">{{ title }}</div>
     </a>
-        <div class="products col-xl-2 col-md-4 col-sm-6 col-12 ">
+        <div class="products row">
             {% for product in products %}
-                <div class="card my-3 products-card card-body text-right">
+                <div class="card my-3 products-card card-body text-right col-xl-2 col-md-4 col-sm-6 col-12 ">
                     <div class="media">
                         <img class="card-img align-self-start mr-3" src="../static/img/{{ product.image }}" alt="Card image" style="width:40%; height: 40%;">
                         <div class="media-body text-right">
