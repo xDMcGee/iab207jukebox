@@ -151,7 +151,8 @@ p {
     padding:20px;
 }
 .products-card {
-    margin: 20px;
+    margin: 0px;
+    padding: 10px;
 }
 .grow:hover, .grow:focus, .grow:active {
     -webkit-transform: scale(1.1);
