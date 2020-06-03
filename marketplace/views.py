@@ -16,10 +16,12 @@ def index():
     #db.session.add(new_product)
     #db.session.commit()
 
-    products = Product.query.all()
+    vinyls = Product.query.filter(category = "Vinyl")
+    accessories = Product.query.filter(category = "Accessory")
+    players = Product.query.filter(category = "Player")
     session['logged'] = 0
 
-    return render_template("index.html", products=products)
+    return render_template("index.html", vinyls=vinyls, accessories=accessories, players=players)
 
 @bp.route('/item_create')
 def item_create():
