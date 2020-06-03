@@ -8,17 +8,14 @@ bp = Blueprint('main', __name__)
 
 @bp.route('/')
 def index():
-    #new_user = User(name="Poop")
-    #db.session.add(new_user)
+    #new_product = Product(artist_name = "Epic Band", album_title = "Epic Music", price = 100.01, stock = 2, vinyl_size = "7", category = ProductType.vinyl, image = "vinyl-record.jpg")
+    #db.session.add(new_product)
     #db.session.commit()
-
-    new_product = Product(artist_name = "Epic Band", album_title = "Epic Music", price = 100.01, stock = 2, vinyl_size = "7", category = ProductType.vinyl, image = "vinyl-record.jpg")
-    db.session.add(new_product)
-    db.session.commit()
 
     vinyls = Product.query.filter_by(category = ProductType.vinyl).all()
     accessories = Product.query.filter_by(category = ProductType.accessory).all()
     players = Product.query.filter_by(category = ProductType.player).all()
+    
     session['logged'] = 0
 
     return render_template("index.html", vinyls=vinyls, accessories=accessories, players=players)
