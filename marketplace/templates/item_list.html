@@ -43,7 +43,12 @@
 
     <section>  <!-- Items list Section -->
         <div class="bd-content">
-            <div class="row products-list">
+            {% if vinyls %}
+                {% with products = vinyls, title = "Top Records:" %}
+                        {% include "./components/item_card.html" %}
+                {% endwith %}
+            {% endif %}
+            <!-- <div class="row products-list">
                 <div class="products col-xl-2 col-md-4 col-sm-6 col-12">
                     <div class="card my-3 products-card card-body text-right">
                         <div class="media">
@@ -314,7 +319,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
     
         </div>
     </section> <!-- End Featured Items Section -->
