@@ -1,7 +1,9 @@
 <div class="bd-content products">
-    <a href="{{ url_for('main.item_list') }}">
-        <div class="bd-header-2">{{ title }}</div>
-    </a>
+    {% if title %}
+        <a href="{{ url_for('main.item_list') }}">
+            <div class="bd-header-2">{{ title }}</div>
+        </a>
+    {% endif %}
         <div class="products row">
             {% for product in products %}
                 <div class="products-card col-xl-2 col-md-4 col-sm-6 col-12 ">

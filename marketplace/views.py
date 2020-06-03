@@ -12,9 +12,9 @@ def index():
     #db.session.add(new_product)
     #db.session.commit()
 
-    vinyls = Product.query.filter_by(category = ProductType.vinyl).all()
-    accessories = Product.query.filter_by(category = ProductType.accessory).all()
-    players = Product.query.filter_by(category = ProductType.player).all()
+    vinyls = Product.query.filter_by(category = ProductType.vinyl).limit(6).all()
+    accessories = Product.query.filter_by(category = ProductType.accessory).limit(6).all()
+    players = Product.query.filter_by(category = ProductType.player).limit(6).all()
     
     session['logged'] = 0
 
