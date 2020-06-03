@@ -43,11 +43,9 @@
 
     <section>  <!-- Items list Section -->
         <div class="bd-content">
-            {% if vinyls %}
-                {% with products = vinyls, title = "Top Records:" %}
-                        {% include "./components/item_card.html" %}
-                {% endwith %}
-            {% endif %}
+            {% with products = vinyls, title = "Top Records:" %}
+                    {% include "./components/item_card.html" %}
+            {% endwith %}
             <!-- <div class="row products-list">
                 <div class="products col-xl-2 col-md-4 col-sm-6 col-12">
                     <div class="card my-3 products-card card-body text-right">
