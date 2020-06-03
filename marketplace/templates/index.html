@@ -30,19 +30,19 @@
     </div>
     <section>  <!-- Featured Items Section -->
 
-        {% if products %}
+        {% if vinyls %}
             {% with products = vinyls, title = "Top Records:" %}
                     {% include "./components/item_card.html" %}
             {% endwith %}
         {% endif %}
 
-        {% if products %}
+        {% if accessories %}
             {% with products = accessories, title = "Recommended Accessories:" %}
                 {% include "./components/item_card.html" %}
             {% endwith %}
         {% endif %}
 
-        {% if products %}
+        {% if players %}
             {% with products = players, title = "Popular Turntables:" %}
                 {% include "./components/item_card.html" %}
             {% endwith %}
