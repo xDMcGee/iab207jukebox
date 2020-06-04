@@ -18,7 +18,7 @@ def index():
     
     session['logged'] = 0
 
-    return render_template("index.html", vinyls=vinyls, accessories=accessories, players=players)
+    return render_template("index.html", vinyls=vinyls, accessories=accessories, players=players, ProductType=ProductType)
 
 @bp.route('/item_create')
 def item_create():
