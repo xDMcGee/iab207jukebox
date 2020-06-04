@@ -32,6 +32,7 @@ def item_details():
 @bp.route('/list')
 def item_list():
     type = request.args.get('type')
+    print(type)
     if not (type is None):
         prodlist = Product.query.filter_by(category = ProductType[str(type)]).all()
     else:
