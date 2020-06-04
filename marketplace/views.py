@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, session
+from flask import Blueprint, render_template, session, request
 from . import db
 from .models import Product, ProductType
 from .forms import LoginForm, RegisterForm
@@ -29,8 +29,9 @@ def item_details():
     return render_template("item_details.html")
     
 # WORKING
-@bp.route('/list/<type>')
-def item_list(type = None):
+@bp.route('/list')
+def item_list():
+    type = request.args.get('type')
     if not (type is None):
         prodlist = Product.query.filter_by(category = type).all()
     else:
