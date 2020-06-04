@@ -31,7 +31,7 @@ def item_details():
 # WORKING
 @bp.route('/list')
 def item_list(type = None):
-    if type:
+    if not (type is None):
         prodlist = Product.query.filter_by(category = type).all()
     else:
         prodlist = Product.query.all()
