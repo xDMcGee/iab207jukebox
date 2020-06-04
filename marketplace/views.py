@@ -27,11 +27,18 @@ def item_create():
 @bp.route('/item_details')
 def item_details():
     return render_template("item_details.html")
-
-@bp.route('/vinyls')
+    
+# WORKING
+@bp.route('/list')
 def item_list():
     prodlist = Product.query.all()#filter_by(category = ProductType.vinyl).
     return render_template("item_list.html", prodlist=prodlist)
+
+# TRIALING
+# @bp.route('/vinyls')
+# def item_list_vinyl():
+#     prodlist = Product.query.all()#filter_by(category = ProductType.vinyl).
+#     return render_template("item_list.html", prodlist=prodlist)
 
 # @bp.route('/accessories')
 # def item_list_acc():
