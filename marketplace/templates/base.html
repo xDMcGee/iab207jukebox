@@ -43,7 +43,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">Accessories</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = accessory) }}">Needles</a>
+                                <a class="dropdown-item" href="{{ url_for('main.item_list') }}">Needles</a>
                                 <a class="dropdown-item" href="{{ url_for('main.item_list') }}">Motors</a>
                                 <a class="dropdown-item" href="{{ url_for('main.item_list') }}">Tonearms</a>
                                 <a class="dropdown-item" href="{{ url_for('main.item_list') }}">Shelves</a>
@@ -53,7 +53,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">Turntables</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = player) }}">Automatic Tables</a>
+                                <a class="dropdown-item" href="{{ url_for('main.item_list') }}">Automatic Tables</a>
                                 <a class="dropdown-item" href="{{ url_for('main.item_list') }}">Manual Tables</a>    
                             </div>
                         </li>
