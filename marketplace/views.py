@@ -29,18 +29,12 @@ def item_details():
     return render_template("item_details.html")
     
 # WORKING
-@bp.route('/list')
+@bp.route('/list/<type>')
 def item_list(type = None):
     if not (type is None):
         prodlist = Product.query.filter_by(category = type).all()
     else:
         prodlist = Product.query.all()
-    return render_template("item_list.html", prodlist=prodlist)
-
-# TRIALING
-@bp.route('/vinyls')
-def item_list_vinyl():
-    prodlist = Product.query.all()#filter_by(category = ProductType.vinyl).
     return render_template("item_list.html", prodlist=prodlist)
 
 @bp.route('/item_order')
