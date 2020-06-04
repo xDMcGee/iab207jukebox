@@ -8,7 +8,8 @@ import os
 
 db=SQLAlchemy()
 
-from .models import User, Product
+from .models import User, Product, ProductType
+from jinja2 import Environment, PackageLoader, FileSystemLoader
 
 #create a function that creates a web application
 # a web server will run this web application
@@ -53,6 +54,11 @@ def create_app():
 
     from . import auth
     app.register_blueprint(auth.bp)
+
+    templateLoader = FileSystemLoader(searchpath="./")
+    env = Environment(loader=templateLoader)
+
+    env.filters['ProductType'] = ProductType
 
     #Error handling returns set pages
     @app.errorhandler(404)

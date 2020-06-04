@@ -27,8 +27,7 @@ def item_create():
 @bp.route('/item_details')
 def item_details():
     return render_template("item_details.html")
-    
-# WORKING
+
 @bp.route('/list')
 def item_list():
     type = request.args.get('type')
