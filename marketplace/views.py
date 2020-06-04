@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, session, request
-from . import db
+from . import db, env
 from .models import Product, ProductType
 from .forms import LoginForm, RegisterForm
 
@@ -18,7 +18,7 @@ def index():
     
     session['logged'] = 0
 
-    return render_template("index.html", vinyls=vinyls, accessories=accessories, players=players)
+    return env.render_template("index.html", vinyls=vinyls, accessories=accessories, players=players)
 
 @bp.route('/item_create')
 def item_create():
