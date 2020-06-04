@@ -34,7 +34,8 @@ def item_list():
     type = request.args.get('type')
     print(type)
     if not (type is None):
-        prodlist = Product.query.filter_by(category = ProductType[str(type)]).all()
+        #prodlist = Product.query.filter_by(category = ProductType[str(type)]).all()
+        prodlist = Product.query.all()
     else:
         prodlist = Product.query.all()
     return render_template("item_list.html", prodlist=prodlist)
