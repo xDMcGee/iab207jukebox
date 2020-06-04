@@ -31,10 +31,8 @@ def item_details():
 @bp.route('/list')
 def item_list():
     prType = request.args.get('type')
-    print(type(prType))
     if not (type is None):
-        #prodlist = Product.query.filter_by(category = repr(type)).all()
-        prodlist = Product.query.all()
+        prodlist = Product.query.filter_by(category = prType).all()
     else:
         prodlist = Product.query.all()
     return render_template("item_list.html", prodlist=prodlist)
