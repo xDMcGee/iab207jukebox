@@ -29,7 +29,7 @@ def item_details():
     return render_template("item_details.html")
 
 @bp.route('/vinyls')
-def item_list_vinyl():
+def item_list():
     prodlist = Product.query.all()#filter_by(category = ProductType.vinyl).
     return render_template("item_list.html", prodlist=prodlist)
 
