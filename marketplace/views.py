@@ -35,10 +35,10 @@ def item_list():
     return render_template("item_list.html", prodlist=prodlist)
 
 # TRIALING
-# @bp.route('/vinyls')
-# def item_list_vinyl():
-#     prodlist = Product.query.all()#filter_by(category = ProductType.vinyl).
-#     return render_template("item_list.html", prodlist=prodlist)
+@bp.route('/vinyls')
+def item_list_vinyl():
+    prodlist = Product.query.all()#filter_by(category = ProductType.vinyl).
+    return render_template("item_list.html", prodlist=prodlist)
 
 # @bp.route('/accessories')
 # def item_list_acc():
