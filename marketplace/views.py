@@ -30,7 +30,7 @@ def item_details():
     
 # WORKING
 @bp.route('/list')
-def item_list(type = null):
+def item_list(type = None):
     if type:
         prodlist = Product.query.filter_by(category = type).all()
     else:
