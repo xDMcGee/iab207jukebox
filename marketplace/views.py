@@ -30,18 +30,18 @@ def item_details():
 
 @bp.route('/vinyls')
 def item_list_vinyl():
-    prodlist = Product.query.filter_by(category = ProductType.vinyl).all()
+    prodlist = Product.query.all()#filter_by(category = ProductType.vinyl).
     return render_template("item_list.html", prodlist=prodlist)
 
-@bp.route('/accessories')
-def item_list_acc():
-    prodlist = Product.query.filter_by(category = ProductType.accessory).all()
-    return render_template("item_list.html", prodlist=prodlist)
+# @bp.route('/accessories')
+# def item_list_acc():
+#     prodlist = Product.query.filter_by(category = ProductType.accessory).all()
+#     return render_template("item_list.html", prodlist=prodlist)
 
-@bp.route('/tables')
-def item_list_tables():
-    prodlist = Product.query.filter_by(category = ProductType.player).all()
-    return render_template("item_list.html", prodlist=prodlist)
+# @bp.route('/tables')
+# def item_list_tables():
+#     prodlist = Product.query.filter_by(category = ProductType.player).all()
+#     return render_template("item_list.html", prodlist=prodlist)
 
 @bp.route('/item_order')
 def item_order():
