@@ -30,8 +30,11 @@ def item_details():
     
 # WORKING
 @bp.route('/list')
-def item_list():
-    prodlist = Product.query.all()#filter_by(category = ProductType.vinyl).
+def item_list(type = null):
+    if type:
+        prodlist = Product.query.filter_by(category = type).all()
+    else:
+        prodlist = Product.query.all()
     return render_template("item_list.html", prodlist=prodlist)
 
 # TRIALING
@@ -39,16 +42,6 @@ def item_list():
 def item_list_vinyl():
     prodlist = Product.query.all()#filter_by(category = ProductType.vinyl).
     return render_template("item_list.html", prodlist=prodlist)
-
-# @bp.route('/accessories')
-# def item_list_acc():
-#     prodlist = Product.query.filter_by(category = ProductType.accessory).all()
-#     return render_template("item_list.html", prodlist=prodlist)
-
-# @bp.route('/tables')
-# def item_list_tables():
-#     prodlist = Product.query.filter_by(category = ProductType.player).all()
-#     return render_template("item_list.html", prodlist=prodlist)
 
 @bp.route('/item_order')
 def item_order():
