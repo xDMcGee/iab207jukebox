@@ -17,8 +17,10 @@ def index():
     players = Product.query.filter_by(category = ProductType.player).limit(6).all()
     
     session['logged'] = 0
-
-    return env.render_template("index.html", vinyls=vinyls, accessories=accessories, players=players)
+    
+    template = env.get_template("index.html")
+    return template.render(vinyls=vinyls, accessories=accessories, players=players)
+    #return env.render_template("index.html", vinyls=vinyls, accessories=accessories, players=players)
 
 @bp.route('/item_create')
 def item_create():
