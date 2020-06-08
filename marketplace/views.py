@@ -73,6 +73,6 @@ def register():
         db.session.add(user_add)
         db.session.commit()
         print('Successfully created account!', 'Success')
-        return redirect(url_for('user'))
+        #return redirect(url_for('user'))
 
     return render_template("user.html", form=register_form)
