@@ -24,10 +24,10 @@ class RegisterForm(FlaskForm):
     confirm = PasswordField("Confirm Password")
 
     #Select what user account to use
-    account_choices = ('Buyer', 'Seller')
-    account_type = SelectField('Account Type', choices = account_choices)#, validators = [InputRequired()])
+    #account_choices = ('Buyer', 'Seller')
+    #account_type = SelectField('Account Type', choices = account_choices)#, validators = [InputRequired()])
 
-    account_type_2 = RadioField('Account Type', choices=[('0','Buyer'),('1','Seller')])
+    #account_type_2 = RadioField('Account Type', choices=[('0','Buyer'),('1','Seller')])
 
     # if (account_type==1):
     #     bsb=StringField("Account BSB", validators=[InputRequired('Enter BSB')])
