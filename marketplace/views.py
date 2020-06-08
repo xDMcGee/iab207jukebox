@@ -1,8 +1,10 @@
-from flask import Blueprint, render_template, session, request, redirect, url_for
+from flask import Blueprint, render_template, session, request, redirect, url_for, flash
 from werkzeug.security import generate_password_hash
 from . import db
 from .models import Product, ProductType, User
 from .forms import LoginForm, RegisterForm, ProductForm
+from werkzeug.security import generate_password_hash,check_password_hash
+from flask_login import login_user, login_required,logout_user
 
 bp = Blueprint('main', __name__)
 
@@ -55,13 +57,29 @@ def item_list():
 def item_order():
     return render_template("item_order.html")
 
-
-@bp.route('/login')
-def login():
+@bp.route('/login', methods=['GET', 'POST'])
+def authenticate(): #view function
+    print('In Login View function')
     login_form = LoginForm()
-
-    return render_template("user.html", heading="login", form=login_form)
-
+    error=None
+    if(login_form.validate_on_submit()==True):
+        user_name = login_form.user_name.data
+        password = login_form.password.data
+        u1 = User.query.filter_by(name=user_name).first()
+        if u1 is None:
+            error='Incorrect user name'
+        elif not check_password_hash(u1.password_hash, password): # takes the hash and password
+            error='Incorrect password'
+        if error is None:
+            login_user(u1)
+            nextp = request.args.get('next') #this gives the url from where the login page was accessed
+            print(nextp)
+            if next is None or not nextp.startswith('/'):
+                return redirect(url_for('index'))
+            return redirect(nextp)
+        else:
+            flash(error)
+    return render_template('user.html', form=login_form, heading='Login')
 
 @bp.route('/register', methods=['GET', 'POST'])
 def register():
