@@ -10,7 +10,7 @@ class LoginForm(FlaskForm):
     password = PasswordField("Password", validators=[InputRequired('Enter user password')])
     submit = SubmitField("Login")
 
- # this is the registration form
+# this is the registration form
 class RegisterForm(FlaskForm):
     user_name = StringField("User Name", validators=[InputRequired()])
     email_id = StringField("Email Address", validators=[Email("Please enter a valid email")])
@@ -26,7 +26,7 @@ class RegisterForm(FlaskForm):
     #Select what user account to use
     account_type = RadioField('Account Type', choices=[('0','Buyer'),('1','Seller')])
     
-
+    
     #submit button
     submit = SubmitField("Register")
 
