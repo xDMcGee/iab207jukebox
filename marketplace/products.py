@@ -18,5 +18,5 @@ def create():
 
     return render_template('item_create.html', form=form)
 
-# def get_product():
-#     return product
+def get_product():
+    return product
