@@ -16,7 +16,7 @@ def create():
     if form.validate_on_submit():
         print('Succesfully create new product', 'success')
 
-    return render_template('item_create.html', form=form)
+    return render_template('components/create_product', form=form)
 
 # def get_product():
 #     return product
