@@ -1,6 +1,6 @@
 
 from flask_wtf import FlaskForm
-from wtforms.fields import TextAreaField,SubmitField, StringField, PasswordField, IntegerField, MultipleFileField
+from wtforms.fields import TextAreaField,SubmitField, StringField, PasswordField, IntegerField, MultipleFileField,SelectField
 from wtforms.validators import InputRequired, Length, Email, EqualTo
 
 
@@ -22,6 +22,10 @@ class RegisterForm(FlaskForm):
     password = PasswordField("Password", validators=[InputRequired(),
                   EqualTo('confirm', message="Passwords should match")])
     confirm = PasswordField("Confirm Password")
+
+
+    account_choices = ('Buyer', 'Seller')
+    account_type = SelectField(u'Field name', choices = account_choices, validators = [Required()])
 
     #submit button
     submit = SubmitField("Register")
