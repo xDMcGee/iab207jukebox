@@ -6,7 +6,7 @@ bp = Blueprint('product', __name__, url_prefix='/products')
 
 @bp.route('/<id>')
 def item_details(id):
-    product = get_product()
+    # product = get_product()
     return render_template('item_details.html', product=product)
 
 @bp.route('/create', methods=['GET','POST'])
@@ -18,5 +18,5 @@ def create():
 
     return render_template('item_create.html', form=form)
 
-def get_product():
-    return product
+# def get_product():
+#     return product
