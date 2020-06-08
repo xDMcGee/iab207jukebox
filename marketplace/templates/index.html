@@ -30,6 +30,31 @@
     </div>
     <section>  <!-- Featured Items Section -->
 
+        {% if users %}
+            <div class="bd-content products">
+                    <a href="{{ url_for('main.item_list') }}">
+                        <div class="bd-header-2">Users</div>
+                    </a>
+                    <div class="products row">
+                        {% for user in users %}
+                            <div class="products-card col-xl-2 col-md-4 col-sm-6 col-12 ">
+                                <div class="card my-3 card-body text-right">
+                                    <div class="media">
+                                        <div class="media-body text-right">
+                                            <h5 class="mt-0">{{ user.name }}</h5>
+                                            <p class="card-text">{{ user.email }}</p>
+                                        </div>
+                                    </div>
+                                        <a class="text-success">{{ user.id }}</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+            </div>
+            
+            <hr>
+        {% endif %}
+
         {% if vinyls %}
             {% with products = vinyls, title = "Top Records:" %}
                     {% include "./components/item_card.html" %}

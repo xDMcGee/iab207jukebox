@@ -12,6 +12,7 @@ def index():
     # db.session.add(new_product)
     # db.session.commit()
 
+    users = User.query.all()
     vinyls = Product.query.filter_by(category=ProductType.vinyl).limit(6).all()
     accessories = Product.query.filter_by(
         category=ProductType.accessory).limit(6).all()
@@ -20,7 +21,7 @@ def index():
 
     session['logged'] = 0
 
-    return render_template("index.html", vinyls=vinyls, accessories=accessories, players=players)
+    return render_template("index.html", vinyls=vinyls, accessories=accessories, players=players, users=users)
 
 
 @bp.route('/item_create', methods=['GET', 'POST'])
