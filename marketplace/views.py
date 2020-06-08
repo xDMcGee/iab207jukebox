@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, session, request, redirect, url_for
+from werkzeug.security import generate_password_hash
 from . import db
 from .models import Product, ProductType, User
 from .forms import LoginForm, RegisterForm, ProductForm
@@ -68,7 +69,7 @@ def register():
     print('Method Type: ', request.method)
     if register_form.validate_on_submit():
         user_add = User(name=register_form.user_name.data,
-                        password_hash=register_form.confirm.data,
+                        password_hash=generate_password_hash(register_form.confirm.data, salt_length=16),
                         email_id=register_form.email_id.data,
                         user_type=register_form.account_type.data)
         db.session.add(user_add)
