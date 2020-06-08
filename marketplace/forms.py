@@ -27,7 +27,7 @@ class RegisterForm(FlaskForm):
     account_choices = ('Buyer', 'Seller')
     account_type = SelectField(u'Account Type', choices = account_choices, validators = [InputRequired()])
 
-    account_type_2 = RadioField('Account Type', coerce=int, choices=[('Buyer','To Buy or not to buy'),('Seller','Buy my stuff')]).
+    account_type_2 = RadioField('Account Type', coerce=int, choices=[('Buyer','To Buy or not to buy'),('Seller','Buy my stuff')])
 
     #submit button
     submit = SubmitField("Register")
