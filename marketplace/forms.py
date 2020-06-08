@@ -25,7 +25,7 @@ class RegisterForm(FlaskForm):
 
 
     account_choices = ('Buyer', 'Seller')
-    account_type = SelectField(u'Field name', choices = account_choices, validators = [Required()])
+    account_type = SelectField(u'Field name', choices = account_choices, validators = [InputRequired()])
 
     #submit button
     submit = SubmitField("Register")
