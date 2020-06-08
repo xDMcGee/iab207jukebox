@@ -69,7 +69,7 @@ def register():
         user_add = User(name=register_form.user_name.data,
                         password_hash=register_form.confirm.data,
                         email_id=register_form.email_id.data,
-                        user_type=register_form.account_type.data)
+                        user_type='Buyer')
         db.session.add(user_add)
         db.session.commit()
         print('Successfully created account!', 'Success')
