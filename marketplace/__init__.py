@@ -51,6 +51,9 @@ def create_app():
     from . import views
     app.register_blueprint(views.bp)
 
+    from . import products
+    app.register_blueprint(products.bp)
+
     from . import auth
     app.register_blueprint(auth.bp)
 
