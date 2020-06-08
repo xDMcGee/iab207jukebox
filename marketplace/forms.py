@@ -29,8 +29,8 @@ class RegisterForm(FlaskForm):
 
     account_type_2 = RadioField('Account Type', choices=[('0','Buyer'),('1','Seller')])
 
-    if (account_type==1):
-        bsb=StringField("Account BSB", validators=[InputRequired('Enter BSB')])
+    # if (account_type==1):
+    #     bsb=StringField("Account BSB", validators=[InputRequired('Enter BSB')])
     
 
     #submit button
