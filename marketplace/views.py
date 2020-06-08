@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, session, request, redirect, url_for
 from . import db
-from .models import Product, ProductType
+from .models import Product, ProductType, User
 from .forms import LoginForm, RegisterForm, ProductForm
 
 bp = Blueprint('main', __name__)
@@ -66,10 +66,10 @@ def register():
     register_form = RegisterForm()
     print('Method Type: ', request.method)
     if register_form.validate_on_submit():
-        user_add = User(name=form.user_name.data,
-                        password_hash=form.confirm.data,
-                        email_id=form.email_id.data,
-                        user_type=form.account_type.data)
+        user_add = User(name=register_form.user_name.data,
+                        password_hash=register_form.confirm.data,
+                        email_id=register_form.email_id.data,
+                        user_type=register_form.account_type.data)
         db.session.add(user_add)
         db.session.commit()
         print('Successfully created account!', 'Success')

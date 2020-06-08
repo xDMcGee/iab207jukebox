@@ -25,7 +25,7 @@ class RegisterForm(FlaskForm):
 
     #Select what user account to use
     account_choices = ('Buyer', 'Seller')
-    account_type = SelectField(u'Account Type', choices = account_choices, validators = [InputRequired()])
+    account_type = SelectField('Account Type', choices = account_choices, validators = [InputRequired()])
 
     account_type_2 = RadioField('Account Type', choices=[('0','Buyer'),('1','Seller')])
 
