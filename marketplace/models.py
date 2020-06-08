@@ -2,6 +2,8 @@ from . import db
 from datetime import datetime
 import enum
 
+from aenum import Enum, skip
+
 class User(db.Model):
     __tablename__='users'
 
@@ -23,17 +25,33 @@ class ProductType(enum.Enum):
     player = "Player"
     accessory = "Accessory"
 
+class ProductSubType(Enum):
+    @skip
+    class VinylType(Enum):
+        i7 = "7-Inch"
+        i10 = "10-Inch"
+        i12 = "12-Inch"
+    @skip
+    class AccessoryType(Enum):
+        needles = "Needles"
+        motors = "Motors"
+        tonearms = "Tonearms"
+        shelves = "Shelves"
+        cleaning = "Cleaning"
+    @skip
+    class TableType(Enum):
+        auto = "Automatic Tables"
+        manual = "Manual Tables"
+
 class Product(db.Model):
     __tablename__='products'
-
-    vinylSizing = db.Enum('7', '10', '12', name="vinylSize")
 
     id = db.Column(db.Integer, primary_key=True)
     artist_name = db.Column(db.String(255), index=True, nullable=False)
     album_title = db.Column(db.String(255), index=True, nullable=False)
     price = db.Column(db.Integer, nullable=False)
     stock = db.Column(db.Integer, nullable=False)
-    vinyl_size = db.Column(vinylSizing, index=True, nullable=False)
+    subcategory = db.Column(db.Enum(ProductSubType), index=True, nullable=False)
     category = db.Column(db.Enum(ProductType), index=True, nullable=False)
     image = db.Column(db.String(255), index=True, nullable=False)
 
