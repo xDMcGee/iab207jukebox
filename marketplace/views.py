@@ -11,10 +11,6 @@ bp = Blueprint('main', __name__)
 
 @bp.route('/')
 def index():
-    #new_product = Product(artist_name = "Epic Band", album_title = "Epic Music", price = 100.01, stock = 2, vinyl_size = "7", category = ProductType.vinyl, image = "vinyl-record.jpg")
-    # db.session.add(new_product)
-    # db.session.commit()
-
     users = User.query.all()
     vinyls = Product.query.filter_by(category=ProductType.vinyl).limit(6).all()
     accessories = Product.query.filter_by(
