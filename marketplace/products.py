@@ -17,9 +17,11 @@ def create():
     if form.validate_on_submit():
         cat = dict(form.product_type.choices).get(form.product_type.data)
         a = SubTypes()
-        print("Choices" + form.product_sub_type.choices)
+        print("Choices:")
+        print(form.product_sub_type.choices)
         subcat = form.product_sub_type.data
-        print("Date" + subcat)
+        print("Data:")
+        print(subcat)
         a.setValue(a.subcat)
 
         product = Product(album_title = form.album_title.data,
