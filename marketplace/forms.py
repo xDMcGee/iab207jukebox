@@ -3,7 +3,7 @@ from flask_wtf import FlaskForm
 from wtforms.fields import TextAreaField,SubmitField, StringField, PasswordField, IntegerField, MultipleFileField,SelectField,RadioField
 from wtforms.validators import InputRequired, Length, Email, EqualTo
 
-from .models import ProductType, ProductSubType
+from .models import ProductType, SubTypes
 
 #creates the login information
 class LoginForm(FlaskForm):
@@ -33,7 +33,7 @@ class RegisterForm(FlaskForm):
 
 class ProductForm(FlaskForm):
     product_type = SelectField("Product Type", choices=ProductType.choices(), coerce=ProductType.coerce)
-    product_sub_type = SelectField("Product Sub Type", choices=ProductSubType.VinylType.choices(), coerce=ProductSubType.VinylType.coerce)
+    product_sub_type = SelectField("Product Sub Type", choices=SubTypes.ProductSubType.VinylType.choices(), coerce=SubTypes.ProductSubType.VinylType.coerce)
 
     album_title = StringField('Product name', validators=[InputRequired()])
     artist_name = StringField('Artist name', validators=[InputRequired()])
