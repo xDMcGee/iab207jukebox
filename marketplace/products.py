@@ -19,7 +19,7 @@ def create():
         subcat = dict(form.product_sub_type.choices).get(form.product_sub_type.data)
 
         if cat == 'Vinyl':
-            scat = 'VinylType' + ProductSubType.VinylType[subcat].name
+            scat = 'VinylType.' + ProductSubType.VinylType[subcat].name
 
         product = Product(album_title = form.album_title.data,
         artist_name = form.artist_name.data,
