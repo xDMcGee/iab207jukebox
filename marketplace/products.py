@@ -15,15 +15,15 @@ def create():
     print('Method type', request.method)
     form = ProductForm()
     if form.validate_on_submit():
-        cat = dict(form.product_type.choices).get(form.product_type.data)
-        subcat = dict(form.product_sub_type.choices).get(form.product_sub_type.data)
+        catdict = dict(form.product_type.choices).get(form.product_type.data)
+        subcatdict = dict(form.product_sub_type.choices).get(form.product_sub_type.data)
 
         print("Choices:")
         print(form.product_sub_type.choices)
         print("Data:")
         print(form.product_sub_type.data)
         print("Dict:")
-        print(subcat)
+        print(subcatdict)
 
         product = Product(album_title = form.album_title.data,
         artist_name = form.artist_name.data,
