@@ -33,9 +33,8 @@ class RegisterForm(FlaskForm):
     submit = SubmitField("Register")
 
 class ProductForm(FlaskForm):
-    product_type = SelectField("Product Type", choices=ProductType.choices(), coerce=ProductType.coerce)
-    product_sub_type = SelectField("Product Sub Type", choices=ProductSubType.VinylType.choices(), coerce=ProductSubType.VinylType.coerce)
-    print(ProductType.coerce)
+    product_type = SelectField("Product Type", choices=ProductType.choices())
+    product_sub_type = SelectField("Product Sub Type", choices=ProductSubType.VinylType.choices())
 
     album_title = StringField('Product name', validators=[InputRequired()])
     artist_name = StringField('Artist name', validators=[InputRequired()])
