@@ -34,26 +34,26 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">Vinyls</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.vinyl.value) }}">7-Inch</a>
-                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.vinyl.value) }}">10-Inch</a>
-                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.vinyl.value) }}">12-Inch</a>
+                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType[Vinyl].value) }}">7-Inch</a>
+                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType[Vinyl].value) }}">10-Inch</a>
+                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType[Vinyl].value) }}">12-Inch</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">Accessories</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.accessory.value) }}">Needles</a>
-                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.accessory.value) }}">Motors</a>
-                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.accessory.value) }}">Tonearms</a>
-                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.accessory.value) }}">Shelves</a>
-                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.accessory.value) }}">Cleaning</a>
+                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType[Accessory].value) }}">Needles</a>
+                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType[Accessory].value) }}">Motors</a>
+                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType[Accessory].value) }}">Tonearms</a>
+                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType[Accessory].value) }}">Shelves</a>
+                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType[Accessory].value) }}">Cleaning</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">Turntables</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.player.value) }}">Automatic Tables</a>
-                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.player.value) }}">Manual Tables</a>    
+                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType[Player].value) }}">Automatic Tables</a>
+                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType[Player].value) }}">Manual Tables</a>    
                             </div>
                         </li>
                     </ul>
