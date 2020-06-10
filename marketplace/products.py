@@ -17,8 +17,8 @@ def create():
     if form.validate_on_submit():
         product = Product(album_title = form.album_title.data,
         artist_name = form.artist_name.data,
-        category = form.product_type.data,
-        subcategory =form.product_sub_type.data,
+        category = dict(form.product_type.choices).get(form.product_type.data),
+        subcategory = dict(form.product_sub_type.choices).get(form.product_sub_type.data),
         price = form.price.data,
         stock = form.stock.data,
         description = form.description.data,
