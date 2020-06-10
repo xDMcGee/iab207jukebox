@@ -51,11 +51,11 @@
                             <div class="products col-12 col-md-6 text-center">
                                 <div class="row">
                                     <div class="bd-header-3 col-8 text-left">Item Price:</div>
-                                    <div class="bd-header-3 col-4" style="text-align: right;">{{ product.item_price }}</div>
+                                    <div class="bd-header-3 col-4" style="text-align: right;">{{ product.price }}</div>
                                 </div>
                                 <div class="row">
                                     <div class="bd-header-3 col-8 text-left">Stock Available:</div>
-                                    <div class="bd-header-3 col-4" style="text-align: right;">{{ product.stock_available }}</div>
+                                    <div class="bd-header-3 col-4" style="text-align: right;">{{ product.stock }}</div>
                                 </div>
                                 <a href="{{ url_for('main.item_order') }}"class="">
                                     <button class="bd-header-3 btn-primary col-8 col-md-6" style="margin: 20px;">Order Item</button>
@@ -67,7 +67,7 @@
                 <hr>
                 <div class="bd-header-2">Product Description:</div>
                 <div> <!--Product information -->
-                    {{ product. product_description }}
+                    {{ product.description }}
                 </div>
             </div>
         </div>
