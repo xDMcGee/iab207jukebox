@@ -20,7 +20,19 @@ class User(db.Model):
     def __repr__(self):
         return "<Name: {}, id: {}>".format(self.name, self.id)
 
-class ProductType(enum.Enum):
+class FormEnum(enum.Enum):
+    @classmethod
+    def choices(cls):
+        return [(choice, choice.name) for choice in cls]
+
+    @classmethod
+    def coerce(cls, item):
+        return cls(int(item)) if not isinstance(item, cls) else item
+    
+    def __str__(self):
+        return str(self.value)
+
+class ProductType(FormEnum):
     vinyl = "Vinyl"
     player = "Player"
     accessory = "Accessory"

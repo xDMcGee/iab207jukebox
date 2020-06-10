@@ -34,7 +34,7 @@ class RegisterForm(FlaskForm):
 class FormEnum(enum.Enum):
     @classmethod
     def choices(cls):
-        return [(choice.name, choice) for choice in cls]
+        return [(choice, choice.name) for choice in cls]
 
     @classmethod
     def coerce(cls, item):
