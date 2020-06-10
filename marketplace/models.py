@@ -33,16 +33,16 @@ class FormEnum(enum.Enum):
         return str(self.value)
 
 class ProductType(FormEnum):
-    vinyl = "Vinyl"
-    player = "Player"
-    accessory = "Accessory"
+    Vinyl = 0
+    Player = 1
+    Accessory = 2
 
 class ProductSubType(Enum):
     @skip
     class VinylType(FormEnum):
-        i7 = "7-Inch"
-        i10 = "10-Inch"
-        i12 = "12-Inch"
+        i7 = 0
+        i10 = 1
+        i12 = 2
     @skip
     class AccessoryType(Enum):
         needles = "Needles"
