@@ -16,13 +16,14 @@ def create():
     form = ProductForm()
     if form.validate_on_submit():
         cat = dict(form.product_type.choices).get(form.product_type.data)
-        a = SubTypes()
+        subcat = dict(form.product_sub_type.choices).get(form.product_sub_type.data)
+
         print("Choices:")
         print(form.product_sub_type.choices)
-        subcat = form.product_sub_type.data
         print("Data:")
+        print(form.product_sub_type.data)
+        print("Dict:")
         print(subcat)
-        a.setValue(a.subcat)
 
         product = Product(album_title = form.album_title.data,
         artist_name = form.artist_name.data,

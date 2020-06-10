@@ -23,11 +23,7 @@ class User(db.Model):
 class FormEnum(enum.Enum):
     @classmethod
     def choices(cls):
-        return [(choice, choice.name) for choice in cls]
-
-    @classmethod
-    def coerce(cls, item):
-        return cls(int(item)) if not isinstance(item, cls) else item
+        return [(choice.value, choice.name) for choice in cls]
 
 class ProductType(FormEnum):
     Vinyl = 0
