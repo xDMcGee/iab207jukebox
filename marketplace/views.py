@@ -13,10 +13,8 @@ bp = Blueprint('main', __name__)
 def index():
     users = User.query.all()
     vinyls = Product.query.filter_by(category=ProductType['Vinyl']).limit(6).all()
-    accessories = Product.query.filter_by(
-        category=ProductType['Accessory']).limit(6).all()
-    players = Product.query.filter_by(
-        category=ProductType['Player']).limit(6).all()
+    accessories = Product.query.filter_by(category=ProductType['Accessory']).limit(6).all()
+    players = Product.query.filter_by(category=ProductType['Player']).limit(6).all()
 
     session['logged'] = 0
 
@@ -43,7 +41,7 @@ def item_details():
 def item_list():
     prType = request.args.get('type')
     if not (prType is None):
-        prodlist = Product.query.filter_by(category=ProductType(prType)).all()
+        prodlist = Product.query.filter_by(category=ProductType[prType]).all()
     else:
         prodlist = Product.query.all()
     return render_template("item_list.html", prodlist=prodlist)
