@@ -39,7 +39,7 @@ class ProductType(FormEnum):
 
 class ProductSubType(Enum):
     @skip
-    class VinylType(Enum):
+    class VinylType(FormEnum):
         i7 = "7-Inch"
         i10 = "10-Inch"
         i12 = "12-Inch"

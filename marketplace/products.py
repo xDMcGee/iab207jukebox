@@ -17,11 +17,12 @@ def create():
     if form.validate_on_submit():
         product = Product(album_title = form.album_title.data,
         artist_name = form.artist_name.data,
-        vinyl_record = form.vinyl_record.data,
-        vinyl_size = form.vinyl_size.data,
-        item_price = form.item_price.data,
-        stock_available = form.stock_available.data,
-        product_description = form.product_description.data)
+        category = form.product_type.data,
+        subcategory =form.product_sub_type.data,
+        price = form.price.data,
+        stock = form.stock.data,
+        description = form.description.data,
+        seller_id = 1)
 
         db.session.add(product)
         db.session.commit()

@@ -4,6 +4,7 @@ from wtforms.fields import TextAreaField,SubmitField, StringField, PasswordField
 from wtforms.validators import InputRequired, Length, Email, EqualTo
 
 import enum
+from . import ProductType, ProductSubType
 
 #creates the login information
 class LoginForm(FlaskForm):
@@ -31,32 +32,16 @@ class RegisterForm(FlaskForm):
     #submit button
     submit = SubmitField("Register")
 
-class FormEnum(enum.Enum):
-    @classmethod
-    def choices(cls):
-        return [(choice, choice.name) for choice in cls]
-
-    @classmethod
-    def coerce(cls, item):
-        return cls(int(item)) if not isinstance(item, cls) else item
-    
-    def __str__(self):
-        return str(self.value)
-
-class ProductType(FormEnum):
-    vinyl = "Vinyl"
-    player = "Player"
-    accessory = "Accessory"
-
 class ProductForm(FlaskForm):
     product_type = SelectField("Product Type", choices=ProductType.choices(), coerce=ProductType.coerce)
+    product_sub_type = SelectField("Product Sub Type", choices=ProductSubType.choices(), coerce=ProductSubType.coerce)
 
     album_title = StringField('Product name', validators=[InputRequired()])
     artist_name = StringField('Artist name', validators=[InputRequired()])
-    vinyl_size = IntegerField('Vinyl size', validators=[InputRequired()])
-    item_price = IntegerField('Item price', validators=[InputRequired()])
-    stock_available = IntegerField('Number of stock', validators=[InputRequired()])
-    product_description = TextAreaField('Description of product', validators=[InputRequired()])
+    
+    price = IntegerField('Item price', validators=[InputRequired()])
+    stock = IntegerField('Number of stock', validators=[InputRequired()])
+    description = TextAreaField('Description of product', validators=[InputRequired()])
     #image = MultipleFileField('Image of the product', [validators.regexp('^[^/\\]\.jpg$')])
     submit = SubmitField('Create')
 
