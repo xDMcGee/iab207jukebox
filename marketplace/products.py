@@ -17,7 +17,7 @@ def create():
     if form.validate_on_submit():
         cat = dict(form.product_type.choices).get(form.product_type.data)
         a = SubTypes()
-        subcat = dict(form.product_sub_type.choices).get(form.product_sub_type.data)
+        subcat = form.product_sub_type.data
         print(subcat)
         a.setValue(a.subcat)
 
