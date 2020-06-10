@@ -12,11 +12,11 @@ bp = Blueprint('main', __name__)
 @bp.route('/')
 def index():
     users = User.query.all()
-    vinyls = Product.query.filter_by(category=ProductType.vinyl).limit(6).all()
+    vinyls = Product.query.filter_by(category=ProductType['Vinyl']).limit(6).all()
     accessories = Product.query.filter_by(
-        category=ProductType.accessory).limit(6).all()
+        category=ProductType['Accessory']).limit(6).all()
     players = Product.query.filter_by(
-        category=ProductType.player).limit(6).all()
+        category=ProductType['Player']).limit(6).all()
 
     session['logged'] = 0
 

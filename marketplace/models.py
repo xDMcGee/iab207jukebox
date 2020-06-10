@@ -64,7 +64,7 @@ class Product(db.Model):
     description = db.Column(db.String(255), nullable=False)
     subcategory = db.Column(db.Enum(SubTypes), index=True, nullable=False)
     category = db.Column(db.Enum(ProductType), index=True, nullable=False)
-    image = db.Column(db.String(255), index=True, nullable=False)
+    image = db.Column(db.String(255), index=True) #, nullable=False)
     created_date = db.Column(db.DateTime, default = datetime.utcnow)
 
     seller_id = db.Column(db.Integer, db.ForeignKey('users.id'))
