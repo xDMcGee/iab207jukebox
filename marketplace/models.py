@@ -29,9 +29,6 @@ class FormEnum(enum.Enum):
     def coerce(cls, item):
         return cls(int(item)) if not isinstance(item, cls) else item
 
-    def __str__(self):
-        return str(self.value)
-
 class ProductType(FormEnum):
     Vinyl = 0
     Player = 1
