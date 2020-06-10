@@ -30,7 +30,7 @@ class ProductType(FormEnum):
     Player = 1
     Accessory = 2
 
-class SubTypes:
+class SubTypes(Enum):
     class ProductSubType(Enum):
         @skip
         class VinylType(FormEnum):
@@ -52,9 +52,6 @@ class SubTypes:
     i7 = ProductSubType.VinylType.i7
     i10 = ProductSubType.VinylType.i10
     i12 = ProductSubType.VinylType.i12
-
-    def setValue(self, subType):
-        self.value = SubType
 
 class Product(db.Model):
     __tablename__='products'
