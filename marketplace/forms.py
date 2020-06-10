@@ -49,7 +49,8 @@ class ProductType(FormEnum):
     accessory = "Accessory"
 
 class ProductForm(FlaskForm):
-    product_type = SelectField("Product Type", choices=ProductType.choices(), coerce=ProductType.coerce())
+    pt = ProductType()
+    product_type = SelectField("Product Type", choices=pt.choices(), coerce=pt.coerce())
 
     album_title = StringField('Product name', validators=[InputRequired()])
     artist_name = StringField('Artist name', validators=[InputRequired()])
