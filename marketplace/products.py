@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for
-from .models import Product, Comment, ProductSubType
+from .models import Product, Comment, SubTypes
 from .forms  import ProductForm
 from . import db
 
@@ -16,12 +16,14 @@ def create():
     form = ProductForm()
     if form.validate_on_submit():
         cat = dict(form.product_type.choices).get(form.product_type.data)
+        a = SubTypes()
         subcat = dict(form.product_sub_type.choices).get(form.product_sub_type.data)
+        a.setValue(a.subcat)
 
         product = Product(album_title = form.album_title.data,
         artist_name = form.artist_name.data,
         category = cat,
-        subcategory = ProductSubType.VinylType.i7,
+        subcategory = a.value,
         price = form.price.data,
         stock = form.stock.data,
         description = form.description.data,

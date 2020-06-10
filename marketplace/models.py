@@ -28,32 +28,37 @@ class FormEnum(enum.Enum):
     @classmethod
     def coerce(cls, item):
         return cls(int(item)) if not isinstance(item, cls) else item
-    
-    def __str__(self):
-        return str(self.value)
 
 class ProductType(FormEnum):
     Vinyl = 0
     Player = 1
     Accessory = 2
 
-class ProductSubType(Enum):
-    @skip
-    class VinylType(FormEnum):
-        i7 = 0
-        i10 = 1
-        i12 = 2
-    @skip
-    class AccessoryType(Enum):
-        needles = "Needles"
-        motors = "Motors"
-        tonearms = "Tonearms"
-        shelves = "Shelves"
-        cleaning = "Cleaning"
-    @skip
-    class TableType(Enum):
-        auto = "Automatic Tables"
-        manual = "Manual Tables"
+class SubTypes:
+    class ProductSubType(Enum):
+        @skip
+        class VinylType(FormEnum):
+            i7 = 0
+            i10 = 1
+            i12 = 2
+        @skip
+        class AccessoryType(Enum):
+            needles = "Needles"
+            motors = "Motors"
+            tonearms = "Tonearms"
+            shelves = "Shelves"
+            cleaning = "Cleaning"
+        @skip
+        class TableType(Enum):
+            auto = "Automatic Tables"
+            manual = "Manual Tables"
+
+    i7 = ProductSubType.VinylType.i7
+    i10 = ProductSubType.VinylType.i10
+    i12 = ProductSubType.VinylType.i12
+
+    def setValue(self, subType):
+        self.value = SubType
 
 class Product(db.Model):
     __tablename__='products'
@@ -64,7 +69,7 @@ class Product(db.Model):
     price = db.Column(db.Integer, nullable=False)
     stock = db.Column(db.Integer, nullable=False)
     description = db.Column(db.String(255), nullable=False)
-    subcategory = db.Column(db.Enum(ProductSubType), index=True, nullable=False)
+    subcategory = db.Column(db.Enum(SubTypes.ProductSubType), index=True, nullable=False)
     category = db.Column(db.Enum(ProductType), index=True, nullable=False)
     image = db.Column(db.String(255), index=True, nullable=False)
     created_date = db.Column(db.DateTime, default = datetime.utcnow)
