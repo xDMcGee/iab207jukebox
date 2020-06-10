@@ -3,7 +3,7 @@ from flask_wtf import FlaskForm
 from wtforms.fields import TextAreaField,SubmitField, StringField, PasswordField, IntegerField, MultipleFileField,SelectField,RadioField
 from wtforms.validators import InputRequired, Length, Email, EqualTo
 
-from . import ProductType, ProductSubType
+from .models import ProductType, ProductSubType
 
 #creates the login information
 class LoginForm(FlaskForm):
