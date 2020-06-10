@@ -24,6 +24,8 @@ def create():
         print(form.product_sub_type.data)
         print("Dict:")
         print(subcatdict)
+        print("Attempting to get:")
+        print(subcatdict.get(form.product_sub_type.data))
 
         product = Product(album_title = form.album_title.data,
         artist_name = form.artist_name.data,
