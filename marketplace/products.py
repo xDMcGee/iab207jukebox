@@ -17,7 +17,7 @@ def create():
     if form.validate_on_submit():
         cat = dict(form.product_type.choices).get(int(form.product_type.data))
 
-        img_file = form.image.DeprecationWarning
+        img_file = form.image.data
         filename = img_file.filename
 
         BASE_PATH = os.path.dirname(__file__)
