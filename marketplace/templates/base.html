@@ -57,7 +57,9 @@
                             </div>
                         </li>
                     </ul>
-                    {% block searchBar %}{% endblock %}
+
+                    {% include "components/search_bar.html" %}
+
                     <div class="nav-item dropdown">
                         
                         <!-- logged 0=logged out, 1 = seller, 2 = buyer -->
