@@ -23,31 +23,46 @@ class User(db.Model):
 class FormEnum(enum.Enum):
     @classmethod
     def choices(cls):
-        return [(str(choice.value), choice.name) for choice in cls]
+        return [(str(choice.name), choice.value) for choice in cls]
 
 class ProductType(FormEnum):
     Vinyl = 0
-    Player = 1
-    Accessory = 2
+    Accessory = 1
+    Player = 2
 
-class SubTypes(Enum):
+#Attempt to change ints back into strings
+class SubTypes(FormEnum):
     class ProductSubType(Enum):
         @skip
         class VinylType(FormEnum):
-            i7 = 0
-            i10 = 1
-            i12 = 2
+            i7 = "7-Inch"
+            i10 = "10-Inch"
+            i12 = "12-Inch"
         @skip
-        class AccessoryType(Enum):
+        class AccessoryType(FormEnum):
             needles = "Needles"
             motors = "Motors"
             tonearms = "Tonearms"
             shelves = "Shelves"
             cleaning = "Cleaning"
         @skip
-        class TableType(Enum):
+        class TableType(FormEnum):
             auto = "Automatic Tables"
             manual = "Manual Tables"
+
+    def fullchoices(self):
+        self.poop = self.ProductSubType.VinylType
+        self.AccessoryType = self.ProductSubType.AccessoryType
+        self.TableType = self.ProductSubType.TableType
+        return(self.poop.choices() + self.AccessoryType.choices() + self.TableType.choices())
+
+    def specchoice(self, arg):
+        options = {
+            0 : self.ProductSubType.VinylType.choices(),
+            1 : self.ProductSubType.AccessoryType.choices(),
+            2 : self.ProductSubType.TableType.choices()
+        }
+        return(options[arg])
 
     i7 = ProductSubType.VinylType.i7
     i10 = ProductSubType.VinylType.i10
