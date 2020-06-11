@@ -12,7 +12,7 @@ bp = Blueprint('main', __name__)
 @bp.route('/search', methods=['GET', 'POST'])
 def search():
     term = request.args.get('search')
-    return redirect(url_for('.item_list', prSearch = term))
+    return redirect(url_for('.item_list', search = term))
 
 @bp.route('/')
 def index():
@@ -49,7 +49,6 @@ def item_list():
     if not (prType is None):
         prodlist = Product.query.filter_by(category=ProductType[prType]).all()
     if not (prSearch is None):
-        print(prSearch)
         prodlist = Product.query.filter_by(name=prSearch).all()
     else:
         prodlist = Product.query.all()
