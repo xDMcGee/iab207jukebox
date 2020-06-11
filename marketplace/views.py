@@ -27,9 +27,9 @@ def search():
     if form.validate_on_submit():
         search_input = form.query.data
         print(search_input)
+        item_create()
     return render_template("search_bar.html", searchForm = form)
 
-@bp.route('/item_create', methods=['GET', 'POST'])
 def item_create():
     create_form = ProductForm()
     print('Method Type: ', request.method)
