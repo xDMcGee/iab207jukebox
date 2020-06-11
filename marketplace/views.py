@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, session, request, redirect, url_fo
 from werkzeug.security import generate_password_hash
 from . import db
 from .models import Product, ProductType, User
-from .forms import LoginForm, RegisterForm, ProductForm, SearchForm
+from .forms import LoginForm, RegisterForm, ProductForm
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import login_user, login_required,logout_user
 # from products import show, create
@@ -20,14 +20,6 @@ def index():
     session['logged'] = 0
 
     return render_template("index.html", vinyls=vinyls, accessories=accessories, players=players, users=users)
-
-@bp.route('/', methods=['GET', 'POST'])
-def search():
-    form = SearchForm()
-    if form.validate_on_submit():
-        search_input = form.query.data
-        print(search_input)
-    return render_template("components/search_bar.html", searchForm = form)
 
 @bp.route('/item_create', methods=['GET', 'POST'])
 def item_create():
