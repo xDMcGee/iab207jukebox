@@ -21,8 +21,7 @@ def create():
         cat = dict(form.product_type.choices).get(int(form.product_type.data))
 
         img_file = form.image.data
-        filename = img_file.filename
-        filename.replace(" ", "")
+        filename = str(img_file.filename).replace(" ", "")
 
         BASE_PATH = os.path.dirname(__file__)
         upload_path = os.path.join(BASE_PATH, 'static/img', secure_filename(filename))
