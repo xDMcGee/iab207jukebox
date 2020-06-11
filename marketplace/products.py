@@ -25,7 +25,8 @@ def create():
         price = form.price.data,
         stock = form.stock.data,
         description = form.description.data,
-        seller_id = 1)
+        seller_id = 1,
+        image = form.image.data)
 
         db.session.add(product)
         db.session.commit()
