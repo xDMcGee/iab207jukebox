@@ -11,7 +11,8 @@ bp = Blueprint('main', __name__)
 
 @bp.route('/search', methods=['GET', 'POST'])
 def search():
-    print(request.args['search'])
+    term = request.args.get('search')
+    return redirect(url_for('.item_list', prSearch = term))
 
 @bp.route('/')
 def index():
