@@ -18,12 +18,12 @@ def create():
         print("Choices:")
         print(form.product_type.choices)
         print("Data:")
-        print(form.product_type.data)
+        print(int(form.product_type.data))
         print("Dictionary:")
         print(dict(form.product_type.choices))
         print("Got data:")
-        print(dict(form.product_type.choices).get(form.product_type.data))
-        cat = dict(form.product_type.choices).get(form.product_type.data)
+        print(dict(form.product_type.choices).get(int(form.product_type.data)))
+        cat = dict(form.product_type.choices).get(int(form.product_type.data))
         subcat = dict(form.product_sub_type.choices).get(form.product_sub_type.data)
 
         product = Product(album_title = form.album_title.data,
