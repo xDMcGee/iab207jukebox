@@ -47,7 +47,7 @@ class ProductForm(FlaskForm):
     price = IntegerField('Item price', validators=[InputRequired()])
     stock = IntegerField('Number of stock', validators=[InputRequired()])
     description = TextAreaField('Description of product', validators=[InputRequired()])
-    image = FileField('image', validators=[
+    image = FileField('Image', validators=[
         FileRequired(),
         FileAllowed(['jpg', 'png'], 'Images only!')])
     #image = MultipleFileField('Image of the product', [validators.regexp('^[^/\\]\.jpg$')])
