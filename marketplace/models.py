@@ -29,7 +29,9 @@ class ProductType(FormEnum):
     Accessory = 1
     Player = 2
 
+#Class that contains all product subtype information
 class SubTypes(FormEnum):
+    #Nested class for subtypes
     class ProductSubType(Enum):
         @skip
         class VinylType(FormEnum):
@@ -48,12 +50,14 @@ class SubTypes(FormEnum):
             auto = "Automatic Tables"
             manual = "Manual Tables"
 
+    #Function to generate list of all subtypes
     def fullchoices(self):
         self.VinylType = self.ProductSubType.VinylType
         self.AccessoryType = self.ProductSubType.AccessoryType
         self.TableType = self.ProductSubType.TableType
         return(self.VinylType.choices() + self.AccessoryType.choices() + self.TableType.choices())
 
+    #Function to generate list of specific subtypes
     def specchoice(self, arg):
         options = {
             0 : self.ProductSubType.VinylType.choices(),
@@ -62,6 +66,7 @@ class SubTypes(FormEnum):
         }
         return(options[arg])
 
+    #Refereneces to deeper Enum options (Required for database functionality)
     i7 = ProductSubType.VinylType.i7
     i10 = ProductSubType.VinylType.i10
     i12 = ProductSubType.VinylType.i12
