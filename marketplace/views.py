@@ -18,18 +18,18 @@ def index():
 
     # if session['user'] == None:
     session['logged'] = 0
-    
+    search()
+
     return render_template("index.html", vinyls=vinyls, accessories=accessories, players=players, users=users)
 
-@bp.route('/', methods=['GET', 'POST'])
 def search():
     form = SearchForm()
     if form.validate_on_submit():
         search_input = form.query.data
         print(search_input)
-        item_create()
     return render_template("search_bar.html", searchForm = form)
 
+@bp.route('/item_create', methods=['GET', 'POST'])
 def item_create():
     create_form = ProductForm()
     print('Method Type: ', request.method)
