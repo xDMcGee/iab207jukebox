@@ -18,6 +18,10 @@ def create_app():
     app.debug=True
     app.secret_key='utroutoru'
     #set the app configuration data 
+    #the folder to store images
+    UPLOAD_FOLDER = '/static/img'
+    app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
+
     #app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///marketplace.sqlite'
     app.config.from_mapping(
         #Flask SQLAlchemy settings

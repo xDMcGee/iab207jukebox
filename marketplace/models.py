@@ -66,6 +66,15 @@ class SubTypes(FormEnum):
     i10 = ProductSubType.VinylType.i10
     i12 = ProductSubType.VinylType.i12
 
+    needles = ProductSubType.AccessoryType.needles
+    motors = ProductSubType.AccessoryType.motors
+    tonearms = ProductSubType.AccessoryType.tonearms
+    shelves = ProductSubType.AccessoryType.shelves
+    cleaning = ProductSubType.AccessoryType.cleaning
+
+    auto = ProductSubType.TableType.auto
+    manual = ProductSubType.TableType.manual
+
 class Product(db.Model):
     __tablename__='products'
 

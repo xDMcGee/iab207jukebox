@@ -36,10 +36,10 @@ class ProductForm(FlaskForm):
     type_choices = ProductType.choices()
     for choice in range(len(type_choices)):
         type_choices[choice] = type_choices[choice][::-1]
-    product_type = SelectField("Product Type", choices=type_choices, validate_choice=False)
+    product_type = SelectField("Product Type", choices=type_choices, validate_choice=False, id="select_product_type")
 
     sub_type_choices = SubTypes.fullchoices(SubTypes)
-    product_sub_type = SelectField("Product Sub Type", choices=sub_type_choices, validate_choice=False)
+    product_sub_type = SelectField("Product Sub Type", choices=sub_type_choices, validate_choice=False, id="select_sub_type")
 
     album_title = StringField('Product name', validators=[InputRequired()])
     artist_name = StringField('Artist name', validators=[InputRequired()])
@@ -49,7 +49,7 @@ class ProductForm(FlaskForm):
     description = TextAreaField('Description of product', validators=[InputRequired()])
     image = FileField('Image', validators=[
         FileRequired(),
-        FileAllowed(['jpg', 'png'], 'Images only!')])
+        FileAllowed({'jpg', 'png'}, message = 'Images only!')])
     #image = MultipleFileField('Image of the product', [validators.regexp('^[^/\\]\.jpg$')])
     submit = SubmitField('Create')
 
