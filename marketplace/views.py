@@ -47,9 +47,9 @@ def item_list():
     prType = request.args.get('type')
     prSearch = request.args.get('search')
     if not (prType is None):
-        prodlist = Product.query.filter_by(category=ProductType[prType]).all()
+        prodlist = Product.query.filter_by(category = ProductType[prType]).all()
     if not (prSearch is None):
-        prodlist = Product.query.filter_by(name=prSearch).all()
+        prodlist = Product.query.filter_by(artist_name = prSearch).all()
     else:
         prodlist = Product.query.all()
     return render_template("item_list.html", prodlist=prodlist)
