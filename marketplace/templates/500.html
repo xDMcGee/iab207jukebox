@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+
+{% block title %}Jukebox Jams{% endblock %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+    <div class="hd-back"> <!--Back button-->
+        <a class="hd-back-text" href="javascript:history.back()">
+            <span aria-hidden="true">&laquo;</span>
+            Return to previous page
+        </a>
+    </div>
+    
+    <div class="bd-content">
+        <div class="bd-header-3 text-center" style="padding-top:20px;padding-bottom:40px;">
+            Internal Server Error.
+        </div>
+    </div>
+
+{% endblock %}
