@@ -18,11 +18,10 @@ def index():
 
     # if session['user'] == None:
     session['logged'] = 0
-    #search()
+    search()
 
     return render_template("index.html", vinyls=vinyls, accessories=accessories, players=players, users=users)
 
-@bp.route('/', methods=['GET', 'POST'])
 def search():
     form = SearchForm()
     if form.validate_on_submit():
