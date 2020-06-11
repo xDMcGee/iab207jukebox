@@ -16,8 +16,9 @@ def index():
     accessories = Product.query.filter_by(category=ProductType['Accessory']).limit(6).all()
     players = Product.query.filter_by(category=ProductType['Player']).limit(6).all()
 
+    # if session['user'] == None:
     session['logged'] = 0
-
+    
     return render_template("index.html", vinyls=vinyls, accessories=accessories, players=players, users=users)
 
 
