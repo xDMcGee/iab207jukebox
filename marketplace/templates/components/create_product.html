@@ -33,6 +33,7 @@
         var send = {
           pt: dropdown.pt.val()
         };
+        console.log(send);
         dropdown.st.attr('disabled', 'disabled');
         dropdown.st.empty();
         $.getJSON("{{ url_for('product._get_subtypes') }}", send, function(data) {
