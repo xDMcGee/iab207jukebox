@@ -20,28 +20,38 @@ class User(db.Model):
     def __repr__(self):
         return "<Name: {}, id: {}>".format(self.name, self.id)
 
-class ProductType(enum.Enum):
-    vinyl = "Vinyl"
-    player = "Player"
-    accessory = "Accessory"
+class FormEnum(enum.Enum):
+    @classmethod
+    def choices(cls):
+        return [(str(choice.value), choice.name) for choice in cls]
 
-class ProductSubType(Enum):
-    @skip
-    class VinylType(Enum):
-        i7 = "7-Inch"
-        i10 = "10-Inch"
-        i12 = "12-Inch"
-    @skip
-    class AccessoryType(Enum):
-        needles = "Needles"
-        motors = "Motors"
-        tonearms = "Tonearms"
-        shelves = "Shelves"
-        cleaning = "Cleaning"
-    @skip
-    class TableType(Enum):
-        auto = "Automatic Tables"
-        manual = "Manual Tables"
+class ProductType(FormEnum):
+    Vinyl = 0
+    Player = 1
+    Accessory = 2
+
+class SubTypes(Enum):
+    class ProductSubType(Enum):
+        @skip
+        class VinylType(FormEnum):
+            i7 = 0
+            i10 = 1
+            i12 = 2
+        @skip
+        class AccessoryType(Enum):
+            needles = "Needles"
+            motors = "Motors"
+            tonearms = "Tonearms"
+            shelves = "Shelves"
+            cleaning = "Cleaning"
+        @skip
+        class TableType(Enum):
+            auto = "Automatic Tables"
+            manual = "Manual Tables"
+
+    i7 = ProductSubType.VinylType.i7
+    i10 = ProductSubType.VinylType.i10
+    i12 = ProductSubType.VinylType.i12
 
 class Product(db.Model):
     __tablename__='products'
@@ -51,9 +61,10 @@ class Product(db.Model):
     album_title = db.Column(db.String(255), index=True, nullable=False)
     price = db.Column(db.Integer, nullable=False)
     stock = db.Column(db.Integer, nullable=False)
-    subcategory = db.Column(db.Enum(ProductSubType), index=True, nullable=False)
+    description = db.Column(db.String(255), nullable=False)
+    subcategory = db.Column(db.Enum(SubTypes), index=True, nullable=False)
     category = db.Column(db.Enum(ProductType), index=True, nullable=False)
-    image = db.Column(db.String(255), index=True, nullable=False)
+    image = db.Column(db.String(255), index=True) #, nullable=False)
     created_date = db.Column(db.DateTime, default = datetime.utcnow)
 
     seller_id = db.Column(db.Integer, db.ForeignKey('users.id'))

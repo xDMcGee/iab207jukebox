@@ -8,7 +8,7 @@ import os
 
 db=SQLAlchemy()
 
-from .models import User, Product, ProductType
+from .models import User, Product, ProductType, SubTypes
 
 #create a function that creates a web application
 # a web server will run this web application
