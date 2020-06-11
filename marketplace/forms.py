@@ -31,8 +31,6 @@ class RegisterForm(FlaskForm):
     #submit button
     submit = SubmitField("Register")
 
-images = UploadSet('images', IMAGES)
-
 class ProductForm(FlaskForm):
     product_type = SelectField("Product Type", choices=ProductType.choices(), validate_choice=False)
     product_sub_type = SelectField("Product Sub Type", choices=SubTypes.ProductSubType.VinylType.choices(), validate_choice=False)
@@ -44,9 +42,7 @@ class ProductForm(FlaskForm):
     stock = IntegerField('Number of stock', validators=[InputRequired()])
     description = TextAreaField('Description of product', validators=[InputRequired()])
     image = FileField('image', validators=[
-        FileRequired(),
-        FileAllowed(images, 'Images only!')
-    ])
+        FileRequired()])
     #image = MultipleFileField('Image of the product', [validators.regexp('^[^/\\]\.jpg$')])
     submit = SubmitField('Create')
 
