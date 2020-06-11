@@ -33,8 +33,8 @@ class RegisterForm(FlaskForm):
 
 class ProductForm(FlaskForm):
     product_type = SelectField("Product Type", choices=ProductType.choices(), validate_choice=False)
-    a = SubTypes.fullchoices(SubTypes)
-    product_sub_type = SelectField("Product Sub Type", choices=a, validate_choice=False)
+    a = SubTypes
+    product_sub_type = SelectField("Product Sub Type", choices=a.fullchoices(a), validate_choice=False)
 
     album_title = StringField('Product name', validators=[InputRequired()])
     artist_name = StringField('Artist name', validators=[InputRequired()])
@@ -42,7 +42,7 @@ class ProductForm(FlaskForm):
     price = IntegerField('Item price', validators=[InputRequired()])
     stock = IntegerField('Number of stock', validators=[InputRequired()])
     description = TextAreaField('Description of product', validators=[InputRequired()])
-    image = FileField('image', validators=[
+    image = FileField('Image', validators=[
         FileRequired(),
         FileAllowed(['jpg', 'png'], 'Images only!')])
     #image = MultipleFileField('Image of the product', [validators.regexp('^[^/\\]\.jpg$')])
