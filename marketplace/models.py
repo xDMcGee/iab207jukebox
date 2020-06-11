@@ -31,7 +31,7 @@ class ProductType(FormEnum):
     Player = 2
 
 #Attempt to change ints back into strings
-class SubTypes(Enum):
+class SubTypes(FormEnum):
     class ProductSubType(Enum):
         @skip
         class VinylType(FormEnum):
@@ -39,14 +39,14 @@ class SubTypes(Enum):
             i10 = "10-Inch"
             i12 = "12-Inch"
         @skip
-        class AccessoryType(Enum):
+        class AccessoryType(FormEnum):
             needles = "Needles"
             motors = "Motors"
             tonearms = "Tonearms"
             shelves = "Shelves"
             cleaning = "Cleaning"
         @skip
-        class TableType(Enum):
+        class TableType(FormEnum):
             auto = "Automatic Tables"
             manual = "Manual Tables"
 
