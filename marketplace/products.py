@@ -35,5 +35,5 @@ def create():
 
     return render_template('components/create_product.html', form=form)
 
-def get_product():
-    return product
+# def get_product():
+#     return product
