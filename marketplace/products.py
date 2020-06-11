@@ -28,7 +28,7 @@ def create():
 
         product = Product(album_title = form.album_title.data,
         artist_name = form.artist_name.data,
-        category = ProductType(cat),
+        category = ProductType[cat],
         subcategory = SubTypes[subcat],
         price = form.price.data,
         stock = form.stock.data,
