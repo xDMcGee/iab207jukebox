@@ -5,6 +5,7 @@ from .models import Product, ProductType, User
 from .forms import LoginForm, RegisterForm, ProductForm
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import login_user, login_required,logout_user
+from sqlalchemy import or_
 # from products import show, create
 bp = Blueprint('main', __name__)
 
@@ -49,7 +50,7 @@ def item_list():
     if not (prType is None):
         prodlist = Product.query.filter_by(category = ProductType[prType]).all()
     if not (prSearch is None):
-        prodlist = Product.query.filter(Product.album_title.ilike('%' + prSearch + '%')).all()
+        prodlist = Product.query.filter(or_(Product.album_title.ilike('%' + prSearch + '%'), Product.artist_name.ilike('%' + prSearch + '%'))).all()
     else:
         prodlist = Product.query.all()
     print(prodlist)
