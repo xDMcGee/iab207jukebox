@@ -5,6 +5,10 @@ from wtforms.validators import InputRequired, Length, Email, EqualTo
 
 from .models import ProductType, SubTypes
 
+class SearchForm(FlaskForm):
+    searchInput = StringField('Search Products', validators=[InputRequired('Enter a search term')])
+    submit = SubmitField("Search")
+
 #creates the login information
 class LoginForm(FlaskForm):
     user_name = StringField("User Name", validators=[InputRequired('Enter user name')])
