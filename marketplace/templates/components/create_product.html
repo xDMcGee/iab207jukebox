@@ -33,7 +33,7 @@
         };
         dropdown.st.attr('disabled', 'disabled');
         dropdown.st.empty();
-        $.getJSON("{{ url_for('main._get_subtypes') }}", send, function(data) {
+        $.getJSON("{{ url_for('product._get_subtypes') }}", send, function(data) {
           data.forEach(function(item) {
             dropdown.st.append(
               $('<option>', {
