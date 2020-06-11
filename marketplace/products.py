@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for
+from werkzeug.utils import secure_filename
 from .models import Product, Comment, ProductType, SubTypes
 from .forms  import ProductForm
 from . import db
