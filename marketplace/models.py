@@ -51,10 +51,10 @@ class SubTypes(FormEnum):
             manual = "Manual Tables"
 
     def fullchoices(self):
-        self.poop = self.ProductSubType.VinylType
+        self.VinylType = self.ProductSubType.VinylType
         self.AccessoryType = self.ProductSubType.AccessoryType
         self.TableType = self.ProductSubType.TableType
-        return(self.poop.choices() + self.AccessoryType.choices() + self.TableType.choices())
+        return(self.VinylType.choices() + self.AccessoryType.choices() + self.TableType.choices())
 
     def specchoice(self, arg):
         options = {
