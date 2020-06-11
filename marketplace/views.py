@@ -94,3 +94,9 @@ def register():
         #return redirect(url_for('user'))
 
     return render_template("user.html", form=register_form)
+
+@bp.route('/logout')
+def logout():
+    if 'email' in session:
+        session.pop('email', none)
+    return 'Session has been clear'
