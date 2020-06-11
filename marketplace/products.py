@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, jsonify
 from werkzeug.utils import secure_filename
 from .models import Product, Comment, ProductType, SubTypes
 from .forms  import ProductForm
@@ -45,6 +45,12 @@ def create():
         return redirect(url_for('product.create'))
 
     return render_template('components/create_product.html', form=form)
+
+@bp.route('/_get_subtypes/')
+def _get_subtypes():
+    product_type = request.args.get('product_type', '01', type=int)
+    sub_type = SubTypes.specchoice(Subtypes, product_type)
+    return jsonify(sub_type)
 
 # def get_product():
 #     return product
