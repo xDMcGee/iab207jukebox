@@ -17,6 +17,14 @@ def create():
     if form.validate_on_submit():
         cat = dict(form.product_type.choices).get(int(form.product_type.data))
 
+        img_file = form.image.DeprecationWarning
+        filename = img_file.filename
+
+        BASE_PATH = os.path.dirname(__file__)
+        upload_path = os.path.join(BASE_PATH, 'static/img', secure_filename(filename))
+
+        img_file.save(upload_path)
+
         product = Product(album_title = form.album_title.data,
         artist_name = form.artist_name.data,
         category = ProductType[cat],
@@ -25,7 +33,7 @@ def create():
         stock = form.stock.data,
         description = form.description.data,
         seller_id = 1,
-        image = form.image.data)
+        image = filename)
 
         db.session.add(product)
         db.session.commit()

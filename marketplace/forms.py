@@ -49,7 +49,7 @@ class ProductForm(FlaskForm):
     description = TextAreaField('Description of product', validators=[InputRequired()])
     image = FileField('Image', validators=[
         FileRequired(),
-        FileAllowed(['jpg', 'png'], 'Images only!')])
+        FileAllowed({'jpg', 'png'}, message = 'Images only!')])
     #image = MultipleFileField('Image of the product', [validators.regexp('^[^/\\]\.jpg$')])
     submit = SubmitField('Create')
 
