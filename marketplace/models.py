@@ -1,6 +1,5 @@
 from . import db
 from datetime import datetime
-import enum
 
 from aenum import Enum, skip
 
@@ -20,7 +19,7 @@ class User(db.Model):
     def __repr__(self):
         return "<Name: {}, id: {}>".format(self.name, self.id)
 
-class FormEnum(enum.Enum):
+class FormEnum(Enum):
     @classmethod
     def choices(cls):
         return [(str(choice.name), choice.value) for choice in cls]
@@ -30,7 +29,6 @@ class ProductType(FormEnum):
     Accessory = 1
     Player = 2
 
-#Attempt to change ints back into strings
 class SubTypes(FormEnum):
     class ProductSubType(Enum):
         @skip
