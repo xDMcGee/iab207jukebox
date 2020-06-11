@@ -49,8 +49,7 @@ def item_list():
     if not (prType is None):
         prodlist = Product.query.filter_by(category = ProductType[prType]).all()
     if not (prSearch is None):
-        print(prSearch)
-        prodlist = Product.query.filter(Product.album_title.like(prSearch)).all()
+        prodlist = Product.query.filter_by(album_title = '%' + str(prSearch) + '%').all()
     else:
         prodlist = Product.query.all()
     return render_template("item_list.html", prodlist=prodlist)
