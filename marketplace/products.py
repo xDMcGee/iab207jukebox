@@ -22,6 +22,7 @@ def create():
 
         img_file = form.image.data
         filename = img_file.filename
+        filename.replace(" ", "")
 
         BASE_PATH = os.path.dirname(__file__)
         upload_path = os.path.join(BASE_PATH, 'static/img', secure_filename(filename))
