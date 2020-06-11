@@ -5,7 +5,7 @@ from .models import Product, ProductType, User
 from .forms import LoginForm, RegisterForm, ProductForm
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import login_user, login_required,logout_user
-from products import show, create
+# from products import show, create
 bp = Blueprint('main', __name__)
 
 
