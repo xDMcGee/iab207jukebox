@@ -57,8 +57,7 @@
                             </div>
                         </li>
                     </ul>
-                    {% from .forms import SearchForm %}
-                    {{wtf.quick_form(SearchForm)}}
+                    {% block searchBar %}{% endblock %}
                     <div class="nav-item dropdown">
                         
                         <!-- logged 0=logged out, 1 = seller, 2 = buyer -->

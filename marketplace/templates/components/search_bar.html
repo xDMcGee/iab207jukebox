@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block searchBar %}
+    {{wtf.quick_form(searchForm)}}
+{% endblock %}
