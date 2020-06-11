@@ -3,6 +3,8 @@ from .models import Product, Comment, ProductType, SubTypes
 from .forms  import ProductForm
 from . import db
 
+import os
+
 bp = Blueprint('product', __name__, url_prefix='/products')
 
 @bp.route('/<id>')
