@@ -17,7 +17,7 @@ def show(id):
 def create():
     print('Method type', request.method)
     form = ProductForm()
-    oldId = Product.query.limit(1)
+    oldId = Product.query.order_by(Product.id.desc()).first()
     print(oldId)
     print(oldId.id)
     if form.validate_on_submit():
