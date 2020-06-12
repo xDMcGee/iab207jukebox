@@ -70,7 +70,7 @@ def authenticate(): #view function
             login_user(u1)
             nextp = request.args.get('next') #this gives the url from where the login page was accessed
             print(nextp)
-            if next is None or not nextp.startswith('/'):
+            if nextp is None or not nextp.startswith('/'):
                 return redirect(url_for('index'))
             return redirect(nextp)
         else:
