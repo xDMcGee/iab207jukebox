@@ -27,13 +27,13 @@
 
                     </div>
                     <div class="col-12 col-md-9">
-                        <div class="bd-header-1" style="color: black;">Album Title: {{ product.album_title }}</div>
+                        <div class="bd-header-1" style="color: black;">{{ product.album_title }}</div>
                         <div class="row">
                             <div class="products col-12 col-md-6">
                                 <div class="row">
-                                    <div class="bd-header-3 col-12">Artist Name: {{ product.artist_name }}</div>
+                                    <div class="bd-header-3 col-12">Manufacturer: {{ product.artist_name }}</div>
                                     <div class="bd-header-3 col-12">Category: {{ product.category.name }}</div>
-                                    <div class="bd-header-3 col-sm-7 col-12">Subcategory: {{ product.subcategory.value }}</div>
+                                    <div class="bd-header-3 col-sm-7 col-12">Subcategory: {{ product.subcategory.value.value }}</div>
                                     
                                 </div>
                                 <div class="bd-header-3" style="padding-left: 15px;">
@@ -47,8 +47,8 @@
 
                             <div class="products col-12 col-md-6 text-center">
                                 <div class="row">
-                                    <div class="bd-header-3 col-8 text-left">Item Price:</div>
-                                    <div class="bd-header-3 col-4" style="text-align: right;">{{ product.price }}</div>
+                                    <div class="bd-header-3 col-8 text-left">Price:</div>
+                                    <div class="bd-header-3 col-4" style="text-align: right;">${{ product.price }}</div>
                                 </div>
                                 <div class="row">
                                     <div class="bd-header-3 col-8 text-left">Stock Available:</div>
@@ -62,7 +62,7 @@
                     </div>
                 </div>
                 <hr>
-                <div class="bd-header-2">Product Description:</div>
+                <div class="bd-header-2">Description:</div>
                 <div> <!--Product information -->
                     {{ product.description }}
                 </div>
