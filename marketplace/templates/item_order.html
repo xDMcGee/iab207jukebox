@@ -25,14 +25,14 @@
 
                     </div>
                     <div class="col-12 col-md-9">
-                        <div class="bd-header-1" style="color: black;">Product Name</div>
+                        <div class="bd-header-1" style="color: black;">{{ product.item_name }}</div>
                             <div class="row">
                                 <div class="bd-header-3 col-8">Item Price:</div>
-                                <div class="bd-header-3 col-4" style="text-align: right;">$49.99</div>
+                                <div class="bd-header-3 col-4" style="text-align: right;">${{ product.price }}</div>
                             </div>
                             <div class="row">
                                 <div class="bd-header-3 col-8">Stock Available:</div>
-                                <div class="bd-header-3 col-4" style="text-align: right;">24</div>
+                                <div class="bd-header-3 col-4" style="text-align: right;">{{ product.stock }}</div>
                             </div>
                             <div class="row">
                                 <div class="bd-header-3 col-12 col-md-8">Select quantity to purchase:</div>
