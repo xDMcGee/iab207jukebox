@@ -17,11 +17,12 @@
         Vinyl Record Collection:
     </div>
 
-    {% if not (arg is None) %}
+    {% if not (arg is none) %}
         {% with options = SubTypes.specchoice(SubTypes, arg) %}
             {% include "./components/category_filter.html" %}
         {% endwith %}
     {% endif %}
+    
     <section>  <!-- Items list Section -->
         <div class="bd-content">
             {% with products = prodlist %}
