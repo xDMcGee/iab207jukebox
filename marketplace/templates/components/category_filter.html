@@ -5,7 +5,7 @@
             {% for option in options %}
                 <div class="col-12 col-md">
                     <h5>
-                        <label class="checkbox text-white"><input type="checkbox" value="" checked="checked" >{{option}}</label>
+                        <label class="checkbox text-white"><input type="checkbox" value={{option[0]}} checked="checked" >{{option[1]}}</label>
                     </h5>
                 </div>
             {% endfor %}
