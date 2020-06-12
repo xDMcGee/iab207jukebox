@@ -40,6 +40,7 @@
             //jQuery to get the dropdowns
             var dropdown = {
                 pt: $('#select_product_type'),
+                ptn: $('#select_product_type_name'),
                 st: $('#select_sub_type'),
                 std: $('#select_sub_type_def')
             };
@@ -70,7 +71,7 @@
 
             function updateCards() {
                 var my_url = "{{ url_for('main.item_list') }}"
-                window.location.replace(my_url + "?type=" + dropdown.pt.val() + "&subtype=" + dropdown.st.val());
+                window.location.replace(my_url + "?type=" + dropdown.ptn.val() + "&subtype=" + dropdown.st.val());
             }
 
             //Event listerner for product type dropdown change
