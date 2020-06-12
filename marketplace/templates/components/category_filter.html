@@ -4,7 +4,7 @@
     <div class="col-10 category-filter">
         <h4 class="bd-header-3 text-white text-center">Filter by Category:</h4>
         <div class="row text-center ">
-            <input type="hidden" value="{{ ProductType[request.args.get('type')].value }}" id="select_product_type"/>
+            <input type="hidden" value="{{ ProductType[request.args.get('type')].name }}" id="select_product_type"/>
             <input type="hidden" value="{{ SubTypes[request.args.get('subtype')].name }}" id="select_sub_type_def"/>
             {{ wtf.quick_form(form) }}
         </div>
