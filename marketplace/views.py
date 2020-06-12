@@ -96,3 +96,4 @@ def register():
 @bp.route('/signout')
 def signout():
     logout_user()
+    return 'Logout Successful'
