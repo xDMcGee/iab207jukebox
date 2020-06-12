@@ -113,7 +113,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" data-dismiss="modal" class="btn btn-secondary">No</button>
-                                <button type="button" data-dismiss="modal" class="btn btn-primary"data-toggle="modal" data-target="#signedOutModal" name="signoutbtn">Yes</button>
+                                <button type="button" data-dismiss="modal" class="btn btn-primary"data-toggle="modal" data-target="#signedOutModal" id="signoutbtn">Yes</button>
                             </div>
                         </div>
                     </div>
@@ -172,10 +172,10 @@
 
         <script type="text/javascript">
             $(function() {
-                $('button#signoutbtn').bind('click', function() {
-                    console.log('Got Button!');
+                $('#signoutbtn').click(function() {
                     $.getJSON("{{ url_for('main.signout') }}", function(data) {
                         //Do Nothing
+                        console.log('Button Clicked!');
                     });
                     return false;
                 });
