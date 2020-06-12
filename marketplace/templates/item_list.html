@@ -69,7 +69,8 @@
         }
 
         function updateCards() {
-            window.location.replace("{{ url_for('main.list', type = " + dropdown.pt.val() + ", subtype = " + dropdown.st.val() + "}}");
+            var my_url = "{{ url_for('main.list') }}"
+            window.location.replace(my_url + "?type=" + dropdown.pt.val() + "&subtype=" + dropdown.st.val());
         }
 
         //Event listerner for product type dropdown change
