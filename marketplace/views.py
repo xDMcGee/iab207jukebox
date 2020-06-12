@@ -51,13 +51,13 @@ def item_list():
     if not (prType is None):
         if not (prSubType is None):
             prodlist = Product.query.filter(and_(Product.category == ProductType[prType], Product.subcategory == SubTypes[prSubType])).all()
+            print(prodlist)
         else:
             prodlist = Product.query.filter_by(category = ProductType[prType]).all()
-    if not (prSearch is None):
+    elif not (prSearch is None):
         prodlist = Product.query.filter(or_(Product.album_title.ilike('%' + prSearch + '%'), Product.artist_name.ilike('%' + prSearch + '%'))).all()
     else:
         prodlist = Product.query.all()
-    print(prodlist)
     return render_template("item_list.html", prodlist=prodlist)
 
 
