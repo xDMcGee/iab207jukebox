@@ -4,22 +4,6 @@ from flask_login import UserMixin
 
 from aenum import Enum, skip
 
-class User(db.Model, UserMixin):
-    __tablename__='users'
-
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(255), index=True, unique=True, nullable=False)
-    password_hash = db.Column(db.String(255), nullable=False)
-    email_id = db.Column(db.String(255), index=True, unique=True, nullable=False)
-    user_type = db.Column(db.Enum('Buyer', 'Seller', name='userType'), nullable=False)
-    bsb = db.Column(db.String(6), unique=True)
-    account_no = db.Column(db.String(9), unique=True)
-
-    products = db.relationship('Product', backref='user')
-
-    def __repr__(self):
-        return "<Name: {}, id: {}>".format(self.name, self.id)
-
 class FormEnum(Enum):
     @classmethod
     def choices(cls):
@@ -81,12 +65,26 @@ class SubTypes(FormEnum):
     auto = ProductSubType.TableType.auto
     manual = ProductSubType.TableType.manual
 
+class User(db.Model, UserMixin):
+    __tablename__='users'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255), index=True, unique=True, nullable=False)
+    password_hash = db.Column(db.String(255), nullable=False)
+    email_id = db.Column(db.String(255), index=True, unique=True, nullable=False)
+    user_type = db.Column(db.Enum('Buyer', 'Seller', name='userType'), nullable=False)
+    bsb = db.Column(db.String(6), unique=True)
+    account_no = db.Column(db.String(9), unique=True)
+
+    products = db.relationship('Product', backref='user')
+    comments = db.relationship('Comment', backref='user')
+
 class Product(db.Model):
     __tablename__='products'
 
     id = db.Column(db.Integer, primary_key=True)
-    artist_name = db.Column(db.String(255), index=True, nullable=False)
-    album_title = db.Column(db.String(255), index=True, nullable=False)
+    item_name = db.Column(db.String(255), index=True, nullable=False)
+    item_manufacturer = db.Column(db.String(255), index=True, nullable=False)
     price = db.Column(db.Integer, nullable=False)
     stock = db.Column(db.Integer, nullable=False)
     description = db.Column(db.String(255), nullable=False)
@@ -96,15 +94,17 @@ class Product(db.Model):
     created_date = db.Column(db.DateTime, default = datetime.utcnow)
 
     seller_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    comments = db.relationship('Comment', backref='product')
 
 class Comment(db.Model):
     __tablename__ ='comments'
     
-    comment_id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(255), index=True, unique=True, nullable=False)
-    comment_text = db.Column(db.String(400))
-    create_at = db.Column(db.DateTime, default=datetime.now())
+    id = db.Column(db.Integer, primary_key=True)
+    user_name = db.Column(db.String(255), index=True, unique=True, nullable=False)
+    text = db.Column(db.String(400))
+    created_date = db.Column(db.DateTime, default=datetime.now())
 
+    product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
 class Order(db.Model):
