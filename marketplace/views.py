@@ -4,7 +4,7 @@ from . import db
 from .models import Product, ProductType, User, SubTypes
 from .forms import LoginForm, RegisterForm, ProductForm, FilterForm
 from werkzeug.security import generate_password_hash,check_password_hash
-from flask_login import login_user, login_required,logout_user
+from flask_login import login_user, login_required, logout_user
 from sqlalchemy import or_, and_
 # from products import show, create
 bp = Blueprint('main', __name__)
@@ -93,10 +93,6 @@ def register():
 
     return render_template("user.html", form=register_form)
 
-@bp.route('/logout')
-def logout():
-    if 'email' in session:
-        session.pop('email', None)
-    return 'Session has been clear'
-
-
+@bp.route('/signout')
+def signout():
+    logout_user()
