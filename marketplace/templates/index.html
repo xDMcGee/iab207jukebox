@@ -10,12 +10,7 @@
 {% block content %}
     <div class="bd-content">
         <div class="bd-header-3 text-center" style="padding-top:20px;padding-bottom:40px;">
-            <p>
-                Your one stop shop for all things Record and Vinyl!<br>
-                {% if current_user.is_authenticated %}
-                    Hi <b>{{ current_user.name }}!</b>
-                {% endif %}
-            </p>
+            Your one stop shop for all things Record and Vinyl!
         </div>
     </div>
     <div class="container-fluid col row" style="margin-bottom:20px;"> <!-- Category Selection -->

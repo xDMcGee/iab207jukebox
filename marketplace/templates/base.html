@@ -64,29 +64,31 @@
                     <div class="nav-item dropdown">
                         
                         <!-- logged 0=logged out, 1 = seller, 2 = buyer -->
-                        {% if session['logged'] == 0 %}
+                        {% if current_user.is_authenticated %}
+                            {% if current_user.type == "Buyer" %}
+                                <a data-toggle="dropdown" class=" nav-item nav-link dropdown-toggle btn-primary" href="#" aria-expanded="false">{{ userName }}</a>
+                                <ul class="dropdown-menu">
+                                    <a class="dropdown-item dropdown-title font-weight-bold disabled">Buyer</a>
+                                    <a class="dropdown-item" href="{{ url_for('main.item_create') }}">My orders</a>
+                                    <a class="dropdown-item dropdown-title font-weight-bold disabled">Account</a>
+                                    <a class="dropdown-item" href="#"data-toggle="modal" data-target="#signOutModal">Sign Out</a>
+                                </ul>
+                            {% elif current_user.type == "Seller" %}
+                                <a data-toggle="dropdown" class=" nav-item nav-link dropdown-toggle btn-primary" href="#" aria-expanded="false">{{ userName }}</a>
+                                <ul class="dropdown-menu">
+                                    <a class="dropdown-item dropdown-title font-weight-bold disabled">Seller</a>
+                                    <a class="dropdown-item" href="{{ url_for('main.item_create') }}">Create Item</a>
+                                    <a class="dropdown-item" href="#">My Items</a>
+                                    <a class="dropdown-item dropdown-title font-weight-bold disabled">Account</a>
+                                    <a class="dropdown-item" href="#"data-toggle="modal" data-target="#signOutModal">Sign Out</a>
+                                </ul>
+                            {% endif %}
+                        {% else %}
                             <a data-toggle="dropdown" class=" nav-item nav-link dropdown-toggle btn-primary" href="#" aria-expanded="false">Account</a>
                             <ul class="dropdown-menu">
                                 <a class="dropdown-item dropdown-title font-weight-bold disabled">Not logged in</a>
                                 <a class="dropdown-item" href="{{ url_for('main.register') }}">Register</a>
                                 <a class="dropdown-item" href="{{ url_for('main.authenticate') }}">Login</a>
-                            </ul>
-                        {% elif session['logged'] == 1 %}
-                            <a data-toggle="dropdown" class=" nav-item nav-link dropdown-toggle btn-primary" href="#" aria-expanded="false">{{ userName }}</a>
-                            <ul class="dropdown-menu">
-                                <a class="dropdown-item dropdown-title font-weight-bold disabled">Seller</a>
-                                <a class="dropdown-item" href="{{ url_for('main.item_create') }}">Create Item</a>
-                                <a class="dropdown-item" href="#">My Items</a>
-                                <a class="dropdown-item dropdown-title font-weight-bold disabled">Account</a>
-                                <a class="dropdown-item" href="#"data-toggle="modal" data-target="#signOutModal">Sign Out</a>
-                            </ul>
-                        {% else %}
-                            <a data-toggle="dropdown" class=" nav-item nav-link dropdown-toggle btn-primary" href="#" aria-expanded="false">{{ userName }}</a>
-                            <ul class="dropdown-menu">
-                                <a class="dropdown-item dropdown-title font-weight-bold disabled">Buyer</a>
-                                <a class="dropdown-item" href="{{ url_for('main.item_create') }}">My orders</a>
-                                <a class="dropdown-item dropdown-title font-weight-bold disabled">Account</a>
-                                <a class="dropdown-item" href="#"data-toggle="modal" data-target="#signOutModal">Sign Out</a>
                             </ul>
                         {% endif %}
                         
