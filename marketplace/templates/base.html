@@ -34,7 +34,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">Vinyls</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.Vinyl.name) }}">7-Inch</a>
+                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.Vinyl.name, subtype = SubTypes.i7) }}">7-Inch</a>
                                 <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.Vinyl.name) }}">10-Inch</a>
                                 <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.Vinyl.name) }}">12-Inch</a>
                             </div>

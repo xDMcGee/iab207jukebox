@@ -1,6 +1,6 @@
 <div class="bd-content products">
     {% if title %}
-        <a href="{{ url_for('main.item_list') }}">
+        <a href="{{ url_for('main.item_list', type = type) }}">
             <div class="bd-header-2">{{ title }}</div>
         </a>
     {% endif %}

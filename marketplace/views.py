@@ -1,11 +1,11 @@
 from flask import Blueprint, render_template, session, request, redirect, url_for, flash
 from werkzeug.security import generate_password_hash
 from . import db
-from .models import Product, ProductType, User
+from .models import Product, ProductType, User, SubTypes
 from .forms import LoginForm, RegisterForm, ProductForm
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import login_user, login_required,logout_user
-from sqlalchemy import or_
+from sqlalchemy import or_, and_
 # from products import show, create
 bp = Blueprint('main', __name__)
 
@@ -46,9 +46,13 @@ def item_details():
 @bp.route('/list')
 def item_list():
     prType = request.args.get('type')
+    prSubType = request.args.get('subtype')
     prSearch = request.args.get('search')
     if not (prType is None):
-        prodlist = Product.query.filter_by(category = ProductType[prType]).all()
+        if not (prSubType is None):
+            prodlist = Product.query.filter_by(and_(category = ProductType[prType], subcategory = SubTypes[prSubType])).all()
+        else:
+            prodlist = Product.query.filter_by(category = ProductType[prType]).all()
     if not (prSearch is None):
         prodlist = Product.query.filter(or_(Product.album_title.ilike('%' + prSearch + '%'), Product.artist_name.ilike('%' + prSearch + '%'))).all()
     else:

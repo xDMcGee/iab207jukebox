@@ -62,6 +62,7 @@ def create_app():
     app.register_blueprint(auth.bp)
 
     app.jinja_env.globals.update(ProductType=ProductType)
+    app.jinja_env.globals.update(SubTypes=SubTypes)
 
     #Error handling returns set pages
     @app.errorhandler(404)
