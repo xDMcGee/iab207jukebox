@@ -26,7 +26,10 @@ def create():
         BASE_PATH = os.path.dirname(__file__)
 
         oldId = Product.query.order_by(Product.id.desc()).first()
-        oldId = oldId.id
+        if not (oldId is None):
+            oldId = oldId.id
+        else:
+            oldId = 0
 
         dir_path = os.path.join(BASE_PATH, 'static/img/' + str(oldId + 1))
         os.makedirs(dir_path)
