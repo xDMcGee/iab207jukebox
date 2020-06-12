@@ -18,8 +18,21 @@ def show(id):
     #Reformatting the date to be user-readable
     created_date = product.created_date.strftime('%d/%m/%Y')
     cform = CommentForm()
-
     return render_template('show.html', product = product, created_date = created_date, form = cform)
+
+@bp.route('/<id>/comment', methods = ['GET','POST'])
+def comment(id):
+    product = Product.query.filter_by(id=id).first()
+    cform = CommentForm()
+    if cform.validate_on_submit():
+        comment = Comment(text=cform.text.data,
+        product = product_obj,
+        user = current_user)
+
+        db.session.add(comment)
+        db.session.commit()
+        print('Your comment has been added', 'success')
+    return render_template('show.html', product = product, form = cform)
 
 @bp.route('/create', methods=['GET','POST'])
 def create():
