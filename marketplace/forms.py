@@ -53,6 +53,10 @@ class ProductForm(FlaskForm):
     #image = MultipleFileField('Image of the product', [validators.regexp('^[^/\\]\.jpg$')])
     submit = SubmitField('Create')
 
+class FilterForm(FlaskForm):
+    sub_type_choices = SubTypes.fullchoices(SubTypes)
+    product_sub_type = SelectField("Product Sub Type", choices=sub_type_choices, validate_choice=False, id="select_sub_type")
+
 class CommentForm(FlaskForm):
     text = TextAreaField('Comment', validators=[InputRequired()])
     submit = SubmitField('Post')

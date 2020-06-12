@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, session, request, redirect, url_fo
 from werkzeug.security import generate_password_hash
 from . import db
 from .models import Product, ProductType, User, SubTypes
-from .forms import LoginForm, RegisterForm, ProductForm
+from .forms import LoginForm, RegisterForm, ProductForm, FilterForm
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import login_user, login_required,logout_user
 from sqlalchemy import or_, and_
@@ -45,6 +45,7 @@ def item_details():
 
 @bp.route('/list')
 def item_list():
+    filterForm = FilterForm()
     prType = request.args.get('type')
     prSubType = request.args.get('subtype')
     prSearch = request.args.get('search')
@@ -53,7 +54,7 @@ def item_list():
             prodlist = Product.query.filter(and_(Product.category == ProductType[prType], Product.subcategory == SubTypes[prSubType])).all()
         else:
             prodlist = Product.query.filter_by(category = ProductType[prType]).all()
-        return render_template("item_list.html", prodlist = prodlist, arg = ProductType[prType].value)
+        return render_template("item_list.html", prodlist = prodlist, arg = ProductType[prType].value, filterForm = filterForm)
     elif not (prSearch is None):
         prodlist = Product.query.filter(or_(Product.album_title.ilike('%' + prSearch + '%'), Product.artist_name.ilike('%' + prSearch + '%'))).all()
         return render_template("item_list.html", prodlist = prodlist, arg = None)

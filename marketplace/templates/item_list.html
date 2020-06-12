@@ -18,11 +18,11 @@
     </div>
 
     {% if not (arg is none) %}
-        {% with options = SubTypes.specchoice(SubTypes, arg) %}
+        {% with form = filterForm, options = SubTypes.specchoice(SubTypes, arg) %}
             {% include "./components/category_filter.html" %}
         {% endwith %}
     {% endif %}
-    
+
     <section>  <!-- Items list Section -->
         <div class="bd-content">
             {% with products = prodlist %}
