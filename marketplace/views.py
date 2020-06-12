@@ -4,7 +4,7 @@ from . import db
 from .models import Product, ProductType, User, SubTypes
 from .forms import LoginForm, RegisterForm, ProductForm, FilterForm
 from werkzeug.security import generate_password_hash,check_password_hash
-from flask_login import login_user, login_required,logout_user, current_user
+from flask_login import login_user, login_required,logout_user
 from sqlalchemy import or_, and_
 # from products import show, create
 bp = Blueprint('main', __name__)
