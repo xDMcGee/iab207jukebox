@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms.fields import TextAreaField,SubmitField, StringField, PasswordField, IntegerField, MultipleFileField, SelectField, RadioField
+from wtforms.fields import TextAreaField,SubmitField, StringField, PasswordField, IntegerField, MultipleFileField, SelectField, RadioField, DateField
 from flask_wtf.file import FileField, FileAllowed, FileRequired
 from wtforms.validators import InputRequired, Length, Email, EqualTo
 
@@ -60,3 +60,9 @@ class FilterForm(FlaskForm):
 class CommentForm(FlaskForm):
     text = TextAreaField('Comment', validators=[InputRequired()])
     submit = SubmitField('Post')
+
+class OrderForm(FlaskForm):
+    address = StringField('Delivery Addresss', validators=[InputRequired()])
+    quantity = IntegerField('Quantity', validators=[InputRequired()])
+    bsb = IntegerField('BSB number', validators=[InputRequired()])
+    account_number = IntegerField('Account Number', validators=[InputRequired()])
