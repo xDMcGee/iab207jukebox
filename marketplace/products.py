@@ -26,9 +26,11 @@ def create():
         filename = str(img_file.filename).replace(" ", "")
 
         BASE_PATH = os.path.dirname(__file__)
-        upload_path = os.path.join(BASE_PATH, 'static/img/' + str(oldId + 1), secure_filename(filename))
-        print(upload_path)
+        
+        dir_path = os.path.join(BASE_PATH, 'static/img/' + str(oldId + 1))
+        os.makedirs(dir_path)
 
+        upload_path = os.path.join(BASE_PATH, 'static/img/' + str(oldId + 1), secure_filename(filename))
         img_file.save(upload_path)
 
         product = Product(album_title = form.album_title.data,
