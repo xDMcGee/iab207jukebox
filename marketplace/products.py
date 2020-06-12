@@ -18,8 +18,7 @@ def create():
     print('Method type', request.method)
     form = ProductForm()
     oldId = Product.query.order_by(Product.id.desc()).first()
-    print(oldId)
-    print(oldId.id)
+    oldId = oldId.id
     if form.validate_on_submit():
         cat = dict(form.product_type.choices).get(int(form.product_type.data))
 
@@ -27,7 +26,8 @@ def create():
         filename = str(img_file.filename).replace(" ", "")
 
         BASE_PATH = os.path.dirname(__file__)
-        upload_path = os.path.join(BASE_PATH, 'static/img', secure_filename(filename))
+        upload_path = os.path.join(BASE_PATH, 'static/img/' + str(oldId + 1), secure_filename(filename))
+        print(upload_path)
 
         img_file.save(upload_path)
 
