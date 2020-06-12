@@ -4,6 +4,7 @@ from datetime import datetime
 from .models import Product, Comment, ProductType, SubTypes
 from .forms  import ProductForm, CommentForm
 from . import db
+from flask_login import current_user
 
 import os
 
