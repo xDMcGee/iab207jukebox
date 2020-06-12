@@ -13,7 +13,7 @@ bp = Blueprint('product', __name__, url_prefix='/products')
 def show(id):
     product = Product.query.filter_by(id=id).first()
     if product is None:
-        return render_template('404.html'), 404
+        abort(404)
 
     #Reformatting the date to be user-readable
     created_date = product.created_date.strftime('%d/%m/%Y')
