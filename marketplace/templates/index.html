@@ -11,6 +11,9 @@
     <div class="bd-content">
         <div class="bd-header-3 text-center" style="padding-top:20px;padding-bottom:40px;">
             Your one stop shop for all things Record and Vinyl!
+            {% if current_user.is_authenticated %}
+                Hi {{ current_user.name }}!
+            {% endif %}
         </div>
     </div>
     <div class="container-fluid col row" style="margin-bottom:20px;"> <!-- Category Selection -->
