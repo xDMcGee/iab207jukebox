@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request, redirect, url_for, jsonif
 from werkzeug.utils import secure_filename
 from datetime import datetime
 from .models import Product, Comment, ProductType, SubTypes
-from .forms  import ProductForm
+from .forms  import ProductForm, CommentForm
 from . import db
 
 import os
@@ -17,8 +17,9 @@ def show(id):
 
     #Reformatting the date to be user-readable
     created_date = product.created_date.strftime('%d/%m/%Y')
+    cform = CommentForm()
 
-    return render_template('show.html', product = product, created_date = created_date)
+    return render_template('show.html', product = product, created_date = created_date, form = cform)
 
 @bp.route('/create', methods=['GET','POST'])
 def create():
