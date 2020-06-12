@@ -34,15 +34,16 @@ def create():
         upload_path = os.path.join(BASE_PATH, 'static/img/' + str(oldId + 1), secure_filename(filename))
         img_file.save(upload_path)
 
-        product = Product(album_title = form.album_title.data,
-        artist_name = form.artist_name.data,
-        category = ProductType[cat],
-        subcategory = SubTypes[form.product_sub_type.data],
+        product = Product(
+        item_name = form.item_name.data,
+        item_manufacturer = form.item_manufacturer.data,
         price = form.price.data,
         stock = form.stock.data,
         description = form.description.data,
-        seller_id = 1,
-        image = filename)
+        category = ProductType[cat],
+        subcategory = SubTypes[form.product_sub_type.data],
+        image = filename,
+        seller_id = 1)
 
         db.session.add(product)
         db.session.commit()

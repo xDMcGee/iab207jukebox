@@ -27,11 +27,6 @@ def index():
 
     return render_template("index.html", vinyls=vinyls, accessories=accessories, players=players, users=users)
 
-@bp.route('/item_details')
-def item_details():
-    return render_template("item_details.html")
-
-
 @bp.route('/list')
 def item_list():
     

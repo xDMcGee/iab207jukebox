@@ -27,11 +27,11 @@
 
                     </div>
                     <div class="col-12 col-md-9">
-                        <div class="bd-header-1" style="color: black;">{{ product.album_title }}</div>
+                        <div class="bd-header-1" style="color: black;">{{ product.item_name }}</div>
                         <div class="row">
                             <div class="products col-12 col-md-6">
                                 <div class="row">
-                                    <div class="bd-header-3 col-12">Manufacturer: {{ product.artist_name }}</div>
+                                    <div class="bd-header-3 col-12">Manufacturer: {{ product.item_manufacturer }}</div>
                                     <div class="bd-header-3 col-12">Category: {{ product.category.name }}</div>
                                     <div class="bd-header-3 col-sm-7 col-12">Subcategory: {{ product.subcategory.value.value }}</div>
                                     
@@ -116,13 +116,13 @@
                         <span class="fa fa-star"></span>
                         <span class="fa fa-star mr-md-auto"></span>
                     </div>  
-                    <h4 class="bd-header-3 col-12 col-md-4 text-right">{{ comment.create_at}}</h4>   
+                    <h4 class="bd-header-3 col-12 col-md-4 text-right">{{ comment.created_date}}</h4>   
                 </div>
                 
             </div>
             <hr style="margin: 0px;">
             <div class="comment-text">
-                {{ comment.comment_text }}
+                {{ comment.text }}
             </div> 
         </div>
         {% endfor %}

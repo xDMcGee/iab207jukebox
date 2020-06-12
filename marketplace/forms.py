@@ -41,8 +41,8 @@ class ProductForm(FlaskForm):
     sub_type_choices = SubTypes.fullchoices(SubTypes)
     product_sub_type = SelectField("Product Sub Type", choices=sub_type_choices, validate_choice=False, id="select_sub_type")
 
-    album_title = StringField('Product name', validators=[InputRequired()])
-    artist_name = StringField('Artist name', validators=[InputRequired()])
+    item_name = StringField('Product name', validators=[InputRequired()])
+    item_manufacturer = StringField('Product Manufacturer', validators=[InputRequired()])
     
     price = IntegerField('Item price', validators=[InputRequired()])
     stock = IntegerField('Number of stock', validators=[InputRequired()])
