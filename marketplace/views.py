@@ -27,17 +27,6 @@ def index():
 
     return render_template("index.html", vinyls=vinyls, accessories=accessories, players=players, users=users)
 
-@bp.route('/item_create', methods=['GET', 'POST'])
-def item_create():
-    create_form = ProductForm()
-    print('Method Type: ', request.method)
-
-    if create_form.validate_on_submit():
-        print('Successfully created product!', 'Success')
-
-    return render_template("item_create.html", form=create_form)
-
-
 @bp.route('/item_details')
 def item_details():
     return render_template("item_details.html")
