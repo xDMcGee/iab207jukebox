@@ -40,7 +40,8 @@
         //jQuery to get the dropdowns
         var dropdown = {
             pt: $('#select_product_type'),
-            st: $('#select_sub_type')
+            st: $('#select_sub_type'),
+            std: $('#select_sub_type_def')
         };
 
         //Call to update dropdowns on load
@@ -62,6 +63,7 @@
                 })
                 );
             });
+            dropdown.st.val(dropdown.std);
             dropdown.st.removeAttr('disabled');
             });
         }
