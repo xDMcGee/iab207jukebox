@@ -32,3 +32,46 @@
     </section> <!-- End Featured Items Section -->
 
 {% endblock %}
+
+{% if not (arg is none) %}
+    {% block scripts %}
+    <script charset="utf-8" type="text/javascript">
+        $(function() {
+        //jQuery to get the dropdowns
+        var dropdown = {
+            pt: $('#select_product_type'),
+            st: $('#select_sub_type')
+        };
+
+        //Call to update dropdowns on load
+        updateSubTypes();
+
+        //Function to call XHR and update the subtypes dropdown
+        function updateSubTypes() {
+            var send = {
+            pt: dropdown.pt.val()
+            };
+            dropdown.st.attr('disabled', 'disabled');
+            dropdown.st.empty();
+            $.getJSON("{{ url_for('product._get_subtypes') }}", send, function(data) {
+            data.forEach(function(item) {
+                dropdown.st.append(
+                $('<option>', {
+                    value: item[0],
+                    text: item[1]
+                })
+                );
+            });
+            dropdown.st.removeAttr('disabled');
+            });
+        }
+
+        //Event listerner for product type dropdown change
+        dropdown.pt.on('change', function() {
+            updateSubTypes();
+        });
+
+        });
+    </script>
+    {% endblock %}
+{% endif %}
