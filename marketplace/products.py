@@ -20,13 +20,13 @@ def show(id):
     cform = CommentForm()
     return render_template('show.html', product = product, created_date = created_date, form = cform)
 
-@bp.route('/<id>/comment', methods = ['GET','POST'])
+@bp.route('/<id>/comment', methods=['GET','POST'])
 def comment(id):
     product = Product.query.filter_by(id=id).first()
     cform = CommentForm()
     if cform.validate_on_submit():
         comment = Comment(text=cform.text.data,
-        product = product_obj,
+        product = product,
         user = current_user)
 
         db.session.add(comment)
