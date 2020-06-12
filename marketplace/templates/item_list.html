@@ -46,6 +46,7 @@
 
         //Call to update dropdowns on load
         updateSubTypes();
+        dropdown.st.val(dropdown.std.val());
 
         //Function to call XHR and update the subtypes dropdown
         function updateSubTypes() {
@@ -63,14 +64,17 @@
                 })
                 );
             });
-            dropdown.st.val(dropdown.std.val());
             dropdown.st.removeAttr('disabled');
             });
         }
 
+        function updateCards() {
+            window.location.replace("{{ url_for('main.list', type = dropdown.pt.val(), subtype = dropdown.st.val()) }}")
+        }
+
         //Event listerner for product type dropdown change
-        dropdown.pt.on('change', function() {
-            updateSubTypes();
+        dropdown.st.on('change', function() {
+            updateCards();
         });
 
         });
