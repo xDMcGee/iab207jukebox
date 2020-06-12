@@ -50,7 +50,7 @@ def item_list():
     prSearch = request.args.get('search')
     if not (prType is None):
         if not (prSubType is None):
-            prodlist = Product.query.filter_by(and_(Product.category == ProductType[prType], Product.subcategory == SubTypes[prSubType])).all()
+            prodlist = Product.query.filter(and_(Product.category == ProductType[prType], Product.subcategory == SubTypes[prSubType])).all()
         else:
             prodlist = Product.query.filter_by(category = ProductType[prType]).all()
     if not (prSearch is None):
