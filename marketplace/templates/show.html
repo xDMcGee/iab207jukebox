@@ -54,6 +54,10 @@
                                     <div class="bd-header-3 col-8 text-left">Stock Available:</div>
                                     <div class="bd-header-3 col-4" style="text-align: right;">{{ product.stock }}</div>
                                 </div>
+                                <div class="row">
+                                    <div class="bd-header-3 col-8 text-left">Date Posted:</div>
+                                    <div class="bd-header-3 col-4" style="text-align: right;">{{ product.created_date }}</div>
+                                </div>
                                 <a href="{{ url_for('main.item_order') }}"class="">
                                     <button class="bd-header-3 btn-primary col-8 col-md-6" style="margin: 20px;">Order Item</button>
                                 </a>
