@@ -24,7 +24,7 @@
 
                         <p class="card-text">{{ product.id }}</p>
                         <div class="text-center">
-                            <a href="{{ url_for('main.item_details') }}" class="btn btn-primary mt-2 align-self-center ">See Product</a>
+                            <a href="{{ url_for('products.show' id = product.id) }}" class="btn btn-primary mt-2 align-self-center ">See Product</a>
                         </div>
                     </div>
                 </div>
