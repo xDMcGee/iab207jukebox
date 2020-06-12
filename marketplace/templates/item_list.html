@@ -17,33 +17,13 @@
         Vinyl Record Collection:
     </div>
 
-    <section> <!--  Product Category Filter   -->
-        <div class="col-10 category-filter">
-            <h4 class="bd-header-3 text-white text-center">Filter by Category:</h4>
-            <div class="row text-center ">
-                <div class="col-12 col-md">
-                    <h5>
-                        <label class="checkbox text-white"><input type="checkbox" value="" checked="checked" >7-Inch</label>
-                    </h5>
-                </div>
-                <div class="col-12 col-md">
-                    <h5>
-                        <label class="checkbox text-white"><input type="checkbox" value="">10-Inch</label>
-                    </h5>
-                </div>
-                <div class="col-12 col-md">
-                    <h5>
-                        <label class="checkbox text-white"><input type="checkbox" value="">12-Inch</label>
-                    </h5>
-                </div>
-            </div>
-        </div>
-        
-    </section>
+    {% with options = SubTypes.speccchoice(Subtypes, 0) %}
+        {% include "./components/category_filter.html" %}
+    {% endwith %}
 
     <section>  <!-- Items list Section -->
         <div class="bd-content">
-            {% with products = prodlist%}
+            {% with products = prodlist %}
                     {% include "./components/item_card.html" %}
             {% endwith %}
         </div>

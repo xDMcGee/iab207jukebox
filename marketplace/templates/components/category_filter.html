@@ -1,0 +1,14 @@
+<section> <!--  Product Category Filter   -->
+    <div class="col-10 category-filter">
+        <h4 class="bd-header-3 text-white text-center">Filter by Category:</h4>
+        <div class="row text-center ">
+            {% for option in options %}
+                <div class="col-12 col-md">
+                    <h5>
+                        <label class="checkbox text-white"><input type="checkbox" value="" checked="checked" >{{option}}</label>
+                    </h5>
+                </div>
+            {% endfor %}
+        </div>
+    </div>        
+</section>
