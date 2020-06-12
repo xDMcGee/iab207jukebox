@@ -71,7 +71,7 @@ def authenticate(): #view function
             nextp = request.args.get('next') #this gives the url from where the login page was accessed
             print(nextp)
             if nextp is None or not nextp.startswith('/'):
-                return redirect(url_for('index'))
+                return redirect(url_for('main.index'))
             return redirect(nextp)
         else:
             flash(error)
@@ -96,5 +96,5 @@ def register():
 @bp.route('/logout')
 def logout():
     if 'email' in session:
-        session.pop('email', none)
+        session.pop('email', None)
     return 'Session has been clear'
