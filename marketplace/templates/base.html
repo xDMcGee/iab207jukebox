@@ -172,7 +172,8 @@
 
         <script type="text/javascript">
             $(function() {
-                $('#signoutbtn').bind('click', function() {
+                $('button#signoutbtn').bind('click', function() {
+                    console.log('Got Button!');
                     $.getJSON("{{ url_for('main.signout') }}", function(data) {
                         //Do Nothing
                     });
