@@ -13,8 +13,8 @@ bp = Blueprint('product', __name__, url_prefix='/products')
 def show(id):
     product = Product.query.filter_by(id=id).first()
 
-    dtobj = datetime.strptime(product.created_date, '%Y-%m-%d %H:%M:%S.%f')
-    product.created_date = dtobj.strftime('%d/%m/%Y')
+    #dtobj = datetime.strptime(product.created_date, '%Y-%m-%d %H:%M:%S.%f')
+    product.created_date = product.created_date.strftime('%d/%m/%Y')
 
     return render_template('show.html', product = product)
 
