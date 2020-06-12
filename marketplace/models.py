@@ -102,7 +102,7 @@ class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_name = db.Column(db.String(255), index=True, unique=True, nullable=False)
     text = db.Column(db.String(400))
-    created_date = db.Column(db.DateTime, default=datetime.now())
+    created_date = db.Column(db.DateTime, default=datetime.utcnow)
 
     product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
@@ -111,6 +111,6 @@ class Order(db.Model):
     __tablename__='orders'
 
     order_id = db.Column(db.Integer, primary_key=True, unique=True, nullable=False)
-    date_placed = db.Column(db.DateTime, default=datetime.now())
+    date_placed = db.Column(db.DateTime, default=datetime.utcnow)
 
     seller_id = db.Column(db.Integer, db.ForeignKey('users.id'))

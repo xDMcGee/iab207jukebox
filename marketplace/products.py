@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for, jsonify
 from werkzeug.utils import secure_filename
+from datetime import datetime
 from .models import Product, Comment, ProductType, SubTypes
 from .forms  import ProductForm
 from . import db
@@ -11,6 +12,10 @@ bp = Blueprint('product', __name__, url_prefix='/products')
 @bp.route('/<id>')
 def show(id):
     product = Product.query.filter_by(id=id).first()
+
+    dtobj = datetime.strptime(product.created_date, '%Y-%m-%d %H:%M:%S.%f')
+    product.created_date = dtobj.strftime('%d/%m/%Y')
+
     return render_template('show.html', product = product)
 
 @bp.route('/create', methods=['GET','POST'])
