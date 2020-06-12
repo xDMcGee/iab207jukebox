@@ -81,7 +81,7 @@
     <div class="product-details"> <!-- REVIEWS  -->
         <div class="bd-header-2">Reviews:</div>
 
-        <div class="card card-comment" style="width:auto;margin-bottom: 25px;">
+        <!-- <div class="card card-comment" style="width:auto;margin-bottom: 25px;">
             <div class="row">
                 <div class="profile-img col-4 col-md-1">
                     <img class="card-img" src="../static/img/profile-pic.jpg" alt="Card image">
@@ -104,7 +104,7 @@
                 <textarea type="text" class="form-control" id="review_text" placeholder="Enter your review here..." maxlength="250" required style="max-height: 6rem;min-height: 3rem;"></textarea>
             </div>
             <button class="btn-primary" data-toggle="modal" data-target="#reviewModal">Submit Review</button>
-        </div>
+        </div> -->
 
         {{ wtf.quick_form(form, "products/{0}/comment".format(product.id)) }}
 
