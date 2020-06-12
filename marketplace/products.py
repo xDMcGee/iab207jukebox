@@ -32,7 +32,7 @@ def create():
             oldId = 0
 
         dir_path = os.path.join(BASE_PATH, 'static/img/' + str(oldId + 1))
-        os.makedirs(dir_path)
+        os.makedirs(dir_path, exist_ok=True)
 
         upload_path = os.path.join(BASE_PATH, 'static/img/' + str(oldId + 1), secure_filename(filename))
         img_file.save(upload_path)
