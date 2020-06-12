@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for, jsonify
+from flask import Blueprint, render_template, request, redirect, url_for, jsonify, abort
 from werkzeug.utils import secure_filename
 from datetime import datetime
 from .models import Product, Comment, ProductType, SubTypes
@@ -12,11 +12,13 @@ bp = Blueprint('product', __name__, url_prefix='/products')
 @bp.route('/<id>')
 def show(id):
     product = Product.query.filter_by(id=id).first()
+    if product is None:
+        abort(404)
 
     #Reformatting the date to be user-readable
-    product.created_date = product.created_date.strftime('%d/%m/%Y')
+    created_date = product.created_date.strftime('%d/%m/%Y')
 
-    return render_template('show.html', product = product)
+    return render_template('show.html', product = product, created_date = created_date)
 
 @bp.route('/create', methods=['GET','POST'])
 def create():
