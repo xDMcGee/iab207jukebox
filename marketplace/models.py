@@ -1,9 +1,10 @@
 from . import db
 from datetime import datetime
+from flask_login import UserMixin
 
 from aenum import Enum, skip
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     __tablename__='users'
 
     id = db.Column(db.Integer, primary_key=True)
