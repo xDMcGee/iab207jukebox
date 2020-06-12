@@ -11,6 +11,7 @@ bp = Blueprint('product', __name__, url_prefix='/products')
 @bp.route('/<id>')
 def show(id):
     product = Product.query.filter_by(id=id).first()
+    print(product.category.name)
     return render_template('components/show.html', product = product)
 
 @bp.route('/create', methods=['GET','POST'])
