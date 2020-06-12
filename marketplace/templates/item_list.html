@@ -69,7 +69,7 @@
         }
 
         function updateCards() {
-            var my_url = "{{ url_for('main.list') }}"
+            var my_url = "{{ url_for('main.item_list') }}"
             window.location.replace(my_url + "?type=" + dropdown.pt.val() + "&subtype=" + dropdown.st.val());
         }
 
