@@ -12,6 +12,8 @@ bp = Blueprint('product', __name__, url_prefix='/products')
 @bp.route('/<id>')
 def show(id):
     product = Product.query.filter_by(id=id).first()
+    if product is None:
+        return redirect(url_for('not_found_error'))
 
     #Reformatting the date to be user-readable
     created_date = product.created_date.strftime('%d/%m/%Y')
