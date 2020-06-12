@@ -55,7 +55,7 @@ class ProductForm(FlaskForm):
 
 class FilterForm(FlaskForm):
     sub_type_choices = SubTypes.fullchoices(SubTypes)
-    product_sub_type = SelectField("Product Sub Type", choices=sub_type_choices, validate_choice=False, id="select_sub_type")
+    product_sub_type = SelectField(choices=sub_type_choices, validate_choice=False, id="select_sub_type")
 
 class CommentForm(FlaskForm):
     text = TextAreaField('Comment', validators=[InputRequired()])
