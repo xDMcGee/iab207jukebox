@@ -54,7 +54,7 @@ def create():
 
 @bp.route('/_get_subtypes/')
 def _get_subtypes():
-    product_type = request.args.get('pt', '0', type=int)
+    product_type = request.args.get('pt', 0, type=int)
     sub_type = SubTypes.specchoice(SubTypes, product_type)
     return jsonify(sub_type)
 
