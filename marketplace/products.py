@@ -18,8 +18,8 @@ def create():
     print('Method type', request.method)
     form = ProductForm()
     oldId = Product.query.limit(1).all()
-        oldId = oldId.id
-        print(oldId)
+    oldId = oldId.id
+    print(oldId)
     if form.validate_on_submit():
         cat = dict(form.product_type.choices).get(int(form.product_type.data))
 
