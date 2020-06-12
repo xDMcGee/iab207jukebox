@@ -56,6 +56,12 @@
                 dropdown.st.attr('disabled', 'disabled');
                 dropdown.st.empty();
                 $.getJSON("{{ url_for('product._get_subtypes') }}", send, function(data) {
+                    dropdown.st.append(
+                        $('<option>', {
+                            value: "All",
+                            text: "All"
+                        })
+                    );
                 data.forEach(function(item) {
                     dropdown.st.append(
                     $('<option>', {
@@ -73,7 +79,12 @@
 
             function updateCards() {
                 var my_url = "{{ url_for('main.item_list') }}"
-                window.location.replace(my_url + "?type=" + dropdown.ptn.val() + "&subtype=" + dropdown.st.val());
+                if (dropdown.st.val() == "All") {
+                    window.location.replace(my_url + "?type=" + dropdown.ptn.val());
+                }
+                else {
+                    window.location.replace(my_url + "?type=" + dropdown.ptn.val() + "&subtype=" + dropdown.st.val());
+                }
             }
 
             //Event listerner for product type dropdown change
