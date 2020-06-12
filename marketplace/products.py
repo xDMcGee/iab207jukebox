@@ -14,9 +14,9 @@ def show(id):
     product = Product.query.filter_by(id=id).first()
 
     #Reformatting the date to be user-readable
-    product.created_date = product.created_date.strftime('%d/%m/%Y')
+    created_date = product.created_date.strftime('%d/%m/%Y')
 
-    return render_template('show.html', product = product)
+    return render_template('show.html', product = product, created_date = created_date)
 
 @bp.route('/create', methods=['GET','POST'])
 def create():
