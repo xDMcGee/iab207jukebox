@@ -18,7 +18,7 @@
     </div>
 
     {% if not (arg is none) %}
-        {% with form = filterForm, options = SubTypes.specchoice(SubTypes, arg) %}
+        {% with form = filterForm %}
             {% include "./components/category_filter.html" %}
         {% endwith %}
     {% endif %}
@@ -64,7 +64,9 @@
                     })
                     );
                 });
-                dropdown.st.val(dropdown.std.val());
+                if (dropdown.std.val() != "None") {
+                    dropdown.st.val(dropdown.std.val());
+                }                
                 dropdown.st.removeAttr('disabled');
                 });
             }

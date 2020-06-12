@@ -6,7 +6,11 @@
         <div class="row text-center ">
             <input type="hidden" value="{{ ProductType[request.args.get('type')].value }}" id="select_product_type"/>
             <input type="hidden" value="{{ ProductType[request.args.get('type')].name }}" id="select_product_type_name"/>
-            <input type="hidden" value="{{ SubTypes[request.args.get('subtype')].name }}" id="select_sub_type_def"/>
+            {% if not(request.args.get('subtype') is none) %}
+                <input type="hidden" value="{{ SubTypes[request.args.get('subtype')].name }}" id="select_sub_type_def"/>
+            {% else %}
+                <input type="hidden" value="None" id="select_sub_type_def"/>
+            {% endif %}
             {{ wtf.quick_form(form) }}
         </div>
     </div>        

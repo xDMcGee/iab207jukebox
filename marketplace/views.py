@@ -45,10 +45,12 @@ def item_details():
 
 @bp.route('/list')
 def item_list():
+    
     filterForm = FilterForm()
     prType = request.args.get('type')
     prSubType = request.args.get('subtype')
     prSearch = request.args.get('search')
+
     if not (prType is None):
         if not (prSubType is None):
             prodlist = Product.query.filter(and_(Product.category == ProductType[prType], Product.subcategory == SubTypes[prSubType])).all()
