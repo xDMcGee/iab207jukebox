@@ -52,7 +52,7 @@ def create_app():
 
     @login_manager.unauthorized_handler
     def unauthorized():
-        return redirect(url_for('main.register'))
+        return redirect(url_for('main.authenticate'))
 
     #importing views module here to avoid circular references
     # a commonly used practice.
