@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for, jsonify, abort
+from flask import Blueprint, render_template, request, redirect, url_for, jsonify, abort, current_app
 from werkzeug.utils import secure_filename
 from datetime import datetime
 from .models import Product, Comment, ProductType, SubTypes
@@ -39,7 +39,11 @@ def comment(id):
     return redirect(url_for('.show', id = id))
 
 @bp.route('/create', methods=['GET','POST'])
+@login_required
 def create():
+    if not current_user.user_type == "Seller":
+        return current_app.login_manager.unauthorized()
+        
     print('Method type', request.method)
     form = ProductForm()
     if form.validate_on_submit():

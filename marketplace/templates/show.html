@@ -81,32 +81,6 @@
     <div class="product-details"> <!-- REVIEWS  -->
         <div class="bd-header-2">Reviews:</div>
 
-        <!-- orginal post comment template -->
-        <!-- <div class="card card-comment" style="width:auto;margin-bottom: 25px;">
-            <div class="row">
-                <div class="profile-img col-4 col-md-1">
-                    <img class="card-img" src="../static/img/profile-pic.jpg" alt="Card image">
-                </div>
-                <div class="comment-body col-8 col-md-11 row">
-                    <h4 class="bd-header-3 col-12 col-md-4 text-md-left text-right">User Name</h4>
-                    <div class="bd-header-3 col-12 col-md-4 text-md-center text-right d-flex">
-                        <span class="fa fa-star ml-auto"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star mr-md-auto"></span>
-                    </div>  
-                    <h4 class="bd-header-3 col-12 col-md-4 text-right">Posted: 20/02/2020</h4>                    
-                </div>
-                
-            </div>
-            <hr style="margin: 0px;">
-            <div class="form-group" style="margin: 0;">
-                <textarea type="text" class="form-control" id="review_text" placeholder="Enter your review here..." maxlength="250" required style="max-height: 6rem;min-height: 3rem;"></textarea>
-            </div>
-            <button class="btn-primary" data-toggle="modal" data-target="#reviewModal">Submit Review</button>
-        </div> -->
-
         {{ wtf.quick_form(form, "{0}/comment".format(product.id)) }}
 
         {% for comment in product.comments %}
