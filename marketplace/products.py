@@ -91,3 +91,7 @@ def _get_subtypes():
     product_type = request.args.get('pt', 0, type=int)
     sub_type = SubTypes.specchoice(SubTypes, product_type)
     return jsonify(sub_type)
+
+@bp.route('/order')
+def order():
+    return render_template("item_order.html")
