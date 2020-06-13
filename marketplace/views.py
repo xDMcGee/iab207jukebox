@@ -94,7 +94,7 @@ def register():
         else:
             bsb = register_form.bsb.data
             account_no = register_form.account_no.data
-            accTest = User.query.filter(or_(User.bsb == register_form.bsb.data, User.account_no == register_form.account_no.data)).first()
+            accTest = User.query.filter(or_(User.bsb == str(register_form.bsb.data), User.account_no == str(register_form.account_no.data))).first()
             if accTest:
                 flash('A User with this information already exists, please try again')
                 return redirect(url_for('main.register'))

@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms.fields import TextAreaField,SubmitField, StringField, PasswordField, IntegerField, MultipleFileField, SelectField, RadioField, DateField
 from flask_wtf.file import FileField, FileAllowed, FileRequired
-from wtforms.validators import InputRequired, Length, Email, EqualTo, Optional, NumberRange
+from wtforms.validators import InputRequired, Length, Email, EqualTo, Optional, ValidationError
 
 from .models import ProductType, SubTypes
 
@@ -10,6 +10,16 @@ class LoginForm(FlaskForm):
     user_name = StringField("User Name", validators=[InputRequired('Enter user name')])
     password = PasswordField("Password", validators=[InputRequired('Enter user password')])
     submit = SubmitField("Login")
+
+def length_check(checkType = 'BSB', reqLength = 6):
+    message = 'Please enter a valid %d digit %d number' % (reqLength, checkType)
+
+    def _length(form, field):
+        l = field.data and len(field.data) or 0
+        if l != reqLength:
+            raise ValidationError(message)
+    
+    return _length
 
 # this is the registration form
 class RegisterForm(FlaskForm):
@@ -23,8 +33,8 @@ class RegisterForm(FlaskForm):
 
     #Select what user account to use
     account_type = SelectField('Account Type', choices=[('Buyer','Buyer'),('Seller','Seller')], validate_choice=False, id="select_user_type")
-    bsb = IntegerField("BSB", validators=[NumberRange(min=000000, max=999999, message="This is not a valid BSB"), Optional()], id="bsb_input")
-    account_no = IntegerField("Account Number", validators=[NumberRange(min=000000000, max=999999999, message="This is not a valid Account Number"), Optional()], id="account_no_input")
+    bsb = IntegerField("BSB", validators=[Optional(), length_check()], id="bsb_input")
+    account_no = IntegerField("Account Number", validators=[Optional(), length_check(checkType='Account', reqLength=9)], id="account_no_input")
 
     #submit button
     submit = SubmitField("Register")
