@@ -100,7 +100,7 @@ class Comment(db.Model):
     __tablename__ ='comments'
     
     id = db.Column(db.Integer, primary_key=True)
-    user_name = db.Column(db.String(255), index=True, unique=True, nullable=False)
+    user_name = db.Column(db.String(255), index=True, nullable=False)
     text = db.Column(db.String(400))
     created_date = db.Column(db.DateTime, default=datetime.utcnow)
 

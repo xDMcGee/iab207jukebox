@@ -36,7 +36,7 @@ def comment(id):
         db.session.add(comment)
         db.session.commit()
         print('Your comment has been added', 'success')
-    return render_template('show.html', product = product, form = cform)
+    return redirect(url_for('.show'), id = id)
 
 @bp.route('/create', methods=['GET','POST'])
 def create():
