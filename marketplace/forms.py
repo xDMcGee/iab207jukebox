@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms.fields import TextAreaField,SubmitField, StringField, PasswordField, IntegerField, MultipleFileField, SelectField, RadioField, DateField
 from flask_wtf.file import FileField, FileAllowed, FileRequired
-from wtforms.validators import InputRequired, Length, Email, EqualTo
+from wtforms.validators import InputRequired, Length, Email, EqualTo, Optional
 
 from .models import ProductType, SubTypes
 
@@ -26,6 +26,8 @@ class RegisterForm(FlaskForm):
 
     #Select what user account to use
     account_type = RadioField('Account Type', choices=[('Buyer','Buyer'),('Seller','Seller')])
+    bsb = StringField("BSB", validators=[Optional()])
+    account_no = StringField("Account Number", validators=[Optional()])
     
 
     #submit button
