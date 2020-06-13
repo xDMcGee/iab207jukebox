@@ -32,7 +32,7 @@
 
       <!-- When you have login form, then do show the user a link to register -->
       {% if heading|lower =='login' %}
-      <div class="col-md-4">
+      <div class="col-md-12">
         <p>New user? <a href="{{ url_for('main.register') }}">Click here to register</a>.</p>
       </div>
       {% endif %}
