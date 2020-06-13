@@ -3,38 +3,69 @@
 
 {% block content %}
 
-<div class="page-header">
-    <h4>{{heading}}</h4>
-</div>
-
-
-
-<div class="container-fluid">
-{% with messages = get_flashed_messages() %}
-{% if messages %}
-    {% for message in get_flashed_messages() %}
-    <div class ="alert alert-warning">
-        <button type="button" class="close" data-dismiss="alert" aria-label="close">x</button>
-        {{message}}
+    <div class="page-header">
+        <h4>{{heading}}</h4>
     </div>
-    {% endfor %}
-{% endif %}
-{% endwith %}
 
-</div>
+    <div class="container-fluid">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in get_flashed_messages() %}
+                    <div class ="alert alert-warning">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="close">x</button>
+                        {{message}}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
 
 
 
-<!-- Form rendering is simple and easy if using bootstrap -->
-<div class="col-md-6">
-    {{wtf.quick_form(form)}}
-</div>
+    <!-- Form rendering is simple and easy if using bootstrap -->
+    <div class="col-md-6">
+        {{wtf.quick_form(form)}}
+    </div>
 
-<!-- When you have login form, then do show the user a link to register -->
-{% if heading|lower =='login' %}
-<div class="col-md-4">
-    <p>New user? <a href="{{ url_for('main.register') }}">Click here to register</a>.</p>
-</div>
-{% endif %}
+    <!-- When you have login form, then do show the user a link to register -->
+    {% if heading|lower =='login' %}
+        <div class="col-md-4">
+            <p>New user? <a href="{{ url_for('main.register') }}">Click here to register</a>.</p>
+        </div>
+    {% endif %}
 
+{% endblock %}
+
+{% block scripts %}
+  <script charset="utf-8" type="text/javascript">
+    $(function() {
+      //jQuery to get the dropdowns
+      var dropdown = {
+        ut: $('#select_user_type'),
+        bsb: $('#bsb_input'),
+        accno: $('#account_no_input')
+      };
+
+      //Call to update dropdowns on load
+      updateOptional();
+
+      //Function to call XHR and update the subtypes dropdown
+      function updateOptional() {
+          if (dropdown.ut.val() == "Buyer") {
+            dropdown.bsb.attr('display', 'none');
+            dropdown.accno.attr('display', 'none');
+          }
+          else {
+            dropdown.bsb.attr('display', 'block');
+            dropdown.accno.attr('display', 'block');
+          }
+        };
+
+      //Event listerner for product type dropdown change
+      dropdown.ut.on('change', function() {
+        updateOptional();
+      });
+
+    });
+  </script>
 {% endblock %}

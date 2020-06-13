@@ -25,9 +25,9 @@ class RegisterForm(FlaskForm):
     confirm = PasswordField("Confirm Password")
 
     #Select what user account to use
-    account_type = RadioField('Account Type', choices=[('Buyer','Buyer'),('Seller','Seller')])
-    bsb = StringField("BSB", validators=[Optional()])
-    account_no = StringField("Account Number", validators=[Optional()])
+    account_type = SelectField('Account Type', choices=[('Buyer','Buyer'),('Seller','Seller')], validate_choice=False, id="select_user_type")
+    bsb = StringField("BSB", validators=[Optional()], id="bsb_input")
+    account_no = StringField("Account Number", validators=[Optional()], id="account_no_input")
     
 
     #submit button
