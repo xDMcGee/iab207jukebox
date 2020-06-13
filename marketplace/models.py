@@ -73,8 +73,8 @@ class User(db.Model, UserMixin):
     password_hash = db.Column(db.String(255), nullable=False)
     email_id = db.Column(db.String(255), index=True, unique=True, nullable=False)
     user_type = db.Column(db.Enum('Buyer', 'Seller', name='userType'), nullable=False)
-    bsb = db.Column(db.String(6), unique=True)
-    account_no = db.Column(db.String(9), unique=True)
+    bsb = db.Column(db.String(6), unique=True, nullable=True)
+    account_no = db.Column(db.String(9), unique=True, nullable=True)
 
     products = db.relationship('Product', backref='user')
     comments = db.relationship('Comment', backref='user')
