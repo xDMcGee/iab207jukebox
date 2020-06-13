@@ -40,7 +40,9 @@ def comment(id):
 
 @bp.route('/create', methods=['GET','POST'])
 def create():
-    if not current_user.user_type == "Seller":
+    if not current_user.is_authenticated:
+        return current_app.login_manager.unauthorized()
+    elif not current_user.user_type == "Seller":
         return current_app.login_manager.unauthorized()
 
     print('Method type', request.method)
