@@ -23,8 +23,8 @@ class RegisterForm(FlaskForm):
 
     #Select what user account to use
     account_type = SelectField('Account Type', choices=[('Buyer','Buyer'),('Seller','Seller')], validate_choice=False, id="select_user_type")
-    bsb = IntegerField("BSB", validators=[Optional(), NumberRange(min=000000, max=999999, message="This is not a valid BSB")], id="bsb_input")
-    account_no = IntegerField("Account Number", validators=[Optional(), NumberRange(min=000000000, max=999999999, message="This is not a valid Account Number")], id="account_no_input")
+    bsb = IntegerField("BSB", validators=[NumberRange(min=000000, max=999999, message="This is not a valid BSB"), Optional()], id="bsb_input")
+    account_no = IntegerField("Account Number", validators=[NumberRange(min=000000000, max=999999999, message="This is not a valid Account Number"), Optional()], id="account_no_input")
 
     #submit button
     submit = SubmitField("Register")
