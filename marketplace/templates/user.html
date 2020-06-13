@@ -52,12 +52,12 @@
       //Function to call XHR and update the subtypes dropdown
       function updateOptional() {
           if (dropdown.ut.val() == "Buyer") {
-            dropdown.bsb.attr('display', 'none');
-            dropdown.accno.attr('display', 'none');
+            dropdown.bsb.style.display = "none";
+            dropdown.accno.style.display = "none";
           }
           else {
-            dropdown.bsb.attr('display', 'block');
-            dropdown.accno.attr('display', 'block');
+            dropdown.bsb.style.display = "block";
+            dropdown.accno.style.display = "block";
           }
         };
 
