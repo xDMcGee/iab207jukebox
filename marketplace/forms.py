@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms.fields import TextAreaField,SubmitField, StringField, PasswordField, IntegerField, MultipleFileField, SelectField, RadioField, DateField
 from flask_wtf.file import FileField, FileAllowed, FileRequired
-from wtforms.validators import InputRequired, Length, Email, EqualTo, Optional
+from wtforms.validators import InputRequired, Length, Email, EqualTo, Optional, NumberRange
 
 from .models import ProductType, SubTypes
 
@@ -15,9 +15,6 @@ class LoginForm(FlaskForm):
 class RegisterForm(FlaskForm):
     user_name = StringField("User Name", validators=[InputRequired()])
     email_id = StringField("Email Address", validators=[Email("Please enter a valid email")])
-    
-    #add buyer/seller - check if it is a buyer or seller hint : Use RequiredIf field
-
 
     #linking two fields - password should be equal to data entered in confirm
     password = PasswordField("Password", validators=[InputRequired(),
@@ -26,9 +23,8 @@ class RegisterForm(FlaskForm):
 
     #Select what user account to use
     account_type = SelectField('Account Type', choices=[('Buyer','Buyer'),('Seller','Seller')], validate_choice=False, id="select_user_type")
-    bsb = StringField("BSB", validators=[Optional()], id="bsb_input")
-    account_no = StringField("Account Number", validators=[Optional()], id="account_no_input")
-    
+    bsb = IntegerField("BSB", validators=[Optional(), NumberRange(min=000000, max=999999, message="This is not a valid BSB")], id="bsb_input")
+    account_no = IntegerField("Account Number", validators=[Optional(), NumberRange(min=000000000, max=999999999, message="This is not a valid Account Number")], id="account_no_input")
 
     #submit button
     submit = SubmitField("Register")

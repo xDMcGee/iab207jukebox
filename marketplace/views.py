@@ -85,8 +85,8 @@ def register():
 
         uTest = User.query.filter(or_(User.name == register_form.user_name.data, User.email_id == register_form.email_id.data)).first()
         if uTest:
-            flash('A User with this name or email already exists, please try again')
-            return redirect(url_for('main.authenticate'))
+            flash('A User with this information already exists, please try again')
+            return redirect(url_for('main.register'))
 
         if (register_form.account_type.data == "Buyer"):
             bsb = None
@@ -96,8 +96,8 @@ def register():
             account_no = register_form.account_no.data
             accTest = User.query.filter(or_(User.bsb == register_form.bsb.data, User.account_no == register_form.account_no.data)).first()
             if accTest:
-                flash('A User with this name or email already exists, please try again')
-                return redirect(url_for('main.authenticate'))
+                flash('A User with this information already exists, please try again')
+                return redirect(url_for('main.register'))
 
         user_add = User(name=register_form.user_name.data,
                         password_hash=generate_password_hash(register_form.confirm.data, salt_length=16),
