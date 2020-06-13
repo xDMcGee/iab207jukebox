@@ -4,7 +4,7 @@ from datetime import datetime
 from .models import Product, Comment, ProductType, SubTypes
 from .forms  import ProductForm, CommentForm
 from . import db
-from flask_login import current_user
+from flask_login import current_user, login_required
 
 import os
 
@@ -43,7 +43,7 @@ def comment(id):
 def create():
     if not current_user.user_type == "Seller":
         return current_app.login_manager.unauthorized()
-        
+
     print('Method type', request.method)
     form = ProductForm()
     if form.validate_on_submit():
