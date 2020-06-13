@@ -29,7 +29,7 @@ def comment(id):
         comment = Comment(
             user_name = current_user.name,
             text=cform.text.data,
-            product_id = product,
+            product_id = product.id,
             user_id = current_user.id
         )
 
