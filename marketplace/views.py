@@ -82,12 +82,22 @@ def register():
     register_form = RegisterForm()
     print('Method Type: ', request.method)
     if register_form.validate_on_submit():
+
+        uTest = User.query.filter(or_(User.name == register_form.user_name.data, User.email_id == register_form.email_id.data)).first()
+        if uTest:
+            flash('A User with this name or email already exists, please try again')
+            return redirect(url_for('main.authenticate'))
+
         if (register_form.account_type.data == "Buyer"):
             bsb = None
             account_no = None
         else:
             bsb = register_form.bsb.data
             account_no = register_form.account_no.data
+            accTest = User.query.filter(or_(User.bsb == register_form.bsb.data, User.account_no == register_form.account_no.data)).first()
+            if accTest:
+                flash('A User with this name or email already exists, please try again')
+                return redirect(url_for('main.authenticate'))
 
         user_add = User(name=register_form.user_name.data,
                         password_hash=generate_password_hash(register_form.confirm.data, salt_length=16),
@@ -95,10 +105,6 @@ def register():
                         user_type=register_form.account_type.data,
                         bsb=bsb,
                         account_no=account_no)
-        u1 = User.query.filter_by(name=name).first()
-        if u1:
-            flash('User name already exists, please login')
-            return redirect(url_for('main.authenticate'))
 
         db.session.add(user_add)
         db.session.commit()
