@@ -108,7 +108,7 @@ def order():
             quantity=order_form.quantity.data
         )
 
-        if quantity > Product.stock:
+        if order.quantity > Product.stock:
             print('Cannot purchase more than the available stock')
             return redirect(url_for('product.order'))
         # else:
