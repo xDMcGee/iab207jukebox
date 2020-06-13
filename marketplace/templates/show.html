@@ -82,7 +82,7 @@
         <div class="bd-header-2">Reviews:</div>
 
         {% if current_user.is_authenticated %}
-            {% if current_user.user_type is not "Seller" %}
+            {% if current_user.user_type != "Seller" %}
                 {{ wtf.quick_form(form, "{0}/comment".format(product.id)) }}
             {% endif %}
         {% endif %}
