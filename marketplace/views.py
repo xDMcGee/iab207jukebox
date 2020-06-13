@@ -95,6 +95,11 @@ def register():
                         user_type=register_form.account_type.data,
                         bsb=bsb,
                         account_no=account_no)
+        u1 = user_add.query.filter_by(name=name).first()
+        if u1:
+            flash('User name already exists, please login')
+            return redirect(url_for('main.authenticate'))
+            
         db.session.add(user_add)
         db.session.commit()
         print('Successfully created account!', 'Success')
