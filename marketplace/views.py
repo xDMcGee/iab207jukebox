@@ -82,12 +82,19 @@ def register():
     register_form = RegisterForm()
     print('Method Type: ', request.method)
     if register_form.validate_on_submit():
+        if (register_form.account_type.data == "Buyer"):
+            bsb = None
+            account_no = None
+        else:
+            bsb = register_form.bsb.data
+            account_no = register_form.account_no.data
+
         user_add = User(name=register_form.user_name.data,
                         password_hash=generate_password_hash(register_form.confirm.data, salt_length=16),
                         email_id=register_form.email_id.data,
                         user_type=register_form.account_type.data,
-                        bsb=register_form.bsb.data,
-                        account_no=register_form.account_no.data)
+                        bsb=bsb,
+                        account_no=account_no)
         db.session.add(user_add)
         db.session.commit()
         print('Successfully created account!', 'Success')
