@@ -26,9 +26,12 @@ def comment(id):
     product = Product.query.filter_by(id=id).first()
     cform = CommentForm()
     if cform.validate_on_submit():
-        comment = Comment(text=cform.text.data,
-        product = product,
-        user = current_user)
+        comment = Comment(
+            user_name = current_user.name,
+            text=cform.text.data,
+            product_id = product,
+            user_id = current_user.id
+        )
 
         db.session.add(comment)
         db.session.commit()
