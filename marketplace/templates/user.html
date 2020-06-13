@@ -43,7 +43,9 @@
       var dropdown = {
         ut: $('#select_user_type'),
         bsb: $('#bsb_input'),
-        accno: $('#account_no_input')
+        bsbl: $('label[for="bsb_input"]'),
+        accno: $('#account_no_input'),
+        accnol: $('label[for="account_no_input"]')
       };
 
       //Call to update dropdowns on load
@@ -53,11 +55,15 @@
       function updateOptional() {
           if (dropdown.ut.val() == "Buyer") {
             dropdown.bsb.css('display', 'none');
+            dropdown.bsbl.css('display', 'none');
             dropdown.accno.css('display', 'none');
+            dropdown.accnol.css('display', 'none');
           }
           else {
             dropdown.bsb.css('display', 'block');
+            dropdown.bsbl.css('display', 'inline-block');
             dropdown.accno.css('display', 'block');
+            dropdown.accnol.css('display', 'inline-block');
           }
         };
 
