@@ -12,7 +12,7 @@ class LoginForm(FlaskForm):
     submit = SubmitField("Login")
 
 def length_check(checkType = 'BSB', reqLength = 6):
-    message = 'Please enter a valid %d digit %d number' % (reqLength, checkType)
+    message = 'Please enter a valid %d digit %s number' % (reqLength, checkType)
 
     def _length(form, field):
         l = field.data and len(field.data) or 0
