@@ -37,6 +37,13 @@
         <p>New user? <a href="{{ url_for('main.register') }}">Click here to register</a>.</p>
       </div>
       {% endif %}
+
+      <!-- When you have account, then do show the user a link to login -->
+      {% if heading|lower !='login' %}
+      <div class="col-md-12">
+        <p>New user? <a href="{{ url_for('main.login') }}">Click here to login</a>.</p>
+      </div>
+      {% endif %}
     </div>
   </div>
 </div>
