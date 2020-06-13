@@ -100,7 +100,7 @@ def register():
         print('Successfully created account!', 'Success')
         #return redirect(url_for('user'))
 
-    return render_template("user.html", form=register_form)
+    return render_template("user.html", form=register_form, heading='Register')
 
 @bp.route('/signout')
 def signout():
