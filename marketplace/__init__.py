@@ -1,5 +1,5 @@
 #import flask - from the package import class
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
@@ -49,6 +49,10 @@ def create_app():
     @login_manager.user_loader
     def load_user(user_id):
         return User.query.get(int(user_id))
+
+    @login_manager.unauthorized_handler
+    def unauthorized():
+        return redirect(url_for('main.register'))
 
     #importing views module here to avoid circular references
     # a commonly used practice.
