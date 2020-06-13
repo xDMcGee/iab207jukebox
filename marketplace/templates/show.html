@@ -107,7 +107,7 @@
             <button class="btn-primary" data-toggle="modal" data-target="#reviewModal">Submit Review</button>
         </div> -->
 
-        {{ wtf.quick_form(form, "products/{0}/comment".format(product.id)) }}
+        {{ wtf.quick_form(form, "/{0}/comment".format(product.id)) }}
 
         {% for comment in product.comments %}
         <div class="card card-comment" style="width:auto;">
