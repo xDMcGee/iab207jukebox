@@ -3,79 +3,85 @@
 
 {% block content %}
 
-    <div class="page-header">
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-12">
+      <div class="page-header">
         <h4>{{heading}}</h4>
-    </div>
+      </div>
 
-    <div class="container-fluid">
+      <div class="container-fluid">
         {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for message in get_flashed_messages() %}
-                    <div class ="alert alert-warning">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="close">x</button>
-                        {{message}}
-                    </div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
-    </div>
-
-
-
-    <!-- Form rendering is simple and easy if using bootstrap -->
-    <div class="col-md-6">
-        {{wtf.quick_form(form)}}
-    </div>
-
-    <!-- When you have login form, then do show the user a link to register -->
-    {% if heading|lower =='login' %}
-        <div class="col-md-4">
-            <p>New user? <a href="{{ url_for('main.register') }}">Click here to register</a>.</p>
+        {% if messages %}
+        {% for message in get_flashed_messages() %}
+        <div class="alert alert-warning">
+          <button type="button" class="close" data-dismiss="alert" aria-label="close">x</button>
+          {{message}}
         </div>
-    {% endif %}
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+      </div>
+
+
+
+      <!-- Form rendering is simple and easy if using bootstrap -->
+      <div class="col-md-6">
+        {{wtf.quick_form(form)}}
+      </div>
+
+      <!-- When you have login form, then do show the user a link to register -->
+      {% if heading|lower =='login' %}
+      <div class="col-md-4">
+        <p>New user? <a href="{{ url_for('main.register') }}">Click here to register</a>.</p>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
 
 {% endblock %}
 
 {% block scripts %}
-  <script charset="utf-8" type="text/javascript">
-    $(function() {
-      //jQuery to get the dropdowns
-      var dropdown = {
-        ut: $('#select_user_type'),
-        bsb: $('#bsb_input'),
-        bsbl: $('label[for="bsb_input"]'),
-        accno: $('#account_no_input'),
-        accnol: $('label[for="account_no_input"]')
-      };
+<script charset="utf-8" type="text/javascript">
+  $(function () {
+    //jQuery to get the dropdowns
+    var dropdown = {
+      ut: $('#select_user_type'),
+      bsb: $('#bsb_input'),
+      bsbl: $('label[for="bsb_input"]'),
+      accno: $('#account_no_input'),
+      accnol: $('label[for="account_no_input"]')
+    };
 
-      //Call to update dropdowns on load
+    //Call to update dropdowns on load
+    updateOptional();
+
+    //Function to call XHR and update the subtypes dropdown
+    function updateOptional() {
+      if (dropdown.ut.val() == "Buyer") {
+        dropdown.bsb.removeAttr('required');
+        dropdown.bsb.css('display', 'none');
+        dropdown.bsbl.css('display', 'none');
+        dropdown.accno.removeAttr('required');
+        dropdown.accno.css('display', 'none');
+        dropdown.accnol.css('display', 'none');
+      }
+      else {
+        dropdown.bsb.attr('required', 'required');
+        dropdown.bsb.css('display', 'block');
+        dropdown.bsbl.css('display', 'inline-block');
+        dropdown.accno.attr('required', 'required');
+        dropdown.accno.css('display', 'block');
+        dropdown.accnol.css('display', 'inline-block');
+      }
+    };
+
+    //Event listerner for product type dropdown change
+    dropdown.ut.on('change', function () {
       updateOptional();
-
-      //Function to call XHR and update the subtypes dropdown
-      function updateOptional() {
-          if (dropdown.ut.val() == "Buyer") {
-            dropdown.bsb.removeAttr('required');
-            dropdown.bsb.css('display', 'none');
-            dropdown.bsbl.css('display', 'none');
-            dropdown.accno.removeAttr('required');
-            dropdown.accno.css('display', 'none');
-            dropdown.accnol.css('display', 'none');
-          }
-          else {
-            dropdown.bsb.attr('required', 'required');
-            dropdown.bsb.css('display', 'block');
-            dropdown.bsbl.css('display', 'inline-block');
-            dropdown.accno.attr('required', 'required');
-            dropdown.accno.css('display', 'block');
-            dropdown.accnol.css('display', 'inline-block');
-          }
-        };
-
-      //Event listerner for product type dropdown change
-      dropdown.ut.on('change', function() {
-        updateOptional();
-      });
-
     });
-  </script>
+
+  });
+</script>
 {% endblock %}
