@@ -75,7 +75,7 @@ class User(db.Model, UserMixin):
     user_type = db.Column(db.Enum('Buyer', 'Seller', name='userType'), nullable=False)
     bsb = db.Column(db.String(6), unique=True, nullable=True)
     account_no = db.Column(db.String(9), unique=True, nullable=True)
-    phone_number = db.Column(db.Integer(10), unique=True, nullable=True)
+    phone_number = db.Column(db.String(10), unique=True, nullable=True)
 
     products = db.relationship('Product', backref='user')
     comments = db.relationship('Comment', backref='user')
