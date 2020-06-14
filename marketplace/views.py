@@ -83,7 +83,7 @@ def register():
             flash('A User with this information already exists, please try again')
             return redirect(url_for('main.register'))
 
-        def phone_number_input(phone_number):
+        def phone_number_input(register_form.phone_number):
             while True:
                 try:
                     userInput = int(register_form.phone_number)
