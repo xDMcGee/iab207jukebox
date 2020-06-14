@@ -68,7 +68,7 @@
                                         <button class="bd-header-3 btn-primary col-8 col-md-6" style="margin: 20px;">Not Available as Seller</button>
                                     {% endif %}
                                 {% else %}
-                                    <a href="{{ url_for('main.authenticate') }}"class="">
+                                    <a href="{{ url_for('auth.authenticate') }}"class="">
                                         <button class="bd-header-3 btn-primary col-8 col-md-6" style="margin: 20px;">Order Item</button>
                                     </a>
                                 {% endif %}
@@ -115,7 +115,7 @@
             <div class="card card-comment" style="width:auto;">
                 <div class="row">
                     <div class="profile-img col-4 col-md-1">
-                        <img class="card-img" src="../static/img/profile-pic.jpg" alt="Card image">
+                        <img class="card-img" src="/static/img/profile-pic.jpg" alt="Card image">
                     </div>
                     <div class="comment-body col-8 col-md-11 row">
                         <h4 class="bd-header-3 col-12 col-md-4 text-md-left text-right">{{ comment.user_name }}</h4>

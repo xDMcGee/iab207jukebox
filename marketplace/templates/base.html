@@ -87,8 +87,8 @@
                             <a data-toggle="dropdown" class=" nav-item nav-link dropdown-toggle btn-primary" href="#" aria-expanded="false">Account</a>
                             <ul class="dropdown-menu">
                                 <a class="dropdown-item dropdown-title font-weight-bold disabled">Not logged in</a>
-                                <a class="dropdown-item" href="{{ url_for('main.register') }}">Register</a>
-                                <a class="dropdown-item" href="{{ url_for('main.authenticate') }}">Login</a>
+                                <a class="dropdown-item" href="{{ url_for('auth.register') }}">Register</a>
+                                <a class="dropdown-item" href="{{ url_for('auth.authenticate') }}">Login</a>
                             </ul>
                         {% endif %}
                         
@@ -173,7 +173,7 @@
         <script type="text/javascript">
             $(function() {
                 $('#signoutbtn').click(function() {
-                    $.getJSON("{{ url_for('main.signout') }}", function(data) {
+                    $.getJSON("{{ url_for('auth.signout') }}", function(data) {
                         $('#signOutModal').modal('hide');
                         $('#signedOutModal').modal('show');
                     });
