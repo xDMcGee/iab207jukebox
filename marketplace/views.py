@@ -85,7 +85,7 @@ def register():
 
         while True:
             try:
-                value = int(register_form.phone_number)
+                register_form.phone_number = int(register_form.phone_number)
             except ValueError:
                 flash('Please input 10 digit number')
                 return redirect(url_for('main.register'))
