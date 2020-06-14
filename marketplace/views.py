@@ -78,10 +78,28 @@ def register():
     print('Method Type: ', request.method)
     if register_form.validate_on_submit():
 
-        uTest = User.query.filter(or_(User.name == register_form.user_name.data, User.email_id == register_form.email_id.data)).first()
+        uTest = User.query.filter(or_(User.name == register_form.user_name.data, User.email_id == register_form.email_id.data, User.phone_number == register_form.phone_number.data)).first()
         if uTest:
             flash('A User with this information already exists, please try again')
             return redirect(url_for('main.register'))
+
+        # while True:
+        #     try:
+        #         register_form.phone_number = int(register_form.phone_number)
+        #     except ValueError:
+        #         flash('Please input 10 digit number')
+        #         return redirect(url_for('main.register'))
+
+
+        # def phone_number_input(register_form.phone_number):
+        #     while True:
+        #         try:
+        #             userInput = int(register_form.phone_number)
+        #         except ValueError:
+        #             print("Not an integer! Try again")
+        #             return redirect(url_for('main.register'))
+        #         else: 
+        #             return userInput
 
         if (register_form.account_type.data == "Buyer"):
             bsb = None
