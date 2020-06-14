@@ -25,6 +25,7 @@ def length_check(checkType = 'BSB', reqLength = 6):
 class RegisterForm(FlaskForm):
     user_name = StringField("User Name", validators=[InputRequired()])
     email_id = StringField("Email Address", validators=[Email("Please enter a valid email")])
+    phone_number = IntegerField('Phone number', validators=[InputRequired, length_check(checkType='Number', reqLength=10)])
 
     #linking two fields - password should be equal to data entered in confirm
     password = PasswordField("Password", validators=[InputRequired(),
@@ -72,5 +73,3 @@ class CommentForm(FlaskForm):
 class OrderForm(FlaskForm):
     address = StringField('Delivery Addresss', validators=[InputRequired()])
     quantity = IntegerField('Quantity', validators=[InputRequired()])
-    bsb = IntegerField('BSB number', validators=[InputRequired()])
-    account_number = IntegerField('Account Number', validators=[InputRequired()])
