@@ -83,12 +83,12 @@ def register():
             flash('A User with this information already exists, please try again')
             return redirect(url_for('main.register'))
 
-        while True:
-            try:
-                register_form.phone_number = int(register_form.phone_number)
-            except ValueError:
-                flash('Please input 10 digit number')
-                return redirect(url_for('main.register'))
+        # while True:
+        #     try:
+        #         register_form.phone_number = int(register_form.phone_number)
+        #     except ValueError:
+        #         flash('Please input 10 digit number')
+        #         return redirect(url_for('main.register'))
 
 
         # def phone_number_input(register_form.phone_number):
