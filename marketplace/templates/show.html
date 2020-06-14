@@ -57,11 +57,21 @@
                                 </div>
                                 <div class="row">
                                     <div class="bd-header-3 col-8 text-left"><b>Date Posted:</b></div>
-                                    <div class="bd-header-3 col-4" style="text-align: right;">{{ created_date }}</div>
+                                    <div class="bd-header-3 col-4" style="text-align: right;">{{ product.created_date.strftime('%d/%m/%Y') }}</div>
                                 </div>
-                                <a href="{{ url_for('main.item_order') }}"class="">
-                                    <button class="bd-header-3 btn-primary col-8 col-md-6" style="margin: 20px;">Order Item</button>
-                                </a>
+                                {% if current_user.is_authenticated %}
+                                    {% if current_user.user_type != "Seller" %}
+                                        <a href="{{ url_for('product.order', id = product.id) }}"class="">
+                                            <button class="bd-header-3 btn-primary col-8 col-md-6" style="margin: 20px;">Order Item</button>
+                                        </a>
+                                    {% else %}
+                                        <button class="bd-header-3 btn-primary col-8 col-md-6" style="margin: 20px;">Not Available as Seller</button>
+                                    {% endif %}
+                                {% else %}
+                                    <a href="{{ url_for('main.authenticate') }}"class="">
+                                        <button class="bd-header-3 btn-primary col-8 col-md-6" style="margin: 20px;">Order Item</button>
+                                    </a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -73,18 +83,32 @@
                 </div>
             </div>
         </div>
-
-
     </section> <!-- End Featured Items Section -->
     <hr>
+
+    <div class="bd-content">
+        {% if similarProducts %}
+            {% with products = similarProducts, type = product.category.name, title = "Similar Products:" %}
+                    {% include "./components/item_card.html" %}
+            {% endwith %}
+        {% endif %}
+    </div>
 
     <div class="product-details"> <!-- REVIEWS  -->
         <div class="bd-header-2">Reviews:</div>
 
         {% if current_user.is_authenticated %}
             {% if current_user.user_type != "Seller" %}
-                {{ wtf.quick_form(form, "{0}/comment".format(product.id)) }}
+                {% if hasBought %}
+                    {{ wtf.quick_form(form, "{0}/comment".format(product.id)) }}
+                {% else %}
+                    <h3 style="color: red; text-align: center;">You must purchase this item to leave a comment</h3>
+                {% endif %}
+            {% else %}
+                <h3 style="color: red; text-align: center;">Sellers cannot leave comments</h3>
             {% endif %}
+        {% else %}
+            <h3 style="color: red; text-align: center;">You must be logged in to leave a comment</h3>
         {% endif %}
 
         {% for comment in product.comments %}

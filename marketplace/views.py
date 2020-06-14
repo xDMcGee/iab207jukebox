@@ -42,16 +42,11 @@ def item_list():
             prodlist = Product.query.filter_by(category = ProductType[prType]).all()
         return render_template("item_list.html", prodlist = prodlist, arg = ProductType[prType].value, filterForm = filterForm)
     elif not (prSearch is None):
-        prodlist = Product.query.filter(or_(Product.album_title.ilike('%' + prSearch + '%'), Product.artist_name.ilike('%' + prSearch + '%'))).all()
+        prodlist = Product.query.filter(or_(Product.item_name.ilike('%' + prSearch + '%'), Product.item_manufacturer.ilike('%' + prSearch + '%'))).all()
         return render_template("item_list.html", prodlist = prodlist, arg = None)
     else:
         prodlist = Product.query.all()
     return render_template("item_list.html", prodlist = prodlist, arg = None)
-
-
-@bp.route('/item_order')
-def item_order():
-    return render_template("item_order.html")
 
 @bp.route('/login', methods=['GET', 'POST'])
 def authenticate(): #view function
@@ -109,7 +104,7 @@ def register():
         db.session.add(user_add)
         db.session.commit()
         print('Successfully created account!', 'Success')
-        #return redirect(url_for('user'))
+        return redirect(url_for('main.authenticate'))
 
     return render_template("user.html", form=register_form, heading='Register')
 

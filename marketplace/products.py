@@ -1,10 +1,11 @@
 from flask import Blueprint, render_template, request, redirect, url_for, jsonify, abort, current_app
 from werkzeug.utils import secure_filename
 from datetime import datetime
-from .models import Product, Comment, ProductType, SubTypes
+from .models import Product, Comment, ProductType, SubTypes, Order
 from .forms import ProductForm, CommentForm, OrderForm
 from . import db
 from flask_login import current_user
+from sqlalchemy import and_
 
 import os
 
@@ -14,13 +15,19 @@ bp = Blueprint('product', __name__, url_prefix='/products')
 @bp.route('/<id>')
 def show(id):
     product = Product.query.filter_by(id=id).first()
+
     if product is None:
         abort(404)
 
+    similarProducts = Product.query.filter(and_(Product.category == product.category, Product.id != product.id)).limit(6).all()
+
+    if current_user.is_authenticated:
+        if current_user.user_type == "Buyer":
+            hasBought = Order.query.filter(and_(Order.product_id == id, Order.buyer_id == current_user.id)).all()
+            
     # Reformatting the date to be user-readable
-    created_date = product.created_date.strftime('%d/%m/%Y')
     cform = CommentForm()
-    return render_template('show.html', product=product, created_date=created_date, form=cform)
+    return render_template('show.html', product=product, hasBought = hasBought, similarProducts = similarProducts, form=cform)
 
 
 @bp.route('/<id>/comment', methods=['GET', 'POST'])
@@ -98,8 +105,10 @@ def _get_subtypes():
     return jsonify(sub_type)
 
 
-@bp.route('/order', methods=['GET', 'POST'])
-def order():
+@bp.route('/order/<id>', methods=['GET', 'POST'])
+def order(id):
+    product = Product.query.filter_by(id=id).first()
+    similarProducts = Product.query.filter(and_(Product.category == product.category, Product.id != product.id)).limit(6).all()
     order_form = OrderForm()
 
     if order_form.validate_on_submit():
@@ -114,4 +123,4 @@ def order():
         # else:
         #     print('Order has been placed with order ID:', order_id)
         #     return redirect(url_for())
-    return render_template("item_order.html")
+    return render_template("item_order.html", product = product, similarProducts = similarProducts)

@@ -77,6 +77,8 @@ class User(db.Model, UserMixin):
     account_no = db.Column(db.String(9), unique=True, nullable=True)
 
     products = db.relationship('Product', backref='user')
+    order_buyer = db.relationship('Order', foreign_keys="Order.buyer_id", backref="order_buyer")
+    order_seller = db.relationship('Order', foreign_keys="Order.seller_id", backref="order_seller")
     comments = db.relationship('Comment', backref='user')
 
 class Product(db.Model):
@@ -113,4 +115,6 @@ class Order(db.Model):
     order_id = db.Column(db.Integer, primary_key=True, unique=True, nullable=False)
     date_placed = db.Column(db.DateTime, default=datetime.utcnow)
 
+    product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
+    buyer_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     seller_id = db.Column(db.Integer, db.ForeignKey('users.id'))
