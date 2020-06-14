@@ -83,15 +83,16 @@ def register():
             flash('A User with this information already exists, please try again')
             return redirect(url_for('main.register'))
 
-        def phone_number_input(register_form.phone_number):
+        def phone_number_input(phone_number):
             while True:
                 try:
-                    userInput = int(register_form.phone_number)
+                    userInput = int(phone_number)
                 except ValueError:
                     print("Not an integer! Try again")
                     return redirect(url_for('main.register'))
                 else: 
                     return userInput
+                    break
 
         if (register_form.account_type.data == "Buyer"):
             bsb = None
