@@ -99,7 +99,8 @@ def register():
                         email_id=register_form.email_id.data,
                         user_type=register_form.account_type.data,
                         bsb=bsb,
-                        account_no=account_no)
+                        account_no=account_no,
+                        phone_number=register_form.phone_number.data)
 
         db.session.add(user_add)
         db.session.commit()
