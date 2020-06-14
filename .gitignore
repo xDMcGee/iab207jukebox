@@ -1,3 +1,4 @@
 .vscode/
 marketplace/__pycache__/
 marketplace/static/img/*/
+marketplace/marketplace.sqlite
