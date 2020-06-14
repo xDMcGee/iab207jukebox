@@ -92,7 +92,6 @@ def register():
                     return redirect(url_for('main.register'))
                 else: 
                     return userInput
-                    break
 
         if (register_form.account_type.data == "Buyer"):
             bsb = None
