@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms.fields import TextAreaField, SubmitField, StringField, PasswordField, IntegerField, MultipleFileField, SelectField, RadioField, DateField
+from wtforms.fields import TextAreaField,SubmitField, StringField, PasswordField, IntegerField, MultipleFileField, SelectField, RadioField, DateField
 from flask_wtf.file import FileField, FileAllowed, FileRequired
 from wtforms.validators import InputRequired, Length, Email, EqualTo, Optional, ValidationError, Regexp
 
@@ -32,11 +32,16 @@ def length_check(checkType='BSB', reqLength=6):
 
 class RegisterForm(FlaskForm):
     user_name = StringField("User Name", validators=[InputRequired()])
+<<<<<<< HEAD
     email_id = StringField("Email Address", validators=[
                            Email("Please enter a valid email")])
     phone_number = StringField('Phone number', validators=[InputRequired(),
                                                 length_check(checkType='Phone', reqLength=10),
                                                 Regexp('\d', message='This is not an integer number, please see the example and try again')])
+=======
+    email_id = StringField("Email Address", validators=[Email("Please enter a valid email")])
+    phone_number = StringField('Phone number', validators=[InputRequired(), length_check(checkType='Phone number', reqLength=10), Regexp('^[0-9]+$', message='Please only use valid numbers 0-9')])
+>>>>>>> a06490a88a0f50516caf2b9d6cd69314e0f458e0
 
     # linking two fields - password should be equal to data entered in confirm
     password=PasswordField("Password", validators=[InputRequired(),
