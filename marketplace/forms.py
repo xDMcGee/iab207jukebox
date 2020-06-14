@@ -35,7 +35,7 @@ class RegisterForm(FlaskForm):
     email_id = StringField("Email Address", validators=[
                            Email("Please enter a valid email")])
     phone_number = StringField('Phone number', validators=[InputRequired(),
-                                                length_check(checkType='Phone number', reqLength=10),
+                                                length_check(checkType='Phone', reqLength=10),
                                                 Regexp('\d', message='This is not an integer number, please see the example and try again')])
 
     # linking two fields - password should be equal to data entered in confirm
