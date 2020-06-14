@@ -1,1 +1,3 @@
 .vscode/
+./marketplace/_pycache_
+./marketplace/static/img/*/
