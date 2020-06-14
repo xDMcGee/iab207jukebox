@@ -86,7 +86,7 @@ def register():
         def phone_number_input(phone_number):
             while True:
                 try:
-                    userInput = int(phone_number)
+                    userInput = int(register_form.phone_number)
                 except ValueError:
                     print("Not an integer! Try again")
                     return redirect(url_for('main.register'))
