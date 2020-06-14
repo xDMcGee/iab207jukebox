@@ -26,6 +26,7 @@ class LoginForm(FlaskForm):
 # this is the registration form
 class RegisterForm(FlaskForm):
     user_name = StringField("User Name", validators=[InputRequired()])
+
     email_id = StringField("Email Address", validators=[Email("Please enter a valid email")])
     phone_number = StringField('Phone number', validators=[InputRequired(), length_check(checkType = 'Phone number', reqLength = 10), Regexp('^[0-9]+$', message='Please only use valid numbers 0-9')])
 
