@@ -155,7 +155,7 @@ def _delete_product():
     id = request.args.get('id', 0, type=int)
     prod = Product.query.filter_by(id = id).first()
     if Order.query.filter_by(product_id = id).first():
-        flash('You cannot delete this product as orders exist for it')
+        flash('Product has existing orders, cannot be deleted.')
         return redirect(url_for('.mine'))
 
     #Check to make sure request is coming from the seller
