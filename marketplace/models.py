@@ -6,6 +6,7 @@ from aenum import Enum, skip
 #Custom Imports
 from . import db
 
+
 #Custom class for Enum inheritance
 class FormEnum(Enum):
     #Function to generate dropdown-compatible list of items
@@ -13,11 +14,13 @@ class FormEnum(Enum):
     def choices(cls):
         return [(str(choice.name), choice.value) for choice in cls]
 
+
 #Enum for product types
 class ProductType(FormEnum):
     Vinyl = 0
     Accessory = 1
     Player = 2
+
 
 #Class that contains all product subtype information
 class SubTypes(FormEnum):
@@ -70,10 +73,12 @@ class SubTypes(FormEnum):
     auto = ProductSubType.TableType.auto
     manual = ProductSubType.TableType.manual
 
+
 #User db model
 class User(db.Model, UserMixin):
     __tablename__='users'
 
+    #Primary columns
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), index=True, unique=True, nullable=False)
     password_hash = db.Column(db.String(255), nullable=False)
@@ -83,13 +88,17 @@ class User(db.Model, UserMixin):
     account_no = db.Column(db.String(9), unique=True, nullable=True)
     phone_number = db.Column(db.String(10), unique=True, nullable=False)
 
+    #Relationship definitions
     products = db.relationship('Product', backref='user')
     orders = db.relationship('Order',  backref="user")
     comments = db.relationship('Comment', backref='user')
 
+
+#Product db model
 class Product(db.Model):
     __tablename__='products'
 
+    #Primary columns
     id = db.Column(db.Integer, primary_key=True)
     item_name = db.Column(db.String(255), index=True, nullable=False)
     item_manufacturer = db.Column(db.String(255), index=True, nullable=False)
@@ -101,23 +110,34 @@ class Product(db.Model):
     image = db.Column(db.String(255), index=True) #, nullable=False)
     created_date = db.Column(db.DateTime, default = datetime.utcnow)
 
+    #Foreign key columns
     seller_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    comments = db.relationship('Comment', backref='product')
 
+    #Relationship definitions
+    comments = db.relationship('Comment', backref='product')
+    orders = db.relationship('Order',  backref="products")
+
+
+#Comment db model
 class Comment(db.Model):
     __tablename__ ='comments'
     
+    #Primary columns
     id = db.Column(db.Integer, primary_key=True)
     user_name = db.Column(db.String(255), index=True, nullable=False)
     text = db.Column(db.String(400))
     created_date = db.Column(db.DateTime, default=datetime.utcnow)
 
+    #Foreign key columns
     product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
+
+#Order db model
 class Order(db.Model):
     __tablename__='orders'
 
+    #Primary columns
     order_id = db.Column(db.Integer, primary_key=True)
     quantity = db.Column(db.Integer, nullable = False)
     date_placed = db.Column(db.DateTime, default=datetime.utcnow)
@@ -127,5 +147,9 @@ class Order(db.Model):
     state = db.Column(db.String(20), nullable=False)
     postcode = db.Column(db.String(4), nullable=False)
 
+    #Relationship definitions
+    product = db.relationship('Product', backref='order')
+
+    #Foreign key columns
     product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
     buyer_id = db.Column(db.Integer, db.ForeignKey('users.id'))
