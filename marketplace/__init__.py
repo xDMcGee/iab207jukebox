@@ -75,6 +75,7 @@ def create_app():
 
     app.jinja_env.globals.update(ProductType=ProductType)
     app.jinja_env.globals.update(SubTypes=SubTypes)
+    app.jinja_env.globals.update(Product=Product)
 
     #Error handling returns set pages
     @app.errorhandler(404)
