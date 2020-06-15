@@ -120,10 +120,10 @@ def _delete_product():
 
     id = request.args.get('id', 0, type=int)
 
-    prod = Product.query.filter_by(id = id).delete()
+    prod = Product.query.filter_by(id = id).first()
 
     if prod.seller_id == current_user.id:
-        db.session.delete(prod)
+        Product.query.filter_by(id = id).delete()
         db.session.commit()
     else:
         print('Not authorised for this delete action')
