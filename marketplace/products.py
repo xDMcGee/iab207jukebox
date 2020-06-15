@@ -160,6 +160,8 @@ def order(id):
             product.stock -= order_form.quantity.data
             db.session.add(order)
             db.session.commit()
+
+            # return render_template("")
     return render_template("item_order.html", product = product, similarProducts = similarProducts, form = order_form)
 
 
