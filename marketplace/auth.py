@@ -2,6 +2,7 @@ from flask import Blueprint, flash, render_template, request, url_for, redirect
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, logout_user
 from sqlalchemy import and_, or_
+from flask_wtf.csrf import generate_csrf
 
 from . import db
 from .forms import LoginForm, RegisterForm
@@ -13,6 +14,7 @@ bp = Blueprint('auth', __name__, url_prefix='/auth')
 @bp.route('/login', methods=['GET', 'POST'])
 def authenticate(): #view function
     print('In Login View function')
+    generate_csrf()
     login_form = LoginForm()
     error=None
     if(login_form.validate_on_submit()==True):

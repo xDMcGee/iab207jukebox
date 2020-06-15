@@ -28,8 +28,6 @@ def length_check(checkType='BSB', reqLength=6):
     return _length
 
 # this is the registration form
-
-
 class RegisterForm(FlaskForm):
     user_name = StringField("User Name", validators=[InputRequired()])
     email_id = StringField("Email Address", validators=[Email("Please enter a valid email")])
