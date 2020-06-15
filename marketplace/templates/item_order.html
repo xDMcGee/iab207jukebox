@@ -35,6 +35,16 @@
                                 <div class="bd-header-3 col-8">Stock Available:</div>
                                 <div class="bd-header-3 col-4" style="text-align: right;">{{ product.stock }}</div>
                             </div>
+                            <div class="container-fluid">
+                                {% with messages = get_flashed_messages() %}
+                                  {% if messages %}
+                                    {% for message in get_flashed_messages() %}
+                                      <div class="alert alert-warning">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="close">x</button>{{ message }}</div>
+                                    {% endfor %}
+                                  {% endif %}
+                                {% endwith %}
+                            </div>
                             {{ wtf.quick_form(form) }}
                         </div>
                     </div>
