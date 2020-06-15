@@ -116,6 +116,11 @@ class Order(db.Model):
     order_id = db.Column(db.Integer, primary_key=True)
     quantity = db.Column(db.Integer, nullable = False)
     date_placed = db.Column(db.DateTime, default=datetime.utcnow)
+    street_address = db.Column(db.String(50), unique=True, nullable=False)
+    street_address_2 = db.Column(db.String(50), unique=True, nullable=False)
+    city = db.Column(db.String(20))
+    state = db.Column(db.String(20))
+    postcode = db.Column(db.String(4))
 
     product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
     buyer_id = db.Column(db.Integer, db.ForeignKey('users.id'))
