@@ -36,7 +36,7 @@ class RegisterForm(FlaskForm):
                            Email("Please enter a valid email")])
     phone_number = StringField('Phone number', validators=[InputRequired(),
                                                 length_check(checkType='Phone', reqLength=10),
-                                                Regexp('\d', message='Please input number')])
+                                                Regexp('^[0-9]+$'), message='Please input number')])
 
     # linking two fields - password should be equal to data entered in confirm
     password=PasswordField("Password", validators=[InputRequired(),
@@ -46,8 +46,8 @@ class RegisterForm(FlaskForm):
     # Select what user account to use
     account_type=SelectField('Account Type', choices=[(
         'Buyer', 'Buyer'), ('Seller', 'Seller')], validate_choice=False, id="select_user_type")
-    bsb=IntegerField("BSB", validators=[
-                     Optional(), length_check(checkType='BSB', reqLength=6)], id="bsb_input")
+    bsb=StringField("BSB", validators=[
+                     Optional(), length_check(checkType='BSB', reqLength=6), Regexp('^[0-9]+$')], id="bsb_input")
     account_no=IntegerField("Account Number", validators=[Optional(), length_check(
         checkType='Account', reqLength=9)], id="account_no_input")
 
