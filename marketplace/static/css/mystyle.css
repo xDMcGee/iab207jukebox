@@ -175,9 +175,18 @@ p {
     background-color: rgb(219, 192, 116) !important;
 }
 
-.dropdown-menu{
-    left:-50px;
+@media (max-width: 1920) {
+    .dropdown-menu{
+        left:-50px;
+    }
 }
+
+@media (max-width: 993px) {
+    .dropdown-menu{
+        left:-30px;
+    }
+}
+
 .inputText{
     padding: 0%;
 }
