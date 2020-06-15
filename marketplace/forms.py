@@ -32,7 +32,7 @@ class LoginForm(FlaskForm):
 class RegisterForm(FlaskForm):
     #Required inputs
     user_name = StringField("User Name", validators=[InputRequired()])
-    email_id = StringField("Email Address", validators=[Email("Please enter a valid email")])
+    email_id = StringField("Email Address", validators=[InputRequired(), Email("Please enter a valid email")])
     phone_number = StringField('Phone number', validators=[InputRequired(), length_check(checkType='Phone', reqLength=10), Regexp('^[0-9]+$', message='Please use only the numbers 0-9')])
     #linking two fields - password should be equal to data entered in confirm
     password = PasswordField("Password", validators=[InputRequired(), EqualTo('confirm', message="Passwords should match")])
