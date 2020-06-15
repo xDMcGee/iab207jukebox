@@ -104,7 +104,7 @@ class Product(db.Model):
     item_manufacturer = db.Column(db.String(255), index=True, nullable=False)
     price = db.Column(db.Integer, nullable=False)
     stock = db.Column(db.Integer, nullable=False)
-    description = db.Column(db.String(255), nullable=False)
+    description = db.Column(db.String(1000), nullable=False)
     category = db.Column(db.Enum(ProductType), index=True, nullable=False)
     subcategory = db.Column(db.Enum(SubTypes), index=True, nullable=False)
     image = db.Column(db.String(255), index=True) #, nullable=False)
