@@ -151,7 +151,7 @@ def order(id):
                 seller_id = product.seller_id,
                 quantity = order_form.quantity.data
             )
-    return render_template("item_order.html", product = product, similarProducts = similarProducts)
+    return render_template("item_order.html", product = product, similarProducts = similarProducts, form = order_form)
 
 
 @bp.route('/_get_subtypes/')
