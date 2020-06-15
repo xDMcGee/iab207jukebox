@@ -23,6 +23,7 @@ def create_app():
     UPLOAD_FOLDER = '/static/img'
     app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
+    #Disable security due to CSRF token bug
     app.config['WTF_CSRF_ENABLED'] = False
     app.config['WTF_CSRF_SECRET_KEY'] ='pineapples'
     csrf = CSRFProtect()
@@ -73,9 +74,9 @@ def create_app():
     from . import auth
     app.register_blueprint(auth.bp)
 
+    #Define global variables for access inside jinja templates
     app.jinja_env.globals.update(ProductType=ProductType)
     app.jinja_env.globals.update(SubTypes=SubTypes)
-    app.jinja_env.globals.update(Product=Product)
 
     #Error handling returns set pages
     @app.errorhandler(404)
