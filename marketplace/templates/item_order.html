@@ -22,7 +22,7 @@
                 <div class="row">
                     <div class="products-img col-12 col-md-3">
 
-                        <img class="mx-auto d-block rounded  img-thumbnail " src="../static/img/{{ product.id }}/{{ product.image }}" alt="Card image ">
+                        <img class="mx-auto d-block rounded  img-thumbnail " src="static/img/{{ product.id }}/{{ product.image }}" alt="Card image ">
 
                     </div>
                     <div class="col-12 col-md-9">
@@ -36,18 +36,6 @@
                                 <div class="bd-header-3 col-4" style="text-align: right;">{{ product.stock }}</div>
                             </div>
                             {{ wtf.quick_form(form) }}
-                            <!-- <div class="row">
-                                <div class="bd-header-3 col-12 col-md-8">Select quantity to purchase:</div>
-                                <div class="bd-header-3 col-12 col-md-4">
-                                    <input type="number" id="replyNumber" class="float-right text-right col inputText" min="1" max="100" step="1"placeholder="0"data-bind="value:replyNumber">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="bd-header-3 col-12 col-md-8">Delivery Address:</div>
-                                <div class="bd-header-3 col-12 col-md-4">
-                                    <input type="text" class="float-right text-right col inputText"placeholder="10 Streetname St, Brisbane, Queensland">
-                                </div>
-                            </div> -->
                             <div class="col text-center col-12 col-md-4 ml-auto" style="padding-top: 20px;">
                                 <button class="bd-header-3 btn-primary col-8" data-toggle="modal" data-target="#orderModal">Order Item</button>
                             </div>
