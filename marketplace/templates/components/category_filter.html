@@ -3,7 +3,7 @@
 <section> <!--  Product Category Filter   -->
     <div class="col-10 category-filter">
         <h4 class="bd-header-3 text-white text-center">Filter by Category:</h4>
-        <div class="row text-center ">
+        <div class="row justify-content-center ">
             <input type="hidden" value="{{ ProductType[request.args.get('type')].value }}" id="select_product_type"/>
             <input type="hidden" value="{{ ProductType[request.args.get('type')].name }}" id="select_product_type_name"/>
             {% if not(request.args.get('subtype') is none) %}
