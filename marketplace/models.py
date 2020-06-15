@@ -120,7 +120,7 @@ class Order(db.Model):
     street_address_2 = db.Column(db.String(50), unique=True, nullable=False)
     city = db.Column(db.String(20))
     state = db.Column(db.String(20))
-    postcode = db.Column(db.Integer(4))
+    postcode = db.Column(db.String(4))
 
     product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
     buyer_id = db.Column(db.Integer, db.ForeignKey('users.id'))
