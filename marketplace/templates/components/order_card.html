@@ -14,12 +14,12 @@
                                 <h5 class="mt-0">{{ ord.product_id.item_name }}</h5>
                             </div>
                             <div class="text-center col-4">
-                                <a href="{{ url_for('ord.product_id.show', id = ord.product_id) }}" class="btn btn-primary mt-2 align-self-center ">See Product</a>
+                                <a href="{{ url_for('product.show', id = ord.product_id) }}" class="btn btn-primary mt-2 align-self-center ">See Product</a>
                             </div>
                         </div>
                         <div class="row">
                             <p class="card-text col-6 text-left">Order Date:</p>
-                            <p class="card-text col-6 text-right">${{ ord.date_placed }}</p>
+                            <p class="card-text col-6 text-right">${{ ord.date_placed.strftime('%d/%m/%Y') }}</p>
                         </div>
                         <div class="row">
                             <p class="card-text col-6 text-left">Order Quantity:</p>
