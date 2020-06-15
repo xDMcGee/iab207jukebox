@@ -94,5 +94,5 @@ class OrderForm(FlaskForm):
     city=StringField('City', validators=[InputRequired()])
     state=StringField('State/Province', validators=[InputRequired()])
     postcode=IntegerField('Postcode', validators=[InputRequired(),
-                                                length_check(checkType='Postcode', reqLength=4))
+                                                length_check(checkType='Postcode', reqLength=4)])
     quantity=IntegerField('Quantity', validators=[InputRequired()])
