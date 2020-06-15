@@ -67,19 +67,6 @@ def create():
 
         BASE_PATH = os.path.dirname(__file__)
 
-        oldId = Product.query.order_by(Product.id.desc()).first()
-        if not (oldId is None):
-            oldId = oldId.id
-        else:
-            oldId = 0
-
-        dir_path = os.path.join(BASE_PATH, 'static/img/' + str(oldId + 1))
-        os.makedirs(dir_path, exist_ok=True)
-
-        upload_path = os.path.join(
-            BASE_PATH, 'static/img/' + str(oldId + 1), secure_filename(filename))
-        img_file.save(upload_path)
-
         product = Product(
             item_name=form.item_name.data,
             item_manufacturer=form.item_manufacturer.data,
@@ -89,13 +76,22 @@ def create():
             category=ProductType[cat],
             subcategory=SubTypes[form.product_sub_type.data],
             image=filename,
-            seller_id=1)
+            seller_id=current_user.id)
 
         db.session.add(product)
         db.session.commit()
 
+        Id = Product.query.order_by(Product.id.desc()).first()
+        Id = Id.id
+
+        dir_path = os.path.join(BASE_PATH, 'static/img/' + Id)
+        os.makedirs(dir_path, exist_ok=True)
+
+        upload_path = os.path.join(BASE_PATH, 'static/img/' + Id, secure_filename(filename))
+        img_file.save(upload_path)
+
         print('Succesfully create new product', 'success')
-        return redirect(url_for('product.show', id = oldId + 1))
+        return redirect(url_for('product.show', id = Id))
 
     return render_template('components/create_product.html', form=form)
 
