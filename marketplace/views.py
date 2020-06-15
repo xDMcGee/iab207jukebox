@@ -15,12 +15,11 @@ def search():
 
 @bp.route('/')
 def index():
-    users = User.query.all()
     vinyls = Product.query.filter_by(category=ProductType['Vinyl']).order_by(Product.created_date.desc()).limit(6).all()
     accessories = Product.query.filter_by(category=ProductType['Accessory']).order_by(Product.created_date.desc()).limit(6).all()
     players = Product.query.filter_by(category=ProductType['Player']).order_by(Product.created_date.desc()).limit(6).all()
 
-    return render_template("index.html", vinyls=vinyls, accessories=accessories, players=players, users=users)
+    return render_template("index.html", vinyls=vinyls, accessories=accessories, players=players)
 
 @bp.route('/list')
 def item_list():
