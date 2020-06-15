@@ -77,8 +77,7 @@ class User(db.Model, UserMixin):
     phone_number = db.Column(db.String(10), unique=True, nullable=False)
 
     products = db.relationship('Product', backref='user')
-    order_buyer = db.relationship('Order', foreign_keys="Order.buyer_id", backref="order_buyer")
-    order_seller = db.relationship('Order', foreign_keys="Order.seller_id", backref="order_seller")
+    orders = db.relationship('Order',  backref="user")
     comments = db.relationship('Comment', backref='user')
 
 class Product(db.Model):
@@ -116,11 +115,10 @@ class Order(db.Model):
     quantity = db.Column(db.Integer, nullable = False)
     date_placed = db.Column(db.DateTime, default=datetime.utcnow)
     street_address = db.Column(db.String(50), unique=True, nullable=False)
-    street_address_2 = db.Column(db.String(50), unique=True, nullable=False)
+    street_address_2 = db.Column(db.String(50), unique=True, nullable=True)
     city = db.Column(db.String(20))
     state = db.Column(db.String(20))
     postcode = db.Column(db.String(4))
 
     product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
     buyer_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    seller_id = db.Column(db.Integer, db.ForeignKey('users.id'))
