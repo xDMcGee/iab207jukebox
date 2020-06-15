@@ -34,6 +34,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">Vinyls</a>
                             <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.Vinyl.name) }}">All Vinyls</a>
                                 <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.Vinyl.name, subtype = SubTypes.i7.name) }}">7-Inch</a>
                                 <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.Vinyl.name, subtype = SubTypes.i10.name) }}">10-Inch</a>
                                 <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.Vinyl.name, subtype = SubTypes.i12.name) }}">12-Inch</a>
@@ -42,6 +43,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">Accessories</a>
                             <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.Accessory.name) }}">All Accessories</a>
                                 <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.Accessory.name, subtype = SubTypes.needles.name) }}">Needles</a>
                                 <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.Accessory.name, subtype = SubTypes.motors.name) }}">Motors</a>
                                 <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.Accessory.name, subtype = SubTypes.tonearms.name) }}">Tonearms</a>
@@ -52,6 +54,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">Turntables</a>
                             <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.Player.name) }}">All Tables</a>
                                 <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.Player.name, subtype = SubTypes.auto.name) }}">Automatic Tables</a>
                                 <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.Player.name, subtype = SubTypes.manual.name) }}">Manual Tables</a>    
                             </div>
