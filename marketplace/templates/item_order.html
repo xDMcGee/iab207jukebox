@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
 
 {% block title %}Jukebox Jams{% endblock %}
 
@@ -21,7 +22,7 @@
                 <div class="row">
                     <div class="products-img col-12 col-md-3">
 
-                        <img class="mx-auto d-block rounded  img-thumbnail " src="/static/img/{{ product.id }}/{{ product.image }}" alt="Card image ">
+                        <img class="mx-auto d-block rounded  img-thumbnail " src="../static/img/vinyl-record.jpg" alt="Card image ">
 
                     </div>
                     <div class="col-12 col-md-9">
@@ -34,7 +35,8 @@
                                 <div class="bd-header-3 col-8">Stock Available:</div>
                                 <div class="bd-header-3 col-4" style="text-align: right;">{{ product.stock }}</div>
                             </div>
-                            <div class="row">
+                            {{ wtf.quick_form(form) }}
+                            <!-- <div class="row">
                                 <div class="bd-header-3 col-12 col-md-8">Select quantity to purchase:</div>
                                 <div class="bd-header-3 col-12 col-md-4">
                                     <input type="number" id="replyNumber" class="float-right text-right col inputText" min="1" max="100" step="1"placeholder="0"data-bind="value:replyNumber">
@@ -45,7 +47,7 @@
                                 <div class="bd-header-3 col-12 col-md-4">
                                     <input type="text" class="float-right text-right col inputText"placeholder="10 Streetname St, Brisbane, Queensland">
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col text-center col-12 col-md-4 ml-auto" style="padding-top: 20px;">
                                 <button class="bd-header-3 btn-primary col-8" data-toggle="modal" data-target="#orderModal">Order Item</button>
                             </div>
@@ -85,11 +87,104 @@
 
    
     <div class="bd-content">
-        {% if similarProducts %}
-            {% with products = similarProducts, type = product.category.name, title = "Similar Products:" %}
-                    {% include "./components/item_card.html" %}
-            {% endwith %}
-        {% endif %}
+        <a href="{{ url_for('main.item_list') }}">
+            <div class="bd-header-2">
+                Similar Products:
+            </div>
+        </a>
+        <div class="row products-list">
+            <div class="products col-xl-2 col-md-4 col-sm-6 col-12">
+                <div class="card my-3 products-card card-body text-right">
+                    <div class="media">
+                        <img class="card-img align-self-start mr-3" src="../static/img/vinyl-record.jpg" alt="Card image" style="width:40%; height: 40%;">
+                        <div class="media-body text-right">
+                            <h5 class="mt-0">Cool Album Name</h5>
+                            <p class="card-text">$49.99</p>
+                        </div>
+                    </div>
+                    <a class="text-success">In Stock!</a>
+                    <div class="text-center">
+                        <a href="{{ url_for('main.item_details') }}" class="btn btn-primary mt-2 align-self-center">See Product</a>
+                    </div>
+                </div>
+            </div>
+            <div class="products col-xl-2 col-md-4 col-sm-6 col-12">
+                <div class="card my-3 products-card card-body text-right">
+                    <div class="media">
+                        <img class="card-img align-self-start mr-3" src="../static/img/vinyl-record.jpg" alt="Card image" style="width:40%; height: 40%;">
+                        <div class="media-body text-right">
+                            <h5 class="mt-0">Cool Album Name</h5>
+                            <p class="card-text">$49.99</p>
+                        </div>
+                    </div>
+                    <a class="text-danger">Out of Stock!</a>
+                    <div class="text-center">
+                        <a href="{{ url_for('main.item_details') }}" class="btn btn-primary mt-2 align-self-center">See Product</a>
+                    </div>
+                </div>
+            </div>
+            <div class="products col-xl-2 col-md-4 col-sm-6 col-12">
+                <div class="card my-3 products-card card-body text-right">
+                    <div class="media">
+                        <img class="card-img align-self-start mr-3" src="../static/img/vinyl-record.jpg" alt="Card image" style="width:40%; height: 40%;">
+                        <div class="media-body text-right">
+                            <h5 class="mt-0">Cool Album Name</h5>
+                            <p class="card-text">$49.99</p>
+                        </div>
+                    </div>
+                    <a class="text-success">In Stock!</a>
+                    <div class="text-center">
+                        <a href="{{ url_for('main.item_details') }}" class="btn btn-primary mt-2 align-self-center">See Product</a>
+                    </div>
+                </div>
+            </div>
+            <div class="products col-xl-2 col-md-4 col-sm-6 col-12">
+                <div class="card my-3 products-card card-body text-right">
+                    <div class="media">
+                        <img class="card-img align-self-start mr-3" src="../static/img/vinyl-record.jpg" alt="Card image" style="width:40%; height: 40%;">
+                        <div class="media-body text-right">
+                            <h5 class="mt-0">Cool Album Name</h5>
+                            <p class="card-text">$49.99</p>
+                        </div>
+                    </div>
+                    <a class="text-success">In Stock!</a>
+                    <div class="text-center">
+                        <a href="{{ url_for('main.item_details') }}" class="btn btn-primary mt-2 align-self-center">See Product</a>
+                    </div>
+                </div>
+            </div>
+            <div class="products col-xl-2 col-md-4 col-sm-6 col-12">
+                <div class="card my-3 products-card card-body text-right">
+                    <div class="media">
+                        <img class="card-img align-self-start mr-3" src="../static/img/vinyl-record.jpg" alt="Card image" style="width:40%; height: 40%;">
+                        <div class="media-body text-right">
+                            <h5 class="mt-0">Cool Album Name</h5>
+                            <p class="card-text">$49.99</p>
+                        </div>
+                    </div>
+                    <a class="text-success">In Stock!</a>
+                    <div class="text-center">
+                        <a href="{{ url_for('main.item_details') }}" class="btn btn-primary mt-2 align-self-center">See Product</a>
+                    </div>
+                </div>
+            </div>
+            <div class="products col-xl-2 col-md-4 col-sm-6 col-12">
+                <div class="card my-3 products-card card-body text-right">
+                    <div class="media">
+                        <img class="card-img align-self-start mr-3" src="../static/img/vinyl-record.jpg" alt="Card image" style="width:40%; height: 40%;">
+                        <div class="media-body text-right">
+                            <h5 class="mt-0">Cool Album Name</h5>
+                            <p class="card-text">$49.99</p>
+                        </div>
+                    </div>
+                    <a class="text-success">In Stock!</a>
+                    <div class="text-center">
+                        <a href="{{ url_for('main.item_details') }}" class="btn btn-primary mt-2 align-self-center">See Product</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
     </div>
 
 {% endblock %}
