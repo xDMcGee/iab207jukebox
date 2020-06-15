@@ -1,11 +1,5 @@
-<<<<<<< HEAD
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_user, login_required, logout_user, current_user, current_app
-=======
-#Primary Imports
-from flask import Blueprint, render_template, request, redirect, url_for, flash, current_app
-from flask_login import login_user, login_required, logout_user, current_user
->>>>>>> eb3f544515513e989565f2537c6af64cfe218395
 from sqlalchemy import or_, and_
 
 #Custom Imports
