@@ -113,7 +113,11 @@ def order(id):
 
     if order_form.validate_on_submit():
         order = Order(
-            address=order_form.address.data,
+            street_address=order_form.street_address.data,
+            street_address_2=order_form.street_address2.data,
+            city=order_form.city.data,
+            state=order_form.state.data,
+            postcode=order_form.postcode.data,
             quantity=order_form.quantity.data
         )
 
