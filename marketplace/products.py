@@ -155,7 +155,6 @@ def order(id):
                 postcode = order_form.postcode.data,
                 product_id = product.id,
                 buyer_id = current_user.id,
-                seller_id = product.seller_id,
                 quantity = order_form.quantity.data
             )
             product.stock -= order_form.quantity.data
