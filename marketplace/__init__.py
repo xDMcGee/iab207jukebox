@@ -23,8 +23,8 @@ def create_app():
     UPLOAD_FOLDER = '/static/img'
     app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
-    WTF_CSRF_ENABLED = True
-    app.WTF_CSRF_SECRET_KEY='pineapples'
+    app.config['WTF_CSRF_ENABLED'] = True
+    app.config['WTF_CSRF_SECRET_KEY']='pineapples'
     csrf = CSRFProtect()
     csrf.init_app(app)
 
