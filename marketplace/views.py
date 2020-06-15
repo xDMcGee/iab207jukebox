@@ -42,4 +42,4 @@ def item_list():
     else:
         prodlist = Product.query.all()
         header = "Products:"
-    return render_template("item_list.html", prodlist = prodlist, arg = None, header = header)
+    return render_template("item_list.html", prodlist = prodlist, arg = None, header = header, editMode = False)

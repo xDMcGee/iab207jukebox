@@ -23,7 +23,7 @@
 
     <section>  <!-- Items list Section -->
         <div class="bd-content">
-            {% with products = prodlist %}
+            {% with products = prodlist, editMode = editMode %}
                     {% include "./components/item_card.html" %}
             {% endwith %}
         </div>
