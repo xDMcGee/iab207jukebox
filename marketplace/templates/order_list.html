@@ -19,7 +19,7 @@
     
     <section>  <!-- Items list Section -->
         <div class="bd-content">
-            {% with order = ordlist %}
+            {% with order = ordlist , prods = prodlist%}
                     {% include "./components/order_card.html" %}
             {% endwith %}
         </div>
