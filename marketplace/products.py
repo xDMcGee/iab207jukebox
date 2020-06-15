@@ -146,10 +146,6 @@ def order(id):
             flash('Cannot purchase more than the available stock')
             return redirect(url_for('product.order', id = id))
 
-        if product.quantity.data == 0:
-            flash('Product is out of stock')
-            return redirect(url_for('product.order', id = id))
-
         if order_form.validate_on_submit():
             order = Order(
                 street_address = order_form.street_address.data,
@@ -164,6 +160,8 @@ def order(id):
             product.stock -= order_form.quantity.data
             db.session.add(order)
             db.session.commit()
+
+            return redirect(url_for('main.order_list'))
 
             # return render_template("")
     return render_template("item_order.html", product = product, similarProducts = similarProducts, form = order_form)
