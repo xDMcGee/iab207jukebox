@@ -47,7 +47,11 @@ def item_list():
 
 @bp.route('/MyOrders')
 def order_list():
+    if not current_user.is_authenticated:
+        return current_app.login_manager.unauthorized()
+    elif current_user.user_type == "Seller":
+        return current_app.login_manager.unauthorized()
     
-    prodlist = Product.query.filter(and_(Product.id == Order.product_id),(Order.buyer_id == current_user.id))
+    prodlist = Product.query.filter(and_(Product.id == Order.product_id, Order.buyer_id == current_user.id))
     header = "Your orders:"
     return render_template("item_list.html", prodlist = prodlist, arg = None, header = header, editMode = False)
