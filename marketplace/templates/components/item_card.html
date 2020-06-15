@@ -9,7 +9,7 @@
         <div class="products row">
             <!-- Repetition to create multiple product using cards -->
             {% for product in products %}
-                <div class="products-card col-xl-3 col-md-4 col-sm-6 col-12 ">
+                <div class="products-card col-lg-3 col-sm-6 col-12 ">
                     <div class="card my-3 card-body text-right">
                         <div class="media">
                             <!-- Display the image of the product -->
@@ -19,8 +19,7 @@
                                 <h5 class="mt-0">{{ product.item_name }}</h5>
                                 <!-- Display the item price -->
                                 <p class="card-text">${{ product.price }}</p>
-                                <p class="card-text">{{ product.category.name }}</p>
-                                <p class="card-text">{{ product.subcategory.value.value }}</p>
+                                <p class="card-text">{{ product.category.name }} - {{ product.subcategory.value.value }}</p>
                             </div>
                         </div>
                         <!-- Changing the button depend on the stock available -->

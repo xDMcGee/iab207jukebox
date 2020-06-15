@@ -154,6 +154,9 @@ def _delete_product():
     #Get the product id and query the product
     id = request.args.get('id', 0, type=int)
     prod = Product.query.filter_by(id = id).first()
+    if Order.query.filter_by(product_id = id).first():
+        flash('Product has existing orders, cannot be deleted.')
+        return redirect(url_for('.mine'))
 
     #Check to make sure request is coming from the seller
     if prod.seller_id == current_user.id:
@@ -191,6 +194,9 @@ def order(id):
         #Stock and quantity check
         if int(order_form.quantity.data) > product.stock:
             flash('Cannot purchase more than the available stock')
+            return redirect(url_for('product.order', id = id))
+        if int(order_form.quantity.data) <= 0:
+            flash('Please enter a number above 0')
             return redirect(url_for('product.order', id = id))
 
         if order_form.validate_on_submit():
