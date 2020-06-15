@@ -1,5 +1,5 @@
 #Primary Imports
-from flask import Blueprint, render_template, request, redirect, url_for, flash
+from flask import Blueprint, render_template, request, redirect, url_for, flash, current_app
 from flask_login import login_user, login_required, logout_user, current_user
 from sqlalchemy import or_, and_
 
