@@ -26,7 +26,7 @@ def show(id):
         abort(404)
 
     #Find similar products
-    similarProducts = Product.query.filter(and_(Product.category == product.category, Product.id != product.id)).limit(6).all()
+    similarProducts = Product.query.filter(and_(Product.category == product.category, Product.id != product.id)).limit(4).all()
 
     #Check if the user has purchased this item - required to leave comments
     hasBought = None
@@ -182,7 +182,7 @@ def order(id):
 
     #Query product and similar products
     product = Product.query.filter_by(id=id).first()
-    similarProducts = Product.query.filter(and_(Product.category == product.category, Product.id != product.id)).limit(6).all()
+    similarProducts = Product.query.filter(and_(Product.category == product.category, Product.id != product.id)).limit(4).all()
 
     #Form generation and submissio
     order_form = OrderForm()
