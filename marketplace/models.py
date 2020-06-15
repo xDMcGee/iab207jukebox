@@ -102,7 +102,7 @@ class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     item_name = db.Column(db.String(255), index=True, nullable=False)
     item_manufacturer = db.Column(db.String(255), index=True, nullable=False)
-    price = db.Column(db.Integer, nullable=False)
+    price = db.Column(db.Float(decimal_return_scale = 2), nullable=False)
     stock = db.Column(db.Integer, nullable=False)
     description = db.Column(db.String(1000), nullable=False)
     category = db.Column(db.Enum(ProductType), index=True, nullable=False)

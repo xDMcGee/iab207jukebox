@@ -1,6 +1,6 @@
 #Primary Imports
 from flask_wtf import FlaskForm
-from wtforms.fields import TextAreaField, SubmitField, StringField, PasswordField, IntegerField, MultipleFileField, SelectField, RadioField, DateField
+from wtforms.fields import TextAreaField, SubmitField, StringField, PasswordField, IntegerField, MultipleFileField, SelectField, RadioField, DateField, DecimalField
 from flask_wtf.file import FileField, FileAllowed, FileRequired
 from wtforms.validators import InputRequired, Length, Email, EqualTo, Optional, ValidationError, Regexp
 
@@ -64,7 +64,7 @@ class ProductForm(FlaskForm):
     #Standard inputs
     item_name = StringField('Product name', validators=[InputRequired()])
     item_manufacturer = StringField('Product Manufacturer', validators=[InputRequired()])
-    price = IntegerField('Item price', validators=[InputRequired()])
+    price = DecimalField('Item price', validators=[InputRequired()])
     stock = IntegerField('Number of stock', validators=[InputRequired()])
     description = TextAreaField('Description of product', validators=[InputRequired()])
 
