@@ -75,7 +75,7 @@
                                     <button class="bd-header-3 btn-primary col-8 col-md-6" style="margin: 20px;">Out of Stock</button>
                                 {% else %}
                                     <a href="{{ url_for('auth.authenticate') }}"class="">
-                                        <button class="bd-header-3 btn-primary col-8 col-md-6" style="margin: 20px;">Order Item</button>
+                                        <button class="bd-header-3 btn-primary col-8 col-md-6" style="margin: 20px;">{{ product.sock }}</button>
                                     </a>
                                 {% endif %}
                             </div>
