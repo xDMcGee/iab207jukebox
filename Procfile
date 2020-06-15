@@ -1,1 +1,1 @@
-web: gunicorn -w 1 'app:create_app()' --preload
+web: gunicorn -w 1 'marketplace:create_app()' --preload
