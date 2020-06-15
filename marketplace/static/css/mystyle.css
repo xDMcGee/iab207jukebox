@@ -136,7 +136,8 @@ p {
 
 .category-filter{
     margin:auto;
-    padding: 20px;
+    padding: 0px;
+    margin-top: 0px;
 }
 .products{
     padding:0px;
@@ -223,10 +224,6 @@ p {
 .category-filter{
     margin-top: 20px;
     margin-bottom: 20px;
-    background-color: rgb(177, 154, 104);
-    border-color:rgb(134, 117, 31)!important;
-    border: 2px solid;
-    border-radius: 2px;
     padding: 10px;
 }
 

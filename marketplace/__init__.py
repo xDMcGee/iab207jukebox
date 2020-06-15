@@ -29,11 +29,11 @@ def create_app():
     csrf = CSRFProtect()
     csrf.init_app(app)
 
-    # app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///marketplace.sqlite'
-    app.config.from_mapping(
-    #     #Flask SQLAlchemy settings
-        SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL'],
-    )
+    app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///marketplace.sqlite'
+    # app.config.from_mapping(
+    # #     #Flask SQLAlchemy settings
+    #     SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL'],
+    # )
     #initialize db with flask app
     db.init_app(app)
 

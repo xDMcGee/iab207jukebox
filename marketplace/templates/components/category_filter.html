@@ -1,10 +1,10 @@
 <!-- Filter category template -->
 {% import "bootstrap/wtf.html" as wtf %}
 
-<section class="col-12 col-sm-4"> <!--  Product Category Filter   -->
-    <div class="category-filter row">
-        <h4 class="bd-header-3 text-white text-center col-8">Filter by Category:</h4>
-        <div class="row justify-content-center col-4">
+<section class="col-12 col-sm-6"> <!--  Product Category Filter   -->
+    <div class="category-filter row" style="margin-top: 0;padding: 0;">
+        <div class="bd-header-2 text-center col-6">Filter by Category:</div>
+        <div class="row justify-content-center col-6">
             <input type="hidden" value="{{ ProductType[request.args.get('type')].value }}" id="select_product_type"/>
             <input type="hidden" value="{{ ProductType[request.args.get('type')].name }}" id="select_product_type_name"/>
             {% if not(request.args.get('subtype') is none) %}
