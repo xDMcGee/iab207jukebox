@@ -115,7 +115,7 @@ class Product(db.Model):
 
     #Relationship definitions
     comments = db.relationship('Comment', backref='product')
-    orders = db.relationship('Order',  backref="product")
+    orders = db.relationship('Order',  backref="products")
 
 
 #Comment db model
