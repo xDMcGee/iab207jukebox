@@ -1,1 +1,1 @@
-web: gunicorn 'marketplace:create_app()'
+web: gunicorn -w 1 'iab207jukebox:create_app()' --preload
