@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for, jsonify, abort, current_app
+from flask import Blueprint, render_template, request, redirect, url_for, jsonify, abort, current_app, flash
 from werkzeug.utils import secure_filename
 from datetime import datetime
 from .models import Product, Comment, ProductType, SubTypes, Order
