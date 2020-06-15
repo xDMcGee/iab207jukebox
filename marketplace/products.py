@@ -21,6 +21,7 @@ def show(id):
 
     similarProducts = Product.query.filter(and_(Product.category == product.category, Product.id != product.id)).limit(6).all()
 
+    hasBought = None
     if current_user.is_authenticated:
         if current_user.user_type == "Buyer":
             hasBought = Order.query.filter(and_(Order.product_id == id, Order.buyer_id == current_user.id)).all()
@@ -99,27 +100,29 @@ def create():
     return render_template('components/create_product.html', form=form)
 
 
-@bp.route('/_get_subtypes/')
-def _get_subtypes():
-    product_type = request.args.get('pt', 0, type=int)
-    sub_type = SubTypes.specchoice(SubTypes, product_type)
-    return jsonify(sub_type)
-
-
 @bp.route('/order/<id>', methods=['GET', 'POST'])
 def order(id):
+    if not current_user.is_authenticated:
+        return current_app.login_manager.unauthorized()
+    elif current_user.user_type == "Seller":
+        return current_app.login_manager.unauthorized()
+
     product = Product.query.filter_by(id=id).first()
     similarProducts = Product.query.filter(and_(Product.category == product.category, Product.id != product.id)).limit(6).all()
     order_form = OrderForm()
 
     if order_form.validate_on_submit():
-        if order.quantity > Product.stock:
+        if order_form.quantity.data > product.stock:
             print('Cannot purchase more than the available stock')
             return redirect(url_for('product.order'))
 
         if order_form.validate_on_submit():
             order = Order(
-                address = order_form.address.data,
+                street_address = order_form.street_address.data,
+                street_address_2 = order_form.street_address2.data,
+                city = order_form.city.data,
+                state = order_form.state.data,
+                postcode = order_form.postcode.data,
                 product_id = product.id,
                 buyer_id = current_user.id,
                 seller_id = product.seller_id,
@@ -127,3 +130,9 @@ def order(id):
             )
     return render_template("item_order.html", product = product, similarProducts = similarProducts)
 
+
+@bp.route('/_get_subtypes/')
+def _get_subtypes():
+    product_type = request.args.get('pt', 0, type=int)
+    sub_type = SubTypes.specchoice(SubTypes, product_type)
+    return jsonify(sub_type)

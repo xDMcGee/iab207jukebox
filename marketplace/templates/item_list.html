@@ -13,15 +13,18 @@
             Return to previous page
         </a>
     </div>
-    <div class="bd-header-2">
-        {{ heading }}
-    </div>
 
-    {% if not (arg is none) %}
-        {% with form = filterForm %}
-            {% include "./components/category_filter.html" %}
-        {% endwith %}
-    {% endif %}
+    <div class="row">
+
+        <div class="bd-header-2 col-12 col-sm-7">{{ header }}</div>
+
+        {% if not (arg is none) %}
+            {% with form = filterForm %}
+                {% include "./components/category_filter.html" %}
+            {% endwith %}
+        {% endif %}
+
+    </div>
 
     <section>  <!-- Items list Section -->
         <div class="bd-content">

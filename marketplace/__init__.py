@@ -22,12 +22,12 @@ def create_app():
     UPLOAD_FOLDER = '/static/img'
     app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
-    app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///marketplace.sqlite'
-    # app.config.from_mapping(
-    #     #Flask SQLAlchemy settings
-    #     SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL'],
-    # )
-    #initialize db with flask app
+    # app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///marketplace.sqlite'
+    app.config.from_mapping(
+        #Flask SQLAlchemy settings
+        SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL'],
+    )
+    initialize db with flask app
     db.init_app(app)
 
     ctx=app.app_context()
@@ -52,7 +52,7 @@ def create_app():
 
     @login_manager.unauthorized_handler
     def unauthorized():
-        return redirect(url_for('main.authenticate'))
+        return redirect(url_for('auth.authenticate'))
 
     #importing views module here to avoid circular references
     # a commonly used practice.
