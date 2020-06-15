@@ -31,19 +31,19 @@
     <section>  <!-- Featured Items Section -->
 
         {% if vinyls %}
-            {% with products = vinyls, type = ProductType.Vinyl.name, title = "Top Records:" %}
+            {% with products = vinyls, type = ProductType.Vinyl.name, title = "New Records:" %}
                     {% include "./components/item_card.html" %}
             {% endwith %}
         {% endif %}
 
         {% if accessories %}
-            {% with products = accessories, type = ProductType.Accessory.name, title = "Recommended Accessories:" %}
+            {% with products = accessories, type = ProductType.Accessory.name, title = "New Accessories:" %}
                 {% include "./components/item_card.html" %}
             {% endwith %}
         {% endif %}
 
         {% if players %}
-            {% with products = players, type = ProductType.Player.name, title = "Popular Turntables:" %}
+            {% with products = players, type = ProductType.Player.name, title = "New Turntables:" %}
                 {% include "./components/item_card.html" %}
             {% endwith %}
         {% endif %}

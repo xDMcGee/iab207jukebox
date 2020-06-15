@@ -13,9 +13,7 @@
             Return to previous page
         </a>
     </div>
-    <div class="bd-header-2">
-        Vinyl Record Collection:
-    </div>
+    <div class="bd-header-2">{{ header }}</div>
 
     {% if not (arg is none) %}
         {% with form = filterForm %}

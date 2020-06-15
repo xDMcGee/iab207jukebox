@@ -16,9 +16,9 @@ def search():
 @bp.route('/')
 def index():
     users = User.query.all()
-    vinyls = Product.query.filter_by(category=ProductType['Vinyl']).limit(6).all()
-    accessories = Product.query.filter_by(category=ProductType['Accessory']).limit(6).all()
-    players = Product.query.filter_by(category=ProductType['Player']).limit(6).all()
+    vinyls = Product.query.filter_by(category=ProductType['Vinyl']).order_by(Product.created_date.desc()).limit(6).all()
+    accessories = Product.query.filter_by(category=ProductType['Accessory']).order_by(Product.created_date.desc()).limit(6).all()
+    players = Product.query.filter_by(category=ProductType['Player']).order_by(Product.created_date.desc()).limit(6).all()
 
     return render_template("index.html", vinyls=vinyls, accessories=accessories, players=players, users=users)
 
@@ -35,10 +35,11 @@ def item_list():
             prodlist = Product.query.filter(and_(Product.category == ProductType[prType], Product.subcategory == SubTypes[prSubType])).all()
         else:
             prodlist = Product.query.filter_by(category = ProductType[prType]).all()
-        return render_template("item_list.html", prodlist = prodlist, arg = ProductType[prType].value, filterForm = filterForm)
+        return render_template("item_list.html", prodlist = prodlist, arg = ProductType[prType].value, filterForm = filterForm, header = str(prType) + " Collection:")
     elif not (prSearch is None):
         prodlist = Product.query.filter(or_(Product.item_name.ilike('%' + prSearch + '%'), Product.item_manufacturer.ilike('%' + prSearch + '%'))).all()
-        return render_template("item_list.html", prodlist = prodlist, arg = None)
+        return render_template("item_list.html", prodlist = prodlist, arg = None, header = "Searching for " + str(prSearch) + ":")
     else:
         prodlist = Product.query.all()
-    return render_template("item_list.html", prodlist = prodlist, arg = None)
+        header = "Products:"
+    return render_template("item_list.html", prodlist = prodlist, arg = None, header = header)
