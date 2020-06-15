@@ -11,11 +11,13 @@ from .forms import LoginForm, RegisterForm, ProductForm, FilterForm
 #Blueprint definition
 bp = Blueprint('main', __name__)
 
+
 #Search Route - Acts as midpoint and redirect
 @bp.route('/search', methods=['GET', 'POST'])
 def search():
     term = request.args.get('search')
     return redirect(url_for('.item_list', search = term))
+
 
 #Index page
 @bp.route('/')
@@ -26,6 +28,7 @@ def index():
     players = Product.query.filter_by(category=ProductType['Player']).order_by(Product.created_date.desc()).limit(6).all()
 
     return render_template("index.html", vinyls=vinyls, accessories=accessories, players=players)
+
 
 #Multipurpose route for displaying products
 @bp.route('/list')
@@ -59,6 +62,7 @@ def item_list():
         header = "Products:"
 
     return render_template("item_list.html", prodlist = prodlist, arg = None, header = header, editMode = False)
+
 
 #Route for displaying a users orders
 @bp.route('/my_orders')

@@ -1,13 +1,19 @@
-from . import db
+#Primary Imports
 from datetime import datetime
 from flask_login import UserMixin
 from aenum import Enum, skip
 
+#Custom Imports
+from . import db
+
+#Custom class for Enum inheritance
 class FormEnum(Enum):
+    #Function to generate dropdown-compatible list of items
     @classmethod
     def choices(cls):
         return [(str(choice.name), choice.value) for choice in cls]
 
+#Enum for product types
 class ProductType(FormEnum):
     Vinyl = 0
     Accessory = 1
@@ -64,6 +70,7 @@ class SubTypes(FormEnum):
     auto = ProductSubType.TableType.auto
     manual = ProductSubType.TableType.manual
 
+#User db model
 class User(db.Model, UserMixin):
     __tablename__='users'
 
