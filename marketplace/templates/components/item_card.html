@@ -20,9 +20,16 @@
                         {% else %}
                             <a class="text-danger">Out of Stock!</a>
                         {% endif %}
-                        <div class="text-center">
-                            <a href="{{ url_for('product.show', id = product.id) }}" class="btn btn-primary mt-2 align-self-center ">See Product</a>
-                        </div>
+                        {% if editMode %}
+                            <div class="text-center">
+                                <a href="" class="btn btn-primary mt-2 align-self-center ">Edit</a>
+                                <a href="{{ url_for('product._delete_product', id = product.id) }}" class="btn btn-primary mt-2 align-self-center ">Delete</a>
+                            </div>
+                        {% else %}
+                            <div class="text-center">
+                                <a href="{{ url_for('product.show', id = product.id) }}" class="btn btn-primary mt-2 align-self-center ">See Product</a>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             {% endfor %}

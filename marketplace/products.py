@@ -95,9 +95,32 @@ def create():
         db.session.commit()
 
         print('Succesfully create new product', 'success')
-        return redirect(url_for('product.create'))
+        return redirect(url_for('product.show', id = oldId + 1))
 
     return render_template('components/create_product.html', form=form)
+
+
+@bp.route('/mine')
+def mine():
+    if not current_user.is_authenticated:
+        return current_app.login_manager.unauthorized()
+    elif not current_user.user_type == "Seller":
+        return current_app.login_manager.unauthorized()
+
+    prodlist = Product.query.filter_by(seller_id = current_user.id).all()
+    header = "My Products:"
+    return render_template("item_list.html", prodlist = prodlist, arg = None, header = header, editMode = True)
+
+@bp.route('/_delete_product/')
+def _delete_product():
+    id = request.args.get('id', 0, type=int)
+
+    Product.query.filter_by(id = id).delete()
+    db.session.commit()
+
+    print('Deleting product with ID:' + str(id))
+    
+    return jsonify(id)
 
 
 @bp.route('/order/<id>', methods=['GET', 'POST'])
