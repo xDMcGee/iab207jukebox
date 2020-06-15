@@ -143,7 +143,8 @@ def order(id):
 
     if order_form.validate_on_submit():
         if order_form.quantity.data > product.stock:
-            return flash('Cannot purchase more than the available stock')
+            flash('Cannot purchase more than the available stock')
+            return redirect(url_for('product.order', id = id))
 
         if order_form.validate_on_submit():
             order = Order(
