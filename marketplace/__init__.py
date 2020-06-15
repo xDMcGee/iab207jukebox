@@ -24,7 +24,7 @@ def create_app():
     app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
     WTF_CSRF_ENABLED = True
-    app.WTF_SECRET_KEY='pineapples'
+    app.WTF_CSRF_SECRET_KEY='pineapples'
     csrf = CSRFProtect()
     csrf.init_app(app)
 
