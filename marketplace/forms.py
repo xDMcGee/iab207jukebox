@@ -47,7 +47,7 @@ class RegisterForm(FlaskForm):
     account_type=SelectField('Account Type', choices=[(
         'Buyer', 'Buyer'), ('Seller', 'Seller')], validate_choice=False, id="select_user_type")
     bsb=IntegerField("BSB", validators=[
-                     Optional(), length_check()], id="bsb_input")
+                     Optional(), length_check(checkType='BSB', reqLength=6)], id="bsb_input")
     account_no=IntegerField("Account Number", validators=[Optional(), length_check(
         checkType='Account', reqLength=9)], id="account_no_input")
 
