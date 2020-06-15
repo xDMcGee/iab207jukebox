@@ -1,1 +1,1 @@
-web: gunicorn -w 1 'iab207jukebox:create_app()' --preload
+web: gunicorn -w 1 'app:create_app()' --preload
