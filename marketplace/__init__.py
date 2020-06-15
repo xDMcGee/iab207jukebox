@@ -3,7 +3,7 @@ from flask import Flask, render_template, redirect, url_for
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
-from flask_wtf import CsrfProtect
+from flask_wtf import CSRFProtect
 
 import os
 
@@ -25,7 +25,7 @@ def create_app():
 
     WTF_CSRF_ENABLED = True
     app.WTF_SECRET_KEY='pineapples'
-    csrf = CsrfProtect()
+    csrf = CSRFProtect()
     csrf.init_app(app)
 
     #app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///marketplace.sqlite'
