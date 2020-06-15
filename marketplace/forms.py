@@ -43,7 +43,6 @@ class RegisterForm(FlaskForm):
     submit = SubmitField("Register")
 
 class ProductForm(FlaskForm):
-
     type_choices=ProductType.choices()
     for choice in range(len(type_choices)):
         type_choices[choice]=type_choices[choice][::-1]
