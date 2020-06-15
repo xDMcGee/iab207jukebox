@@ -19,6 +19,8 @@
                                 <h5 class="mt-0">{{ product.item_name }}</h5>
                                 <!-- Display the item price -->
                                 <p class="card-text">${{ product.price }}</p>
+                                <p class="card-text">{{ product.category.name }}</p>
+                                <p class="card-text">{{ product.subcategory.value.value }}</p>
                             </div>
                         </div>
                         <!-- Changing the button depend on the stock available -->
