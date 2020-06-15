@@ -175,7 +175,7 @@ p {
     background-color: rgb(219, 192, 116) !important;
 }
 
-@media (max-width: 1920px) {
+@media (max-width: 2500px) {
     .dropdown-menu{
         left:-93px;
     }
