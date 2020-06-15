@@ -63,7 +63,9 @@
                                     <div class="bd-header-3 col-8 text-left"><b>Date Posted:</b></div>
                                     <div class="bd-header-3 col-4" style="text-align: right;">{{ product.created_date.strftime('%d/%m/%Y') }}</div>
                                 </div>
-                                {% if current_user.is_authenticated %}
+                                {% if not product.stock %}
+                                    <button class="bd-header-3 btn-primary col-8 col-md-6" style="margin: 20px;">Out of Stock</button>
+                                {% elif current_user.is_authenticated %}
                                     {% if current_user.user_type != "Seller" %}
                                         <a href="{{ url_for('product.order', id = product.id) }}"class="">
                                             <button class="bd-header-3 btn-primary col-8 col-md-6" style="margin: 20px;">Order Item</button>
@@ -71,11 +73,9 @@
                                     {% else %}
                                         <button class="bd-header-3 btn-primary col-8 col-md-6" style="margin: 20px;">Not Available as Seller</button>
                                     {% endif %}
-                                {% elif not product.stock %}
-                                    <button class="bd-header-3 btn-primary col-8 col-md-6" style="margin: 20px;">Out of Stock</button>
                                 {% else %}
                                     <a href="{{ url_for('auth.authenticate') }}"class="">
-                                        <button class="bd-header-3 btn-primary col-8 col-md-6" style="margin: 20px;">{{ product.sock }}</button>
+                                        <button class="bd-header-3 btn-primary col-8 col-md-6" style="margin: 20px;">Order Item</button>
                                     </a>
                                 {% endif %}
                             </div>
