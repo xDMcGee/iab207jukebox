@@ -71,7 +71,7 @@
                                     {% else %}
                                         <button class="bd-header-3 btn-primary col-8 col-md-6" style="margin: 20px;">Not Available as Seller</button>
                                     {% endif %}
-                                {% elif product.stock == 0 %}
+                                {% elif not product.stock %}
                                     <button class="bd-header-3 btn-primary col-8 col-md-6" style="margin: 20px;">Out of Stock</button>
                                 {% else %}
                                     <a href="{{ url_for('auth.authenticate') }}"class="">
