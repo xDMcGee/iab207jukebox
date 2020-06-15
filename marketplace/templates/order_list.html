@@ -1,6 +1,4 @@
-<!-- Error 500 handling -->
 {% extends "base.html" %}
-
 
 {% block title %}Jukebox Jams{% endblock %}
 
@@ -15,12 +13,17 @@
             Return to previous page
         </a>
     </div>
+
+    <div class="bd-header-2 col-12 col-sm-7"> Your Orders:</div>
+
     
-    <!-- Message of the error -->
-    <div class="bd-content">
-        <div class="bd-header-3 text-center" style="padding-top:20px;padding-bottom:40px;">
-            Internal Server Error.
+    <section>  <!-- Items list Section -->
+        <div class="bd-content">
+            {% with order = ordlist %}
+                    {% include "./components/order_card.html" %}
+            {% endwith %}
         </div>
-    </div>
+    </section> <!-- End Featured Items Section -->
 
 {% endblock %}
+

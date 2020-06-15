@@ -1,3 +1,4 @@
+<!-- Base page of the html -->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -14,21 +15,24 @@
     </head>
     <body>
         <header>
+            <!-- Navbar -->
             <nav class="navbar navbar-expand-lg navbar-dark nav-bg"> 
                 
+                <!-- Brand -->
                 <a class="navbar-brand" href="{{ url_for('main.index') }}">
     
                     <img src="/static/img/vinyl.png"width="30" height="30" alt="Jukebox Jams Logo">
                     Jukebox Jams
                 
                 </a>
-    
+                
                 <button class="navbar-toggler" type="button" data-toggle="collapse" 
                 data-target="#navbarNav" aria-controls="navbarNav" x 
                 aria-expanded="true" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
-    
+                
+                <!-- Navbar dropdown option -->
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item dropdown">
@@ -142,7 +146,8 @@
                     </div>
                 </div>
             </nav>
-    
+            
+            <!-- Title page -->
             <div class=" jumbotron-fluid col">
                     <h1 class="home-title col-12 display-1">
                         Welcome to Jukebox Jams!

@@ -1,5 +1,4 @@
-#Primary Imports
-from flask import Blueprint, render_template, request, redirect, url_for, flash, current_app
+from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_user, login_required, logout_user, current_user
 from sqlalchemy import or_, and_
 
@@ -73,8 +72,6 @@ def order_list():
     elif current_user.user_type == "Seller":
         return current_app.login_manager.unauthorized()
     
-    #Query orders for current user
-    prodlist = Product.query.filter(and_(Product.id == Order.product_id, Order.buyer_id == current_user.id))
-    header = "Your orders:"
-
-    return render_template("item_list.html", prodlist = prodlist, arg = None, header = header, editMode = False)
+    ordlist = Order.query.filter(Order.buyer_id == current_user.id)
+    # prodlist = Product.query.filter(and_(Product.id == Order.product_id, Order.buyer_id == current_user.id))
+    return render_template("order_list.html",  ordlist = ordlist)

@@ -1,0 +1,34 @@
+<div class="bd-content products">
+    {% if title %}
+        <a href="{{ url_for('main.item_list', type = type) }}">
+            <div class="bd-header-2">{{ title }}</div>
+        </a>
+    {% endif %}
+        <div class="products row">
+            {% for ord in order %}
+                <div class="products-card col-12 col-md-6">
+                    <div class="card my-3 card-body">
+                        <div class="media row">
+                            <img class="card-img align-self-start mr-3 col-4" src="/static/img/{{ ord.product_id }}/{{ ord.product_id.image }}" alt="Card image" style="width:40%; height: 40%;">
+                            <div class="media-body text-right col-4">
+                                <h5 class="mt-0">{{ ord.product_id.item_name }}</h5>
+                            </div>
+                            <div class="text-center col-4">
+                                <a href="{{ url_for('ord.product_id.show', id = ord.product_id) }}" class="btn btn-primary mt-2 align-self-center ">See Product</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p class="card-text col-6 text-left">Order Date:</p>
+                            <p class="card-text col-6 text-right">${{ ord.date_placed }}</p>
+                        </div>
+                        <div class="row">
+                            <p class="card-text col-6 text-left">Order Quantity:</p>
+                            <p class="card-text col-6 text-right">${{ ord.quantity }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+</div>
+
+<hr>
