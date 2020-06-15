@@ -18,7 +18,7 @@
                 
                 <a class="navbar-brand" href="{{ url_for('main.index') }}">
     
-                    <img src="../static/img/vinyl.png"width="30" height="30" alt="Jukebox Jams Logo">
+                    <img src="/static/img/vinyl.png"width="30" height="30" alt="Jukebox Jams Logo">
                     Jukebox Jams
                 
                 </a>
@@ -34,59 +34,61 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">Vinyls</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.Vinyl.name) }}">7-Inch</a>
-                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.Vinyl.name) }}">10-Inch</a>
-                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.Vinyl.name) }}">12-Inch</a>
+                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.Vinyl.name, subtype = SubTypes.i7.name) }}">7-Inch</a>
+                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.Vinyl.name, subtype = SubTypes.i10.name) }}">10-Inch</a>
+                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.Vinyl.name, subtype = SubTypes.i12.name) }}">12-Inch</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">Accessories</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.Accessory.name) }}">Needles</a>
-                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.Accessory.name) }}">Motors</a>
-                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.Accessory.name) }}">Tonearms</a>
-                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.Accessory.name) }}">Shelves</a>
-                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.Accessory.name) }}">Cleaning</a>
+                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.Accessory.name, subtype = SubTypes.needles.name) }}">Needles</a>
+                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.Accessory.name, subtype = SubTypes.motors.name) }}">Motors</a>
+                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.Accessory.name, subtype = SubTypes.tonearms.name) }}">Tonearms</a>
+                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.Accessory.name, subtype = SubTypes.shelves.name) }}">Shelves</a>
+                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.Accessory.name, subtype = SubTypes.cleaning.name) }}">Cleaning</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">Turntables</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.Player.name) }}">Automatic Tables</a>
-                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.Player.name) }}">Manual Tables</a>    
+                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.Player.name, subtype = SubTypes.auto.name) }}">Automatic Tables</a>
+                                <a class="dropdown-item" href="{{ url_for('main.item_list', type = ProductType.Player.name, subtype = SubTypes.manual.name) }}">Manual Tables</a>    
                             </div>
                         </li>
                     </ul>
-                    <form class="form-inline col"style="">
-                        <input class="form-control mr-md-2 col-lg-4 col-12 searchForm ml-auto" type="search" placeholder="Search" aria-label="Search">
-                        <a class="btn btn-light my-md-0 col-lg-2 col-sm-12 searchForm text-center" type="submit"href="{{ url_for('main.item_list') }}">Submit</a>
+                    <form class="form-inline col" action="{{ url_for('main.search') }}">
+                        <input class="form-control mr-md-2 col-lg-4 col-12 searchForm ml-auto" type="search" placeholder="Search" aria-label="Search" name="search">
+                        <button class="btn btn-light my-md-0 col-lg-2 col-sm-12 searchForm text-center" type="submit">Submit</button>
                     </form>  
                     <div class="nav-item dropdown">
                         
                         <!-- logged 0=logged out, 1 = seller, 2 = buyer -->
-                        {% if session['logged'] == 0 %}
+                        {% if current_user.is_authenticated %}
+                            {% if current_user.user_type == "Buyer" %}
+                                <a data-toggle="dropdown" class=" nav-item nav-link dropdown-toggle btn-primary" href="#" aria-expanded="false">{{ current_user.name }}</a>
+                                <ul class="dropdown-menu">
+                                    <a class="dropdown-item dropdown-title font-weight-bold disabled">Buyer</a>
+                                    <a class="dropdown-item" href="{{ url_for('product.create') }}">My orders</a>
+                                    <a class="dropdown-item dropdown-title font-weight-bold disabled">Account</a>
+                                    <a class="dropdown-item" href="#"data-toggle="modal" data-target="#signOutModal">Sign Out</a>
+                                </ul>
+                            {% elif current_user.user_type == "Seller" %}
+                                <a data-toggle="dropdown" class=" nav-item nav-link dropdown-toggle btn-primary" href="#" aria-expanded="false">{{ current_user.name }}</a>
+                                <ul class="dropdown-menu">
+                                    <a class="dropdown-item dropdown-title font-weight-bold disabled">Seller</a>
+                                    <a class="dropdown-item" href="{{ url_for('product.create') }}">Create Item</a>
+                                    <a class="dropdown-item" href="#">My Items</a>
+                                    <a class="dropdown-item dropdown-title font-weight-bold disabled">Account</a>
+                                    <a class="dropdown-item" href="#"data-toggle="modal" data-target="#signOutModal">Sign Out</a>
+                                </ul>
+                            {% endif %}
+                        {% else %}
                             <a data-toggle="dropdown" class=" nav-item nav-link dropdown-toggle btn-primary" href="#" aria-expanded="false">Account</a>
                             <ul class="dropdown-menu">
                                 <a class="dropdown-item dropdown-title font-weight-bold disabled">Not logged in</a>
-                                <a class="dropdown-item" href="{{ url_for('main.register') }}">Register</a>
-                                <a class="dropdown-item" href="{{ url_for('main.authenticate') }}">Login</a>
-                            </ul>
-                        {% elif session['logged'] == 1 %}
-                            <a data-toggle="dropdown" class=" nav-item nav-link dropdown-toggle btn-primary" href="#" aria-expanded="false">{{ userName }}</a>
-                            <ul class="dropdown-menu">
-                                <a class="dropdown-item dropdown-title font-weight-bold disabled">Seller</a>
-                                <a class="dropdown-item" href="{{ url_for('main.item_create') }}">Create Item</a>
-                                <a class="dropdown-item" href="#">My Items</a>
-                                <a class="dropdown-item dropdown-title font-weight-bold disabled">Account</a>
-                                <a class="dropdown-item" href="#"data-toggle="modal" data-target="#signOutModal">Sign Out</a>
-                            </ul>
-                        {% else %}
-                            <a data-toggle="dropdown" class=" nav-item nav-link dropdown-toggle btn-primary" href="#" aria-expanded="false">{{ userName }}</a>
-                            <ul class="dropdown-menu">
-                                <a class="dropdown-item dropdown-title font-weight-bold disabled">Buyer</a>
-                                <a class="dropdown-item" href="{{ url_for('main.item_create') }}">My orders</a>
-                                <a class="dropdown-item dropdown-title font-weight-bold disabled">Account</a>
-                                <a class="dropdown-item" href="#"data-toggle="modal" data-target="#signOutModal">Sign Out</a>
+                                <a class="dropdown-item" href="{{ url_for('auth.register') }}">Register</a>
+                                <a class="dropdown-item" href="{{ url_for('auth.authenticate') }}">Login</a>
                             </ul>
                         {% endif %}
                         
@@ -111,7 +113,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" data-dismiss="modal" class="btn btn-secondary">No</button>
-                                <button type="button" data-dismiss="modal" class="btn btn-primary"data-toggle="modal" data-target="#signedOutModal">Yes</button>
+                                <button type="button" data-dismiss="modal" class="btn btn-primary" data-toggle="modal" data-target="#signedOutModal" id="signoutbtn">Yes</button>
                             </div>
                         </div>
                     </div>
@@ -121,9 +123,9 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="signedOutModalLabel">Signed Out</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <a href="{{ url_for('main.index') }}"><button class="close">
                                     <span aria-hidden="true">&times;</span>
-                                </button>
+                                </button></a>
                             </div>
                             <div class="modal-body">
                                 <div>
@@ -131,7 +133,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" data-dismiss="modal" class="btn btn-primary">Dismiss</button>
+                                <a href="{{ url_for('main.index') }}"><button class="btn btn-primary">Dismiss</button></a>
                             </div>
                         </div>
                     </div>
@@ -167,6 +169,17 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <script type="text/javascript">
+            $(function() {
+                $('#signoutbtn').click(function() {
+                    $.getJSON("{{ url_for('auth.signout') }}", function(data) {
+                        $('#signOutModal').modal('hide');
+                        $('#signedOutModal').modal('show');
+                    });
+                });
+            });
+        </script>
 
         {% block scripts %}{% endblock %}
 

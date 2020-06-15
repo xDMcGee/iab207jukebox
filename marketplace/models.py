@@ -1,23 +1,7 @@
 from . import db
 from datetime import datetime
-
+from flask_login import UserMixin
 from aenum import Enum, skip
-
-class User(db.Model):
-    __tablename__='users'
-
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(255), index=True, unique=True, nullable=False)
-    password_hash = db.Column(db.String(255), nullable=False)
-    email_id = db.Column(db.String(255), index=True, unique=True, nullable=False)
-    user_type = db.Column(db.Enum('Buyer', 'Seller', name='userType'), nullable=False)
-    bsb = db.Column(db.String(6), unique=True)
-    account_no = db.Column(db.String(9), unique=True)
-
-    products = db.relationship('Product', backref='user')
-
-    def __repr__(self):
-        return "<Name: {}, id: {}>".format(self.name, self.id)
 
 class FormEnum(Enum):
     @classmethod
@@ -80,36 +64,58 @@ class SubTypes(FormEnum):
     auto = ProductSubType.TableType.auto
     manual = ProductSubType.TableType.manual
 
+class User(db.Model, UserMixin):
+    __tablename__='users'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255), index=True, unique=True, nullable=False)
+    password_hash = db.Column(db.String(255), nullable=False)
+    email_id = db.Column(db.String(255), index=True, unique=True, nullable=False)
+    user_type = db.Column(db.Enum('Buyer', 'Seller', name='userType'), nullable=False)
+    bsb = db.Column(db.String(6), unique=True, nullable=True)
+    account_no = db.Column(db.String(9), unique=True, nullable=True)
+    phone_number = db.Column(db.String(10), unique=True, nullable=False)
+
+    products = db.relationship('Product', backref='user')
+    order_buyer = db.relationship('Order', foreign_keys="Order.buyer_id", backref="order_buyer")
+    order_seller = db.relationship('Order', foreign_keys="Order.seller_id", backref="order_seller")
+    comments = db.relationship('Comment', backref='user')
+
 class Product(db.Model):
     __tablename__='products'
 
     id = db.Column(db.Integer, primary_key=True)
-    artist_name = db.Column(db.String(255), index=True, nullable=False)
-    album_title = db.Column(db.String(255), index=True, nullable=False)
+    item_name = db.Column(db.String(255), index=True, nullable=False)
+    item_manufacturer = db.Column(db.String(255), index=True, nullable=False)
     price = db.Column(db.Integer, nullable=False)
     stock = db.Column(db.Integer, nullable=False)
     description = db.Column(db.String(255), nullable=False)
-    subcategory = db.Column(db.Enum(SubTypes), index=True, nullable=False)
     category = db.Column(db.Enum(ProductType), index=True, nullable=False)
+    subcategory = db.Column(db.Enum(SubTypes), index=True, nullable=False)
     image = db.Column(db.String(255), index=True) #, nullable=False)
     created_date = db.Column(db.DateTime, default = datetime.utcnow)
 
     seller_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    comments = db.relationship('Comment', backref='product')
 
 class Comment(db.Model):
     __tablename__ ='comments'
     
-    comment_id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(255), index=True, unique=True, nullable=False)
-    comment_text = db.Column(db.String(400))
-    create_at = db.Column(db.DateTime, default=datetime.now())
+    id = db.Column(db.Integer, primary_key=True)
+    user_name = db.Column(db.String(255), index=True, nullable=False)
+    text = db.Column(db.String(400))
+    created_date = db.Column(db.DateTime, default=datetime.utcnow)
 
+    product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
 class Order(db.Model):
     __tablename__='orders'
 
-    order_id = db.Column(db.Integer, primary_key=True, unique=True, nullable=False)
-    date_placed = db.Column(db.DateTime, default=datetime.now())
+    order_id = db.Column(db.Integer, primary_key=True)
+    quantity = db.Column(db.Integer, nullable = False)
+    date_placed = db.Column(db.DateTime, default=datetime.utcnow)
 
+    product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
+    buyer_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     seller_id = db.Column(db.Integer, db.ForeignKey('users.id'))

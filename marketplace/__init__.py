@@ -1,5 +1,5 @@
 #import flask - from the package import class
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
@@ -22,11 +22,11 @@ def create_app():
     UPLOAD_FOLDER = '/static/img'
     app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
-    #app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///marketplace.sqlite'
-    app.config.from_mapping(
-        #Flask SQLAlchemy settings
-        SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL'],
-    )
+    app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///marketplace.sqlite'
+    # app.config.from_mapping(
+    #     #Flask SQLAlchemy settings
+    #     SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL'],
+    # )
     #initialize db with flask app
     db.init_app(app)
 
@@ -50,6 +50,10 @@ def create_app():
     def load_user(user_id):
         return User.query.get(int(user_id))
 
+    @login_manager.unauthorized_handler
+    def unauthorized():
+        return redirect(url_for('main.authenticate'))
+
     #importing views module here to avoid circular references
     # a commonly used practice.
     from . import views
@@ -62,6 +66,7 @@ def create_app():
     app.register_blueprint(auth.bp)
 
     app.jinja_env.globals.update(ProductType=ProductType)
+    app.jinja_env.globals.update(SubTypes=SubTypes)
 
     #Error handling returns set pages
     @app.errorhandler(404)

@@ -14,39 +14,84 @@
         </a>
     </div>
     <div class="bd-header-2">
-        Vinyl Record Collection:
+        {{ heading }}
     </div>
 
-    <section> <!--  Product Category Filter   -->
-        <div class="col-10 category-filter">
-            <h4 class="bd-header-3 text-white text-center">Filter by Category:</h4>
-            <div class="row text-center ">
-                <div class="col-12 col-md">
-                    <h5>
-                        <label class="checkbox text-white"><input type="checkbox" value="" checked="checked" >7-Inch</label>
-                    </h5>
-                </div>
-                <div class="col-12 col-md">
-                    <h5>
-                        <label class="checkbox text-white"><input type="checkbox" value="">10-Inch</label>
-                    </h5>
-                </div>
-                <div class="col-12 col-md">
-                    <h5>
-                        <label class="checkbox text-white"><input type="checkbox" value="">12-Inch</label>
-                    </h5>
-                </div>
-            </div>
-        </div>
-        
-    </section>
+    {% if not (arg is none) %}
+        {% with form = filterForm %}
+            {% include "./components/category_filter.html" %}
+        {% endwith %}
+    {% endif %}
 
     <section>  <!-- Items list Section -->
         <div class="bd-content">
-            {% with products = prodlist%}
+            {% with products = prodlist %}
                     {% include "./components/item_card.html" %}
             {% endwith %}
         </div>
     </section> <!-- End Featured Items Section -->
 
 {% endblock %}
+
+{% if not (arg is none) %}
+    {% block scripts %}
+    <script charset="utf-8" type="text/javascript">
+        $(function() {
+            //jQuery to get the dropdowns
+            var dropdown = {
+                pt: $('#select_product_type'),
+                ptn: $('#select_product_type_name'),
+                st: $('#select_sub_type'),
+                std: $('#select_sub_type_def')
+            };
+
+            //Call to update dropdowns on load
+            updateSubTypes();
+
+            //Function to call XHR and update the subtypes dropdown
+            function updateSubTypes() {
+                var send = {
+                pt: dropdown.pt.val()
+                };
+                dropdown.st.attr('disabled', 'disabled');
+                dropdown.st.empty();
+                $.getJSON("{{ url_for('product._get_subtypes') }}", send, function(data) {
+                    dropdown.st.append(
+                        $('<option>', {
+                            value: "All",
+                            text: "All"
+                        })
+                    );
+                data.forEach(function(item) {
+                    dropdown.st.append(
+                    $('<option>', {
+                        value: item[0],
+                        text: item[1]
+                    })
+                    );
+                });
+                if (dropdown.std.val() != "None") {
+                    dropdown.st.val(dropdown.std.val());
+                }                
+                dropdown.st.removeAttr('disabled');
+                });
+            }
+
+            function updateCards() {
+                var my_url = "{{ url_for('main.item_list') }}"
+                if (dropdown.st.val() == "All") {
+                    window.location.replace(my_url + "?type=" + dropdown.ptn.val());
+                }
+                else {
+                    window.location.replace(my_url + "?type=" + dropdown.ptn.val() + "&subtype=" + dropdown.st.val());
+                }
+            }
+
+            //Event listerner for product type dropdown change
+            dropdown.st.on('change', function() {
+                updateCards();
+            });
+        });
+    </script>
+    {% endblock %}
+{% endif %}

@@ -15,15 +15,15 @@
     </div>
     <div class="container-fluid col row" style="margin-bottom:20px;"> <!-- Category Selection -->
 
-        {% with title="View our Vinyl Collection", image="record-shop.jpg", buttonText="View Vinyls" %}
+        {% with title="View our Vinyl Collection", type = ProductType.Vinyl.name, image="record-shop.jpg", buttonText="View Vinyls" %}
             {% include "./components/category.html" %}
         {% endwith %}
 
-        {% with title="Explore our Accessories", image="accessory.jpg", buttonText="View Accessories" %}
+        {% with title="Explore our Accessories", type = ProductType.Accessory.name, image="accessory.jpg", buttonText="View Accessories" %}
             {% include "./components/category.html" %}
         {% endwith %}
 
-        {% with title="Buy a Turntable", image="vintage-player.jpg", buttonText="View Turntables" %}
+        {% with title="Buy a Turntable", image="vintage-player.jpg", type = ProductType.Player.name, buttonText="View Turntables" %}
             {% include "./components/category.html" %}
         {% endwith %}
 
@@ -31,19 +31,19 @@
     <section>  <!-- Featured Items Section -->
 
         {% if vinyls %}
-            {% with products = vinyls, title = "Top Records:" %}
+            {% with products = vinyls, type = ProductType.Vinyl.name, title = "Top Records:" %}
                     {% include "./components/item_card.html" %}
             {% endwith %}
         {% endif %}
 
         {% if accessories %}
-            {% with products = accessories, title = "Recommended Accessories:" %}
+            {% with products = accessories, type = ProductType.Accessory.name, title = "Recommended Accessories:" %}
                 {% include "./components/item_card.html" %}
             {% endwith %}
         {% endif %}
 
         {% if players %}
-            {% with products = players, title = "Popular Turntables:" %}
+            {% with products = players, type = ProductType.Player.name, title = "Popular Turntables:" %}
                 {% include "./components/item_card.html" %}
             {% endwith %}
         {% endif %}
@@ -55,9 +55,17 @@
             About Jukebox Jams
         </div>
         <div class="bd-paragraph text-center">
-            Syha'h nnnhupadgh cShub-Niggurath nalloig llll uh'eyar nagnaiih, stell'bsnaog phlegeth 'bthnk uln ee, bug gnaiih Shub-Niggurath lloig ebunma. Ron sgn'wahl 'fhalma Azathoth Tsathoggua throd grah'n nogoth shtungglinyth gnaiih fm'latgh ronoth bug wgah'n r'luh, nglui Chaugnar Faugn cR'lyeh mg uln nog tharanak shagg sgn'wahl nashogg gotha syha'h. Chtenff hafh'drnog Dagon mg tharanak ah, ya gof'nn n'gha R'lyeh y-goka, vulgtlagln shtunggli 'bthnk phlegeth. R'luh Tsathoggua ph'Yoggoth cshogg phlegeth uaaah Azathoth, uh'eoth hrii gotha stell'bsna li'hee wgah'n, cphlegeth gnaiih y'hah 'bthnk lloig. Uh'e naflShub-Niggurath zhro kn'a Yoggoth Shub-Niggurath fhtagn Shub-Niggurath R'lyeh ehye, shogg syha'h ph'geb goka n'gha nw throd ooboshu ph'mnahn', R'lyeh 'bthnk ngshtunggli Chaugnar Faugn ph'Cthulhu ya ph'y'hah grah'n. 
+            We here at Jukebox Jams have always been so passionate about how you listen to and absorb music. 
 
-            Gof'nn nilgh'ri chtenff ee ep nnnnog 'ai chupadgh kadishtu uaaah bug.
+We go through each day, nowadays, being able to blast music through every medium, and stream it through just as many companies. 
+
+But we’ve grown up with a deep appreciation for all types of music, especially different platforms too! 
+
+We’re used to waking up to Rumors by Fleetwood Mac every sunday morning, after hearing dad put the needle onto the worn vinyl. We’re used to hearing the familiar scratches on a Bruce Springsteen LP. 
+
+We’re used to the quality and beauty of Vinyls. 
+
+So we here at Jukebox Jams have decided to share our childhoods with the world, and continue to share the allure of our favourite form of music.
         </div>
     </div>
 

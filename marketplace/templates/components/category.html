@@ -2,6 +2,6 @@
     <img class="card-img-top catcard inner rounded-0" src="../static/img/{{ image }}" alt="Vinyl Shop Image">
     <div class="card-body card-img-overlay text-center">
         <h5 class="card-title">{{ title }}</h5>
-        <a href="{{ url_for('main.item_list') }}" class="btn btn-primary">{{ buttonText }}</a>
+        <a href="{{ url_for('main.item_list' , type = type) }}" class="btn btn-primary">{{ buttonText }}</a>
     </div>
 </div>
