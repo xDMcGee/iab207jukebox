@@ -90,7 +90,7 @@ class CommentForm(FlaskForm):
 class OrderForm(FlaskForm):
     #Standard inputs
     street_address = StringField('Street Address', validators=[InputRequired()])
-    street_address2 = StringField('Street Address 2', validators=[InputRequired()])
+    street_address2 = StringField('Street Address 2')
     city = StringField('City', validators=[InputRequired()])
     state = StringField('State/Province', validators=[InputRequired()])
 
