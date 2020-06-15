@@ -208,7 +208,7 @@ def order(id):
             )
 
             #Deduct quantity from stock and commit
-            product.stock -= order_form.quantity.data
+            product.stock -= int(order_form.quantity.data)
             db.session.add(order)
             db.session.commit()
 
