@@ -146,7 +146,7 @@ def order(id):
             flash('Cannot purchase more than the available stock')
             return redirect(url_for('product.order', id = id))
 
-        if order_form.quantity.data == 0:
+        if product.quantity.data == 0:
             flash('Product is out of stock')
             return redirect(url_for('product.order', id = id))
 
