@@ -113,14 +113,25 @@ def mine():
 
 @bp.route('/_delete_product/')
 def _delete_product():
+    if not current_user.is_authenticated:
+        return current_app.login_manager.unauthorized()
+    elif not current_user.user_type == "Seller":
+        return current_app.login_manager.unauthorized()
+
     id = request.args.get('id', 0, type=int)
 
-    Product.query.filter_by(id = id).delete()
-    db.session.commit()
+    prod = Product.query.filter_by(id = id).delete()
+
+    if prod.seller_id == current_user.id:
+        db.session.delete(prod)
+        db.session.commit()
+    else:
+        print('Not authorised for this delete action')
+        return current_app.login_manager.unauthorized()
 
     print('Deleting product with ID:' + str(id))
     
-    return jsonify(id)
+    return redirect(url_for('.mine'))
 
 
 @bp.route('/order/<id>', methods=['GET', 'POST'])
