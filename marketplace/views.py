@@ -23,9 +23,9 @@ def search():
 @bp.route('/')
 def index():
     #Query recent products for display
-    vinyls = Product.query.filter_by(category=ProductType['Vinyl']).order_by(Product.created_date.desc()).limit(6).all()
-    accessories = Product.query.filter_by(category=ProductType['Accessory']).order_by(Product.created_date.desc()).limit(6).all()
-    players = Product.query.filter_by(category=ProductType['Player']).order_by(Product.created_date.desc()).limit(6).all()
+    vinyls = Product.query.filter_by(category=ProductType['Vinyl']).order_by(Product.created_date.desc()).limit(4).all()
+    accessories = Product.query.filter_by(category=ProductType['Accessory']).order_by(Product.created_date.desc()).limit(4).all()
+    players = Product.query.filter_by(category=ProductType['Player']).order_by(Product.created_date.desc()).limit(4).all()
 
     return render_template("index.html", vinyls=vinyls, accessories=accessories, players=players)
 
