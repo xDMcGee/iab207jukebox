@@ -161,6 +161,8 @@ def order(id):
             db.session.add(order)
             db.session.commit()
 
+            return redirect(url_for('main.order_list'))
+
             # return render_template("")
     return render_template("item_order.html", product = product, similarProducts = similarProducts, form = order_form)
 
