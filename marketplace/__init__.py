@@ -80,7 +80,7 @@ def create_app():
         return render_template('404.html'), 404
 
     @app.errorhandler(400)
-    def not_found_error(error):
+    def bad_request_error(error):
         return render_template('400.html'), 400
 
     @app.errorhandler(500)
