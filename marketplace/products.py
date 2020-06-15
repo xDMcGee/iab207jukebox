@@ -84,10 +84,10 @@ def create():
         Id = Product.query.order_by(Product.id.desc()).first()
         Id = Id.id
 
-        dir_path = os.path.join(BASE_PATH, 'static/img/' + Id)
+        dir_path = os.path.join(BASE_PATH, 'static/img/' + str(Id))
         os.makedirs(dir_path, exist_ok=True)
 
-        upload_path = os.path.join(BASE_PATH, 'static/img/' + Id, secure_filename(filename))
+        upload_path = os.path.join(BASE_PATH, 'static/img/' + str(Id), secure_filename(filename))
         img_file.save(upload_path)
 
         print('Succesfully create new product', 'success')
