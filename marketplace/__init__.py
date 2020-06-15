@@ -79,9 +79,9 @@ def create_app():
     def not_found_error(error):
         return render_template('404.html'), 404
 
-    @app.errorhandler(400)
-    def bad_request_error(error):
-        return render_template('400.html'), 400
+    # @app.errorhandler(400)
+    # def bad_request_error(error):
+    #     return render_template('400.html'), 400
 
     @app.errorhandler(500)
     def internal_error(error):
