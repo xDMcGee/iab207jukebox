@@ -1,9 +1,4 @@
 <div class="bd-content products">
-    {% if title %}
-        <a href="{{ url_for('main.item_list', type = type) }}">
-            <div class="bd-header-2">{{ title }}</div>
-        </a>
-    {% endif %}
         <div class="products row">
             {% for ord in order %}
                 <div class="products-card col-12 col-md-6">
@@ -21,16 +16,20 @@
                         </div>
                         <!-- Order Details -->
                         <div class="row">
-                            <p class="card-text col-6 text-left">Order Date:</p>
+                            <p class="card-text col-6 text-left"><b>Order ID:</b></p>
+                            <p class="card-text col-6 text-right">{{ ord.order_id }}</p>
+                        </div>
+                        <div class="row">
+                            <p class="card-text col-6 text-left"><b>Order Date:</b></p>
                             <p class="card-text col-6 text-right">{{ ord.date_placed.strftime('%d/%m/%Y') }}</p>
                         </div>
                         <div class="row">
-                            <p class="card-text col-6 text-left">Order Quantity:</p>
+                            <p class="card-text col-6 text-left"><b>Order Quantity:</b></p>
                             <p class="card-text col-6 text-right">{{ ord.quantity }}</p>
                         </div>
                         <div class="row">
-                            <p class="card-text col-6 text-left">Total Price</p>
-                            <p class="card-text col-6 text-right">{{ ord.price }}</p>
+                            <p class="card-text col-6 text-left"><b>Order Price:</b></p>
+                            <p class="card-text col-6 text-right">${{ ord.quantity * ord.product.price }}</p>
                         </div>
                     </div>
                 </div>
