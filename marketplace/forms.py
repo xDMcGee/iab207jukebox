@@ -42,7 +42,7 @@ class RegisterForm(FlaskForm):
     # Select what user account to use
     account_type=SelectField('Account Type', choices=[('Buyer', 'Buyer'), ('Seller', 'Seller')], validate_choice=False, id="select_user_type")
     bsb=StringField("BSB", validators=[Optional(), length_check(checkType='BSB', reqLength=6), Regexp('^[0-9]+$', message='Please use only the numbers 0-9')], id="bsb_input")
-    account_no=StringField("Account Number", validators=[Optional(), Regexp('^[0-9]+$', message='Please use only the numbers 0-9'), length_check(checkType='Account', reqLength=9)], id="account_no_input")
+    account_no=IntegerField("Account Number", validators=[Optional(), Regexp('^[0-9]+$', message='Please use only the numbers 0-9'), length_check(checkType='Account', reqLength=9)], id="account_no_input")
 
     # submit button
     submit=SubmitField("Register")
