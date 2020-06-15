@@ -115,7 +115,6 @@ class Product(db.Model):
 
     #Relationship definitions
     comments = db.relationship('Comment', backref='product')
-    orders = db.relationship('Order',  backref="products")
 
 
 #Comment db model
@@ -148,7 +147,7 @@ class Order(db.Model):
     postcode = db.Column(db.String(4), nullable=False)
 
     #Relationship definitions
-    product = db.relationship('Product', backref='order')
+    product = db.relationship('Product', backref='orders')
 
     #Foreign key columns
     product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
