@@ -10,6 +10,7 @@ from .models import User
 #create a blueprint
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
+
 @bp.route('/login', methods=['GET', 'POST'])
 def authenticate(): #view function
     print('In Login View function')
@@ -33,6 +34,7 @@ def authenticate(): #view function
         else:
             flash(error)
     return render_template('user.html', form=login_form, heading='Login')
+
 
 @bp.route('/register', methods=['GET', 'POST'])
 def register():
@@ -70,6 +72,7 @@ def register():
         return redirect(url_for('auth.authenticate'))
 
     return render_template("user.html", form=register_form, heading='Register')
+
 
 @bp.route('/signout')
 def signout():

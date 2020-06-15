@@ -16,15 +16,15 @@ from .models import User, Product, ProductType, SubTypes
 def create_app():
   
     app=Flask(__name__)  # this is the name of the module/package that is calling this app
-    app.debug=False
+    app.debug=True
     app.secret_key='pineapples'
     #set the app configuration data 
     #the folder to store images
     UPLOAD_FOLDER = '/static/img'
     app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
-    app.config['WTF_CSRF_ENABLED'] = True
-    app.config['WTF_CSRF_SECRET_KEY']='pineapples'
+    app.config['WTF_CSRF_ENABLED'] = False
+    app.config['WTF_CSRF_SECRET_KEY'] ='pineapples'
     csrf = CSRFProtect()
     csrf.init_app(app)
 
@@ -47,7 +47,7 @@ def create_app():
     
     #set the name of the login function that lets user login
     # in our case it is auth.login (blueprintname.viewfunction name)
-    login_manager.login_view='auth.login'
+    login_manager.login_view='auth.authenticate'
     login_manager.init_app(app)
 
     #create a user loader function takes userid and returns User
@@ -59,6 +59,8 @@ def create_app():
     @login_manager.unauthorized_handler
     def unauthorized():
         return redirect(url_for('auth.authenticate'))
+
+    login_manager.session_protection = 'basic'
 
     #importing views module here to avoid circular references
     # a commonly used practice.
@@ -79,9 +81,9 @@ def create_app():
     def not_found_error(error):
         return render_template('404.html'), 404
 
-    # @app.errorhandler(400)
-    # def bad_request_error(error):
-    #     return render_template('400.html'), 400
+    @app.errorhandler(400)
+    def bad_request_error(error):
+        return render_template('400.html'), 400
 
     @app.errorhandler(500)
     def internal_error(error):

@@ -2,12 +2,11 @@ from flask_wtf import FlaskForm
 from wtforms.fields import TextAreaField, SubmitField, StringField, PasswordField, IntegerField, MultipleFileField, SelectField, RadioField, DateField
 from flask_wtf.file import FileField, FileAllowed, FileRequired
 from wtforms.validators import InputRequired, Length, Email, EqualTo, Optional, ValidationError, Regexp
-
 from .models import ProductType, SubTypes
 
 # creates the login information
 
-
+# All forms required for the marketplace
 class LoginForm(FlaskForm):
     user_name = StringField("User Name", validators=[
                             InputRequired('Enter user name')])
@@ -15,7 +14,7 @@ class LoginForm(FlaskForm):
                              InputRequired('Enter user password')])
     submit = SubmitField("Login")
 
-
+# Function to check the length of the input
 def length_check(checkType='BSB', reqLength=6):
     message = 'Please enter a valid %d digit %s number' % (
         reqLength, checkType)
