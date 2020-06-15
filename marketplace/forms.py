@@ -95,3 +95,4 @@ class OrderForm(FlaskForm):
     postcode=IntegerField('Postcode', validators=[InputRequired(),
                                                 length_check(checkType='Postcode', reqLength=4)])
     quantity=IntegerField('Quantity', validators=[InputRequired()])
+    submit=SubmitField('Order Item')
