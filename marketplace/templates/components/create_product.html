@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 
+<!-- Content of the product form -->
 {% block content %}
   <div class="container">
     <div class="row mt-5">
@@ -9,6 +10,7 @@
         <h1>Add Product</h1>
         <p>Fill out all the forms below</p>
 
+        <!-- Render the forms for adding product -->
         {{ wtf.quick_form(form) }}
         
       </div>
