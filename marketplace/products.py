@@ -110,6 +110,17 @@ def mine():
     header = "My Products:"
     return render_template("item_list.html", prodlist = prodlist, arg = None, header = header, editMode = True)
 
+@bp.route('/_delete_product/')
+def _delete_product():
+    id = request.args.get('id', 0, type=int)
+
+    Product.query.filter_by(id = id).delete()
+    db.session.commit()
+
+    print('Deleting product with ID:' + str(id))
+    
+    return jsonify(id)
+
 
 @bp.route('/order/<id>', methods=['GET', 'POST'])
 def order(id):

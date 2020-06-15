@@ -23,7 +23,7 @@
                         {% if editMode %}
                             <div class="text-center">
                                 <a href="" class="btn btn-primary mt-2 align-self-center ">Edit</a>
-                                <a href="" class="btn btn-primary mt-2 align-self-center ">Delete</a>
+                                <a href="{{ url_for('product._delete_product', id = product.id) }}" class="btn btn-primary mt-2 align-self-center ">Delete</a>
                             </div>
                         {% else %}
                             <div class="text-center">
