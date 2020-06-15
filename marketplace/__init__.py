@@ -22,11 +22,11 @@ def create_app():
     UPLOAD_FOLDER = '/static/img'
     app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
-    app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///marketplace.sqlite'
-    # app.config.from_mapping(
+    #app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///marketplace.sqlite'
+    app.config.from_mapping(
     #     #Flask SQLAlchemy settings
-    #     SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL'],
-    # )
+        SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL'],
+    )
     #initialize db with flask app
     db.init_app(app)
 
