@@ -1,9 +1,9 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
-from flask_login import login_user, login_required, logout_user
+from flask_login import login_user, login_required, logout_user, current_user
 from sqlalchemy import or_, and_
 
 from . import db
-from .models import Product, ProductType, User, SubTypes
+from .models import Product, ProductType, User, SubTypes, Order
 from .forms import LoginForm, RegisterForm, ProductForm, FilterForm
 
 bp = Blueprint('main', __name__)
@@ -42,4 +42,12 @@ def item_list():
     else:
         prodlist = Product.query.all()
         header = "Products:"
+    return render_template("item_list.html", prodlist = prodlist, arg = None, header = header, editMode = False)
+
+
+@bp.route('/MyOrders')
+def order_list():
+    
+    prodlist = Product.query.filter(and_(Product.id == Order.product_id),(Order.buyer_id == current_user.id))
+    header = "Your orders:"
     return render_template("item_list.html", prodlist = prodlist, arg = None, header = header, editMode = False)
