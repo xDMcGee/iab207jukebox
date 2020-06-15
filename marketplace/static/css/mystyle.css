@@ -177,13 +177,13 @@ p {
 
 @media (max-width: 1920px) {
     .dropdown-menu{
-        left:-60px;
+        left:-75px;
     }
 }
 
 @media (max-width: 993px) {
     .dropdown-menu{
-        left:-25px;
+        left:-20px;
     }
 }
 
