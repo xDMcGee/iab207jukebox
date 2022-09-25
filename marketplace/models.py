@@ -25,6 +25,8 @@ class ProductType(FormEnum):
 #Class that contains all product subtype information
 class SubTypes(FormEnum):
     #Nested class for subtypes
+
+    @skip
     class ProductSubType(Enum):
         @skip
         class VinylType(FormEnum):
@@ -60,18 +62,18 @@ class SubTypes(FormEnum):
         return(options[arg])
 
     #Refereneces to deeper Enum options (Required for database functionality)
-    i7 = ProductSubType.VinylType.i7
-    i10 = ProductSubType.VinylType.i10
-    i12 = ProductSubType.VinylType.i12
+    i7 = ProductSubType.value.VinylType.i7
+    i10 = ProductSubType.value.VinylType.i10
+    i12 = ProductSubType.value.VinylType.i12
 
-    needles = ProductSubType.AccessoryType.needles
-    motors = ProductSubType.AccessoryType.motors
-    tonearms = ProductSubType.AccessoryType.tonearms
-    shelves = ProductSubType.AccessoryType.shelves
-    cleaning = ProductSubType.AccessoryType.cleaning
+    needles = ProductSubType.value.AccessoryType.needles
+    motors = ProductSubType.value.AccessoryType.motors
+    tonearms = ProductSubType.value.AccessoryType.tonearms
+    shelves = ProductSubType.value.AccessoryType.shelves
+    cleaning = ProductSubType.value.AccessoryType.cleaning
 
-    auto = ProductSubType.TableType.auto
-    manual = ProductSubType.TableType.manual
+    auto = ProductSubType.value.TableType.auto
+    manual = ProductSubType.value.TableType.manual
 
 
 #User db model
