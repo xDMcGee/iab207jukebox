@@ -32,7 +32,7 @@ def create_app():
     #app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///marketplace.sqlite'
     app.config.from_mapping(
     #     #Flask SQLAlchemy settings
-        SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL'],
+        SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL').replace("postgres://", "postgresql://", 1),
     )
     #initialize db with flask app
     db.init_app(app)
